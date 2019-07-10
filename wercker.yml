@@ -1,0 +1,49 @@
+# This references a standard debian container from the
+# Docker Hub https://registry.hub.docker.com/_/debian/
+# Read more about containers on our dev center
+# http://devcenter.wercker.com/docs/containers/index.html
+box: debian
+# You can also use services such as databases. Read more on our dev center:
+# http://devcenter.wercker.com/docs/services/index.html
+# services:
+# - postgres
+# http://devcenter.wercker.com/docs/services/postgresql.html
+
+# - mongo
+# http://devcenter.wercker.com/docs/services/mongodb.html
+
+# This is the build pipeline. Pipelines are the core of wercker
+# Read more about pipelines on our dev center
+# http://devcenter.wercker.com/docs/pipelines/index.html
+build:
+  # Steps make up the actions in your pipeline
+  # Read more about steps on our dev center:
+  # http://devcenter.wercker.com/docs/steps/index.html
+  steps:
+    - script:
+        name: install git
+        code: |
+          apt-get update
+          apt-get install git -y
+    - script:
+        # 如果使用submodules, 记得添加配置文件.gitmodules
+        name: initialize and update git submodules
+        code: |
+          git submodule init
+          git submodule update --remote --recursive
+    - arjen/hugo-build@2.8.0:
+        # your hugo theme name
+        theme: even
+        flags: --buildDrafts=false
+deploy:
+  steps:
+    - install-packages:
+        packages: git ssh-client
+    # 官方给的lukevivier/gh-pages@0.2.1会部署到gh-pages分支，17年我用的时候没这毛病，这里改用别的Step
+    # 部署public目录下的静态文件至username.github.io的master分支
+    - sf-zhou/gh-pages@0.2.6:
+        token: $GIT_TOKEN
+        domain: blog.orionpax.top
+        repo: OrionPax19970905/OrionPax19970905.github.io
+        branch: master
+        basedir: public

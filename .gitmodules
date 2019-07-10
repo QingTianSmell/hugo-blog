@@ -1,0 +1,3 @@
+[submodule "public"]
+	path = public
+	url = git@github.com:OrionPax19970905/hexo_OrionPax19970905.github.io.git
