@@ -68,4 +68,72 @@ git push -u origin master
 
 ### 向搜索引起提交博客地址(待补充)
 
-### 持续集成(待补充)
+### 持续集成
+
+#### Wercker 简介
+
+CI 使用的[Wercker](https://app.wercker.com), 简单直接使用 GitHub 账号注册登录，不需要麻烦的过程。CI 的简单理解就是向一个仓库提交代码后会自动执行的脚本。
+
+#### Hugo + Wercker
+
+- 首先要在 github 上新建两个仓库，一个用来存放 site 项目，一个用来存放静态的 public 项目(如使用 GitHub Page 项目名称必须为 username.github.io)。
+- 在[Wercker](https://app.wercker.com)下创建 Application, 请参考[教程](https://gohugo.io/hosting-and-deployment/deployment-with-wercker/), 注意需要关联的仓库为 site, 会读取仓库下的 wercker.yml 文件执行脚本。
+- 去 GitHub 上创建一个 token 给 Wercker 操作 GitHub 仓库用，请参考[教程](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line), 就是 wercker 脚本里的环境变量, 也要在后台添加下。
+- 因为在 Site 项目里存在子项目，如果使用 submodule 了请参考[Git submodule 子模块的管理和使用](https://www.jianshu.com/p/9000cd49822c), 不使用要修改下 wercker.yml 文件，如果报已存在的错误，就先把文件加删除再根据 git 给出的错误提示`git rm --cached <moduleName>`, 然后再操作。
+- 在你的 site 仓库根目录下创建 wercker.yml 文件，参考下面。
+- 最后进行 push, 去你的 Wercker 后台看看吧，Enjoy!
+
+#### wercker.yml
+
+```
+# This references a standard debian container from the
+# Docker Hub https://registry.hub.docker.com/_/debian/
+# Read more about containers on our dev center
+# http://devcenter.wercker.com/docs/containers/index.html
+box: debian
+# You can also use services such as databases. Read more on our dev center:
+# http://devcenter.wercker.com/docs/services/index.html
+# services:
+# - postgres
+# http://devcenter.wercker.com/docs/services/postgresql.html
+
+# - mongo
+# http://devcenter.wercker.com/docs/services/mongodb.html
+
+# This is the build pipeline. Pipelines are the core of wercker
+# Read more about pipelines on our dev center
+# http://devcenter.wercker.com/docs/pipelines/index.html
+build:
+  # Steps make up the actions in your pipeline
+  # Read more about steps on our dev center:
+  # http://devcenter.wercker.com/docs/steps/index.html
+  steps:
+    - script:
+        name: install git
+        code: |
+          apt-get update
+          apt-get install git -y
+    - script:
+        # 如果使用submodules, 记得添加配置文件.gitmodules
+        name: initialize and update git submodules
+        code: |
+          git submodule init
+          git submodule update --remote --recursive
+    - arjen/hugo-build@2.8.0:
+        # your hugo theme name
+        theme: even
+        flags: --buildDrafts=false
+deploy:
+  steps:
+    - install-packages:
+        packages: git ssh-client
+    # 官方给的lukevivier/gh-pages@0.2.1会部署到gh-pages分支，17年我用的时候没这毛病，这里改用别的Step
+    # 部署public目录下的静态文件至username.github.io的master分支
+    - sf-zhou/gh-pages@0.2.6:
+        token: $GIT_TOKEN
+        domain: blog.orionpax.top
+        repo: OrionPax19970905/OrionPax19970905.github.io
+        branch: master
+        basedir: public
+
+```
