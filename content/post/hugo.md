@@ -10,7 +10,7 @@ tags: ["环境搭建"]
 
 windows 系统使用`scoop install hugo` 安装 hugo，使用`hugo version` 查看是否安装成功。
 
-> [「一行代码」搞定软件安装卸载，用 Scoop 管理你的 Windows 软件](https://sspai.com/post/52496)
+> [程序员的软件包管理工具](http://blog.orionpax.top/post/scoop/)
 
 ### 搭建流程
 

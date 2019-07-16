@@ -83,6 +83,7 @@ r       : 修改一个字符
 #### Insert
 
 ```
+ctrl + n : 单词补全
 ctrl + h : 删除上一个字符
 ctrl + w : 删除上一个单词
 ctrl + u : 删除当前行插入位置之前的内容
@@ -178,15 +179,15 @@ vim-commentary            : 代码注释
 vim-relativity            : 相对行号
 ```
 
-## 其他技巧
+## 应用场景
 
 ### Vim 多文件操作
 
 #### 概念
 
-Buffer 指打开的一个文件的内存缓冲区
-Window 是 Buffer 的可视化分割区域
-Tab 可以组织窗口作为一个工作区
+- Buffer 指打开的一个文件的内存缓冲区
+- Window 是 Buffer 的可视化分割区域
+- Tab 可以组织窗口作为一个工作区
 
 #### 相关命令
 
@@ -198,8 +199,6 @@ Tab 可以组织窗口作为一个工作区
 :bpre、bnext、bfirst、blast
 :b <buffer_name>
 ```
-
-:ls : 列举当前缓冲区
 
 ##### Window
 
@@ -226,23 +225,24 @@ gt             : 切换标签页
 
 Vim 中使用 delete yank put 操作时会使用寄存器保存内容，不指定的话就是无名寄存器和寄存器 0。其它还有 a-z 寄存器。+寄存器代表系统剪切板。复制到系统剪切板可以`"+y`,从系统剪切板粘贴为`"+p`。
 
-### Vim 补全
+### Vim 的自动补全
 
 - `Ctrl + n`/`Ctrl + p` : 补全单词
 - `Ctrl + x`/`Ctrl + f` : 补全文件名
 - `Ctrl + x`/`Ctrl + o` : 补全代码(需要插件)
 
-### 配色修改
+### Vim 的配色修改
 
 - `:colorscheme` : 显示当前配色
 - `:colorscheme <Ctrl + d>` : 列出可选配色
 - `:colorscheme <name>` : 修改配色
 
-### 配置
+### VIM 的配置持久化
 
-Linux/Unix 下新建一个隐藏文件 `vim ~/.vimrc`
-Windows 下使用`$MYVIMRC`来定位配置文件位置
+Linux/Unix 下新建一个隐藏文件 `vim ~/.vimrc`  
+Windows 下使用`$MYVIMRC`来定位配置文件位置  
+NeoVIM 的配置文件的位置应为`~/AppData/Local/nvim/init.vim` 或 `~/.config/nvim/init.vim`;
 
 ### 快捷键映射
 
-- :\[n(normal 生效)/v(visual 生效)/i(insert 生效)\][nore(非递归映射)]map <\target_key_sequence> <\source_key_sequence> : 创建源操作映射为目标操作，比如`:map - x`，然后按`-`就会删除字符
+`[n(normal生效)/v(visual生效)/i(insert生效)][nore(非递归映射)]map <target_key_sequence> <source_key_sequence>` : 创建源操作映射为目标操作，比如`map - x`，然后按`-`就会删除字符
