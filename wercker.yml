@@ -43,7 +43,7 @@ deploy:
     # 部署public目录下的静态文件至username.github.io的master分支
     - sf-zhou/gh-pages@0.2.6:
         token: $GIT_TOKEN
-        domain: blog.orionpax.top
+        domain: http://blog.orionpax.top
         repo: OrionPax19970905/OrionPax19970905.github.io
         branch: master
         basedir: public
