@@ -44,6 +44,17 @@ scoop list
 
 之前提到过, Scoop 是根据 Json 文件进行软件的下载安装的, Bucket 就是存放这些 Json 文件的地方。官方维护了一个名称叫 main 的 Bucket (收录条件十分苛刻, 举两个例子：必须是主流的开发者工具, 不可以有 GUI), 也不是说没被官方 Bucket 收录的软件就不可以用 Scoop 进行管理了。只是需要我们将别人维护的 Bucket 使用`scoop bucket add <Bucket Name>`命令添加一下，就可以 install 其中的软件了。总之就是如果使用`scoop search`搜索不到就上[Scoop Directory](https://github.com/rasa/scoop-directory/blob/master/by-score.md)看下。当然你也可以维护你自己的 Bucket。
 
+### 值得一提
+
+#### 安装 Aria2
+
+```
+// 安装 aria2
+scoop install aria2
+// 配置 scoop 是否使用 aria2 的多线程下载
+scoop config aria2-enabled [true/false]
+```
+
 ### 参考
 
 > [「一行代码」搞定软件安装卸载，用 Scoop 管理你的 Windows 软件](https://sspai.com/post/52496)  
