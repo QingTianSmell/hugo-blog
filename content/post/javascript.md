@@ -171,13 +171,6 @@ tags: ["学习笔记", "JavaScript"]
 
 ## 值得一提
 
-### 函数的定义方式
-
-- 正常方式`function mysum(num1,num2){return num1+num2;}`
-- 直接量/匿名方式`var mysum = function(num1,num2){return num1+num2;}`
-- 构造器方式`new Function("num1","num2","return num1+num2;")`
-- 箭头函数(ES6)
-
 ### ES6 新特性
 
 #### 定义相关
@@ -221,4 +214,20 @@ tags: ["学习笔记", "JavaScript"]
 - 可以折行
 - 可以嵌套
 
-#### 面向对象
+## 应用场景
+
+### 函数的定义
+
+- 正常方式`function mysum(num1,num2){return num1+num2;}`
+- 直接量/匿名方式`var mysum = function(num1,num2){return num1+num2;}`
+- 构造器方式`new Function("num1","num2","return num1+num2;")`
+- 箭头函数(ES6)
+
+### 向后台传递 ids / names
+
+```
+// ids
+const idsStr = ids.length > 0 ? ids.reduce((temp, id) => temp + ',' + id) : undefined;
+// names
+const namesStr = names.length > 0 ? "'" + names.reduce((temp, name) => temp + "','" + name) + "'" : undefined;
+```
