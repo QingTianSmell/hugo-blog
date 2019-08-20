@@ -1,7 +1,7 @@
 ---
 title: "Hibernate 多线程下 No Session 问题"
 date: 2019-07-23T21:37:28+08:00
-tags: ["踩过记录", "Hibernate"]
+tags: ["踩坑记录", "Hibernate"]
 ---
 
 ```
