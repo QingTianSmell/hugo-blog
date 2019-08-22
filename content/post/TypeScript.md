@@ -1,5 +1,5 @@
 ---
-title: "TypeScript"
+title: "TypeScript 学习笔记"
 date: 2019-07-25T11:27:43+08:00
 tags: ["学习笔记", "TypeScript"]
 ---
