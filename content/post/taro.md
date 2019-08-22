@@ -48,6 +48,7 @@ $ taro doctor
 ```
 
 ## 跨平台开发
+
 ```
 if (process.env.TARO_ENV === 'weapp') {
   require('path/to/weapp/name')
@@ -57,12 +58,14 @@ if (process.env.TARO_ENV === 'weapp') {
 ```
 
 ## 编译配置
+
 Taro 的编译配置文件是 config/index.js。 下面列几个用到修改的配置：
+
 ```
 sourceRoot: 'src',   // 源码目录
 outputRoot: 'dist',  // 打包目录，如果需要打包不同的目录就要调整
 
-// Taro 的编译存在一些坑，不按照他的包结构来的话有些内容就不会编译到，可以用这项配置，来把原生小程序中不会被编译的内容 Copy 到对应 dist 目录防止引用不到。 
+// Taro 的编译存在一些坑，不按照他的包结构来的话有些内容就不会编译到，可以用这项配置，来把原生小程序中不会被编译的内容 Copy 到对应 dist 目录防止引用不到。
 copy: {
   patterns: [
     { from: 'src/asset/tt/', to: 'dist/asset/tt/', ignore: '*.js' }, // 指定需要 copy 的目录
@@ -70,8 +73,9 @@ copy: {
   ]
 },
 ```
- 
+
 ## 基于 Taro 开发第三方多端 UI 库
+
 ```
 // 为了打包出可以在 H5 端使用的组件库，需要在 config/index.js 文件中增加一些配置
 if (process.env.TARO_BUILD_TYPE === 'ui') {
@@ -104,13 +108,13 @@ if (process.env.TARO_BUILD_TYPE === 'ui') {
 // 打包命令
 taro build --ui
 
-// 说是第三方UI库，但是魔改下就可以来编译多端库了，需要定义自己的公用的工具库、 状态管理库，也可以用下，Taro 本身并没有提供多端编译的其他命令。 
+// 说是第三方UI库，但是魔改下就可以来编译多端库了，需要定义自己的公用的工具库、 状态管理库，也可以用下，Taro 本身并没有提供多端编译的其他命令。
 // 如果使用这个东西来编其他的库，为了加上定义，和代码提示，要把声明文件专门生成下。
 ```
 
 ## 使用小程序原生组件
-直接使用即可，但是如果不做多端的兼容处理就会导致其他端无法编译了。
 
+直接使用即可，但是如果不做多端的兼容处理就会导致其他端无法编译了。
 
 ## 使用 MobX
 
@@ -176,9 +180,7 @@ export default Index
 ```
 
 ## 速查参考
+
 > [Taro 全局配置](https://taro-docs.jd.com/taro/docs/tutorial.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE)  
-> [Taro APP生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F)  
-> [Taro 页面生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-1)
-> [Taro 组件生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-2)
-> [Taro 编译配置详情](https://taro-docs.jd.com/taro/docs/config-detail.html)
-> [MobZ 中文文档](https://cn.mobx.js.org/)
+> [Taro APP 生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F)  
+> [Taro 页面生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-1) > [Taro 组件生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-2) > [Taro 编译配置详情](https://taro-docs.jd.com/taro/docs/config-detail.html) > [MobZ 中文文档](https://cn.mobx.js.org/)
