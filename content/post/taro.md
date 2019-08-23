@@ -108,8 +108,6 @@ if (process.env.TARO_BUILD_TYPE === 'ui') {
 // 打包命令
 taro build --ui
 
-// 说是第三方UI库，但是魔改下就可以来编译多端库了，需要定义自己的公用的工具库、 状态管理库，也可以用下，Taro 本身并没有提供多端编译的其他命令。
-// 如果使用这个东西来编其他的库，为了加上定义，和代码提示，要把声明文件专门生成下。
 ```
 
 ## 使用小程序原生组件
@@ -179,8 +177,82 @@ class Index extends Component {
 export default Index
 ```
 
+## 开发第三方多端非 UI 库
+
+前提:
+
+- Taro 目前并未提供非 UI 库多端编译的命令
+- tsc 编译，不支持 h5 。(Taro 编译的时候对于 h5 会把 @tarojs/taro 替换成 @tarojs/taro-h5，还有一些其他的兼容处理)
+- Taro 不支持 require，因此也不支持动态导入，所以它自己也没有实现一个多端公用的包
+
+解决方案: 同时打出多端的包，然后用 require 动态导入
+
+配置信息:
+
+```
+// config/index.js
+// 借用下 Taro 开发第三方多端 UI 库的配置与导出结构，省的自己写脚本了。
+if (process.env.TARO_BUILD_TYPE === 'ui') {
+  Object.assign(config.h5, {
+    enableSourceMap: false,
+    enableExtract: false,
+    enableDll: false
+  })
+  config.h5.webpackChain = chain => {
+    chain.plugins.delete('htmlWebpackPlugin')
+    chain.plugins.delete('addAssetHtmlWebpackPlugin')
+    chain.merge({
+      output: {
+        path: path.join(process.cwd(), 'dist', 'h5'),
+        filename: 'index.js',
+        libraryTarget: 'umd',
+        library: 'taro-ui-sample'
+      },
+      externals: {
+        nervjs: 'commonjs2 nervjs',
+        classnames: 'commonjs2 classnames',
+        '@tarojs/components': 'commonjs2 @tarojs/components',
+        '@tarojs/taro-h5': 'commonjs2 @tarojs/taro-h5',
+        'weui': 'commonjs2 weui'
+      }
+    })
+  }
+}
+```
+
+```
+// tsconfig.json
+"rootDir": "./src",         // 源代码路径
+"outDir": "dist/weapp",     // 输出位置
+"declaration": true,        // 自动生成声明文件
+"declarationDir": "types",  // 将声明文件统一生成到types路径下
+```
+
+```
+// package.json
+"typings": "types/index.d.ts" // 指定项目声明文件位置
+```
+
+相关命令:
+
+```
+// 将项目作为 UI 库打包, 生成 H5 下需要引用的包。
+taro build --ui
+// TypeScript 编译
+tsc
+// NPM 打补丁(提高一个小版本)
+npm version patch
+// 发布更新
+npm publish
+// 更新引入包
+npm update @bageventjs/packageName
+```
+
 ## 速查参考
 
 > [Taro 全局配置](https://taro-docs.jd.com/taro/docs/tutorial.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE)  
 > [Taro APP 生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F)  
-> [Taro 页面生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-1) > [Taro 组件生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-2) > [Taro 编译配置详情](https://taro-docs.jd.com/taro/docs/config-detail.html) > [MobZ 中文文档](https://cn.mobx.js.org/)
+> [Taro 页面生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-1)  
+> [Taro 组件生命周期](https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-2)  
+> [Taro 编译配置详情](https://taro-docs.jd.com/taro/docs/config-detail.html)  
+> [MobX 中文文档](https://cn.mobx.js.org/)
