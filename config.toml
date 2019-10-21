@@ -28,11 +28,6 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   priority = 0.5
   filename = "sitemap.xml"
 
-[[menu.main]]             # config your menu              # 配置目录
-  name = "Home"
-  weight = 10
-  identifier = "home"
-  url = "/"
 [[menu.main]]
   name = "Archives"
   weight = 20
@@ -43,6 +38,16 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   weight = 30
   identifier = "tags"
   url = "/tags/"
+[[menu.main]]
+  name = "Skill"
+  weight = 40
+  identifier = "skills"
+  url = "/skills.png"
+[[menu.main]]
+  name = "Tool"
+  weight = 50
+  identifier = "tools"
+  url = "/Tools.png"
 
 [params]
   version = "4.x"           # Used to give a friendly message when you have an incompatible update
