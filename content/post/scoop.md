@@ -18,6 +18,7 @@ tags: ["环境搭建"]
 ### 安装步骤
 
 - 在 PowerShell`set-executionpolicy remotesigned -scope currentuser`, 修改策略同意。
+- 配置 scoop 安装路径 `[environment]::setEnvironmentVariable('SCOOP','D:\scoops','User')` , `$env:SCOOP='D:\scoops'`
 - 执行命令`iex (new-object net.webclient).downloadstring('https://get.scoop.sh')`安装 Scoop。
 - `scoop help` 检查是否安装成功。
 
