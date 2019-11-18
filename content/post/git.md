@@ -1,14 +1,53 @@
 ---
 title: "Git 学习笔记"
 date: 2019-08-29T20:03:23+08:00
-tags: ["学习笔记", "Git"]
+tags: ["通用", "学习笔记", "Git"]
 ---
 
-## 简单使用
+## What
+### 定义
+一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
 
-### 应用场景
+### Git 的三种对象
 
-#### 初始化配置
+#### commit
+
+提交对象是用来保存提交的作者、时间、说明这些信息的
+
+#### tree
+
+树对象是文件目录树，记录了文件获取目录的名称、类型、模式信息。
+
+#### blob
+
+数据对象是文件的内容，不包括文件名、权限等信息。Git 会根据文件内容计算出一个 hash 值，以 hash 值作为文件索引存储在 Git 文件系统中。由于相同的文件内容的 hash 值是一样的，因此 Git 将同样内容的文件只会存储一次。
+
+### 工作区、暂存区、版本库
+
+![img1](https://image-static.segmentfault.com/171/646/1716463609-5bf0fbfc7c3aa_articlex) 
+- 工作区：用来编辑保存项目文件的地方，也是用户能直接操作到的地方。
+- 暂存区：保存了下次将提交的文件列表信息，一般在 Git 仓库目录中，是一个叫 index 的文件，通常多数说法还是叫暂存区域。
+- 版本库：也叫本地版本库，之所以说 git 快，是因为它是分布式版本控制系统，大部分提交都是对本地仓库而言的，不依赖网络，最后一次会推送的到远程仓库。
+
+总结 git 基本的工作流程如下：
+
+1. 在工作目录中修改(此处修改包含了创建和删除)文件；
+2. 暂存文件，将文件 add 放入暂存区域；
+3. 提交更新，找到暂存区域的文件，将暂存区的文件 commit 到版本库；
+4. 如果工作区的文件改乱了（包括了误删、误改），想回到上一版本，就可以使用 git checkout 命令将版本库中的文件检出到工作区将本次更改 discard(覆盖)掉。
+
+## Why
+### 解决的问题
+项目的版本控制问题
+### 没有此技术之前怎么做
+文件复制，人工版本号
+
+## Where
+所有需要用到版本控制的项目
+
+## How
+
+### 初始化配置
 
 ```
 //最小配置信息
@@ -27,7 +66,7 @@ git config --system
 git config --list [作用域]
 ```
 
-#### 本地仓库管理
+### 本地仓库管理
 
 ```
 //已有项目加入Git管理
@@ -47,7 +86,7 @@ git add [文件名] [-u : 管理全部修改]
 git commit -m '提交原因'
 ```
 
-#### 远程仓库管理
+### 远程仓库管理
 
 ```
 // 密钥位置 C:\Users\ibm\.ssh\*
@@ -69,7 +108,7 @@ git pull [远程主机名] [远程分支名]
 git branch --set-upstream [本地分支名] origin/[远程分支名]
 ```
 
-#### 分支管理
+### 分支管理
 
 ```
 // 创建分支
@@ -91,7 +130,7 @@ git merge <branchName>
 git branch -d <branchName>
 ```
 
-#### 查看 commit 历史
+### 查看 commit 历史
 
 ```
 git log [--oneline : 单行简洁] [--all : 查看所有分支] [-n<number> : 查看最近number次提交] [--graph : 分支演化]
@@ -113,7 +152,7 @@ git config --global alias.lms  "log --no-merges --color --stat --date=format:'%Y
 git config --global alias.lss "log --no-merges --color --stat --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
 
-#### 比较文件差异
+### 比较文件差异
 
 ```
 // 工作区和暂存区
@@ -128,20 +167,20 @@ git diff [commit : 指定GIT仓库的提交版本] [filename : 指定文件]
 // 以上命令可以不指定 <filename>，则对全部文件操作。commit 可以设置为HEAD指针。
 ```
 
-#### 丢弃暂存区修改
+### 丢弃暂存区修改
 
 ```
 git reset HEAD
 ```
 
-#### 丢弃工作区修改
+### 丢弃工作区修改
 
 ```
 // 省略commit，则会用暂存区的文件覆盖工作区中的文件
 git checkout [commit : 指定提交版本覆盖暂存区和工作区的内容] [-- files : 指定需要覆盖的文件]
 ```
 
-#### 暂存工作区修改去干其它重要的事情
+### 暂存工作区修改去干其它重要的事情
 
 ```
 // 该命令保存本地修改，并恢复工作目录以匹配HEAD提交
@@ -157,7 +196,7 @@ git stash show
 git stash pop [stash_name]
 ```
 
-#### 忽略已被 git 管理的文件
+### 忽略已被 git 管理的文件
 
 ```
 // 从git管理中删除指定文件
@@ -165,69 +204,40 @@ git rm --cached <文件>
 // 更新 .gitignore 后提交
 ```
 
-#### 配置相关
+### 配置相关
 
-##### 修改 HTTP 传输请求数据时最大的缓存字节数
+#### 修改 HTTP 传输请求数据时最大的缓存字节数
 
 ```
 git config --global http.postBuffer 524288000
 ```
 
-##### 远程 HTTPS 验证时记住密码
+#### 远程 HTTPS 验证时记住密码
 
 ```
 git config --global credential.helper store
 ```
 
-##### 配置全局 git 编码
+#### 配置全局 git 编码
 
 ```
 // 解决中文乱码情况
 git config --global gui.encoding utf-8
 ```
 
-##### 使用代理提高 git 速度
+#### 使用代理提高 git 速度
 
 ```
 git config --global http.proxy http://127.0.0.1:1080
 git config --global https.proxy http://127.0.0.1:1080
 ```
 
-#### 其它命令(基本没有应用场景)
+### 其它命令(基本没有应用场景)
 
 ```
 //git对象查看
 git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
 ```
-
-### Git 的三种对象
-
-#### commit
-
-提交对象是用来保存提交的作者、时间、说明这些信息的
-
-#### tree
-
-树对象是文件目录树，记录了文件获取目录的名称、类型、模式信息。
-
-#### blob
-
-数据对象是文件的内容，不包括文件名、权限等信息。Git 会根据文件内容计算出一个 hash 值，以 hash 值作为文件索引存储在 Git 文件系统中。由于相同的文件内容的 hash 值是一样的，因此 Git 将同样内容的文件只会存储一次。
-
-### 工作区、暂存区、版本库
-
-![img1](https://image-static.segmentfault.com/171/646/1716463609-5bf0fbfc7c3aa_articlex)
-
-- 工作区：用来编辑保存项目文件的地方，也是用户能直接操作到的地方。
-- 暂存区：保存了下次将提交的文件列表信息，一般在 Git 仓库目录中，是一个叫 index 的文件，通常多数说法还是叫暂存区域。
-- 版本库：也叫本地版本库，之所以说 git 快，是因为它是分布式版本控制系统，大部分提交都是对本地仓库而言的，不依赖网络，最后一次会推送的到远程仓库。
-
-总结 git 基本的工作流程如下：
-
-1. 在工作目录中修改(此处修改包含了创建和删除)文件；
-2. 暂存文件，将文件 add 放入暂存区域；
-3. 提交更新，找到暂存区域的文件，将暂存区的文件 commit 到版本库；
-4. 如果工作区的文件改乱了（包括了误删、误改），想回到上一版本，就可以使用 git checkout 命令将版本库中的文件检出到工作区将本次更改 discard(覆盖)掉。
 
 ### 多人协作工作流程
 
@@ -240,8 +250,6 @@ git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
 - 本地新建的分支如果不推送到远程，对其他人就是不可见的；
 - 在本地创建和远程分支对应的分支，使用`git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
 - 如果 git pull 提示 no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream-to <branch-name> origin/<branch-name>`；
-
-## 值得一提
 
 ### 多个 SSH Key 管理
 
