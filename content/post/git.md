@@ -156,13 +156,16 @@ git config --global alias.lss "log --no-merges --color --stat --graph --date=for
 
 ```
 // 工作区和暂存区
-git diff [branch : 指定比较分支] [filename : 指定文件]
+git diff [filename : 指定文件]
 
-// 暂存区和GIT仓库
+// 暂存区和 GIT 仓库
 git diff --cached [commit : 指定GIT仓库的提交版本] [filename : 指定文件]
 
-// 工作目录和GIT仓库
+// 工作目录和 GIT 仓库
 git diff [commit : 指定GIT仓库的提交版本] [filename : 指定文件]
+
+// Commit 和 Commit
+git diff <commit_id> <commit_id>
 
 // 以上命令可以不指定 <filename>，则对全部文件操作。commit 可以设置为HEAD指针。
 ```
@@ -177,7 +180,7 @@ git reset HEAD
 
 ```
 // 省略commit，则会用暂存区的文件覆盖工作区中的文件
-git checkout [commit : 指定提交版本覆盖暂存区和工作区的内容] [-- files : 指定需要覆盖的文件]
+git checkout [commit : 指定提交版本覆盖暂存区和工作区的内容] -- [files : 指定需要覆盖的文件]
 ```
 
 ### 暂存工作区修改去干其它重要的事情
@@ -287,6 +290,10 @@ git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
    ssh -T git@github.com          #测试OrionPax19970905
    ssh -T git@github.zqt.com      #测试ZQianlvT
    ```
+
+### 在 GitHub 上搜索感兴趣的项目
+[基础语法](https://help.github.com/articles/understanding-the-search-syntax/)
+[高级搜索页面](https://github.com/search/advanced)
 
 ## 参考
 
