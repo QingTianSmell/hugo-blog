@@ -111,8 +111,14 @@ git branch --set-upstream [本地分支名] origin/[远程分支名]
 ### 分支管理
 
 ```
+// 拉去远程分支信息
+git fetch
+
 // 创建分支
 git branch <branchName>
+
+// 使用远程分支创建本地对应分支
+git checkout -b <branchName> origin/<originBranchName>
 
 // 切换分支
 git switch <branchName>
@@ -181,6 +187,13 @@ git reset HEAD
 ```
 // 省略commit，则会用暂存区的文件覆盖工作区中的文件
 git checkout [commit : 指定提交版本覆盖暂存区和工作区的内容] -- [files : 指定需要覆盖的文件]
+```
+
+### 丢弃未提交的 commit
+
+```
+// 找到要将 HEAD 指针移动到的 commit 的 Id
+git reset --hard <commit_id>
 ```
 
 ### 暂存工作区修改去干其它重要的事情
