@@ -120,7 +120,7 @@ transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 - @DeleteMapping
 - @PatchMapping
 
-#### Spring JDBC
+#### Spring Data JDBC
 ```
 // Show You Code
 @Slf4j
@@ -186,6 +186,22 @@ public class JdbcFooRepository {
 }
 ```
 
+#### Spring Data JPA
+##### 常用 JPA 注解
+- 实体
+  - @Entity、@MappedSuperclass
+  - @Table(name)
+- 主键
+  - @Id
+  - @GeneratedValue(strategy, generator)
+  - @SequenceGenerator(name, sequenceName)
+- 映射
+  - @Column(name, nullable, length, insertable, updatable)
+  - @JoinTable(name)、@JoinColumn(name)
+- 关系
+  - @OneToOne、@OneToMany、@ManyToOne、@ManyToMany
+  - @OrderBy
+
 #### Spring Boot Actuator
 Spring Boot 自带监控功能的 Actuator，可以帮助实现对程序内部运行情况监控，比如监控状况、Bean加载情况、环境变量、日志信息、线程信息等
 
@@ -234,5 +250,80 @@ Spring Boot 自带监控功能的 Actuator，可以帮助实现对程序内部�
 - @NotNull：在参数中使用时，如果调用时传了null值，就会抛出空指针异常
 - @NoArgsConstructor：创建一个无参构造函数
 - @AllArgsConstructor：创建一个全参构造函数
+- @RequiredArgsConstructor：会生成一个包含常量，和标识了NotNull的变量的构造方法
 - @ToString：创建一个toString方法
+- @Slf4j / @CommonsLog / @Log4j2
 - @Accessors(chain = true)使用链式设置属性，set方法返回的是this对象
+
+#### Spring cache abstraction
+##### 基本注解
+- @EnableCaching : 开启 Spring Cache 注解 `@EnableCaching(proxyTargetClass = true)`
+- @Cacheable : 缓存方法返回结果
+- @CacheEvict : 缓存清理
+- @CachePut : 保证方法被调用，又希望结果被缓存。与@Cacheable区别在于是否每次都调用方法，常用于更新。
+- @CacheConfig : 统一配置本类的缓存注解的属性
+
+##### 参考
+[史上最全的Spring Boot Cache使用与整合](https://www.cnblogs.com/yueshutong/p/9381540.html)
+
+#### Spring Data Redis
+##### Redis Template
+```
+// Show You Code
+public Optional<RedisFoo> findOneCacheFooByRedisTemplate(String bar) {
+    String CACHE = RedisFoo.class.getSimpleName();
+    // 有缓存的话从缓存里取出返回
+    HashOperations<String, String, RedisFoo> hashOperations = redisFooRedisTemplate.opsForHash();
+    if (redisFooRedisTemplate.hasKey(CACHE) && hashOperations.hasKey(CACHE, bar)) {
+        log.info("Get CacheFoo {} from Redis.", bar);
+        return Optional.ofNullable(hashOperations.get(CACHE, bar));
+    }
+
+    Optional<RedisFoo> redisFoo = findOneByBar(bar);
+
+    // 不为空的话，存到缓存里
+    if (redisFoo.isPresent()) {
+        log.info("Put CacheFoo {} to Redis.", bar);
+        hashOperations.put(CACHE, bar, redisFoo.get());
+        redisFooRedisTemplate.expire(CACHE, 1, TimeUnit.MINUTES);
+    }
+    return redisFoo;
+}
+```
+
+##### Redis Repository
+```
+// Show You Code
+// RedisFooCache.java
+@RedisHash(value = "RedisFooCache", timeToLive = 60)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class RedisFooCache {
+    @Id
+    private Long fooId;
+    @Indexed
+    private String bar;
+    private Date createTime;
+}
+
+// RedisFooCacheRepository.java
+public interface RedisFooCacheRepository extends CrudRepository<RedisFooCache, Long>, QueryByExampleExecutor<RedisFooCache> {
+}
+
+// RedisFooService.java
+public Optional<RedisFoo> findOneCacheFooByRedisRepository(String bar) {
+    Optional<RedisFooCache> redisFooCache = findOneCacheByBar(bar);
+    if (redisFooCache.isPresent()) {
+        return Optional.of(convertToRedisFoo(redisFooCache.get()));
+    } else {
+        Optional<RedisFoo> redisFoo = findOneByBar(bar);
+        redisFoo.ifPresent(r -> {
+            redisFooCacheRepository.save(convertToRedisFooCache(r));
+            log.info("Save RedisFoo {} to cache.", r);
+        });
+        return redisFoo;
+    }
+}
+```
