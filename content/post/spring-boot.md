@@ -120,12 +120,12 @@ transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 - @Order : 切面执行顺序
 
 ##### 参考
-[Spring AOP 开发文档](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#aop)
+[Spring AOP 开发文档](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#aop)   
 [Pointcut 定义文档](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#aop-pointcuts)
 
 ### 依赖及其使用
 #### Spring Web
-相关常用注解:
+##### 相关常用注解
 - @RestController : 相当于 @Controller + @ResponseBody 两个注解的结合，返回json数据不需要在方法前面加 @ResponseBody 注解了，但使用 @RestController 这个注解，就不能返回 jsp,html 页面，视图解析器无法解析 jsp,html 页面
 - @RequestMapping
 - @GetMapping : 是一个组合注解是 @RequestMapping(method = RequestMethod.GET) 的缩写
@@ -133,6 +133,15 @@ transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 - @PutMapping
 - @DeleteMapping
 - @PatchMapping
+- @RequestBody
+- @ResponseBody
+- @ResponseStatus
+- @PathVariable
+- @RequestParam
+- @RequestHeader
+
+##### 参考
+[相关注解](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/web.html#mvc-ann-return-types)
 
 #### Spring Data JDBC
 ```
