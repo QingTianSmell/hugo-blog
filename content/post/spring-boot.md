@@ -109,6 +109,20 @@ transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 | noRollbackFor          | Class对象数组，必须继承自Throwable | 不会导致事务回滚的异常类数组           |
 | noRollbackForClassName | 类名数组，必须继承自Throwable      | 不会导致事务回滚的异常类名字数组       |
 
+#### Spring 中使用 AOP
+##### 相关常用注解
+- @EnableAspectJAutoProxy : 开启 AOP 注解扫描
+- @Aspect : 声明切面
+- @Pointcut : 指定拦截方法
+- @Before : 方法执行前执行
+- @After / @AfterReturning / @AfterThrowing : 方法执行后执行
+- @Around : 方法执行前后都可以执行
+- @Order : 切面执行顺序
+
+##### 参考
+[Spring AOP 开发文档](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#aop)
+[Pointcut 定义文档](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#aop-pointcuts)
+
 ### 依赖及其使用
 #### Spring Web
 相关常用注解:
