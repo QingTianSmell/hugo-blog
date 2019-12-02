@@ -350,3 +350,73 @@ public Optional<RedisFoo> findOneCacheFooByRedisRepository(String bar) {
     }
 }
 ```
+
+##### Spring Boot Admin
+###### 简介
+Spring Boot Admin是一个开源社区项目，用于管理和监控SpringBoot应用程序。 应用程序作为Spring Boot Admin Client向为Spring Boot Admin Server注册（通过HTTP）或使用SpringCloud注册中心（例如Eureka，Consul）发现。 UI是的AngularJs应用程序，展示Spring Boot Admin Client的Actuator端点上的一些监控。
+
+###### 常用的功能
+- 显示健康状况
+- 显示 JVM 和内存指标
+- 显示数据源指标
+- 显示缓存指标
+- 显示构建信息编号
+- 关注并下载日志文件
+- 查看 JVM 系统和环境属性
+- 查看 Spring Boot 配置属性
+- 轻松的日志级管理
+- 与 JMX-beans 交互
+- 查看线程转储
+- 查看 http 跟踪
+- 查看 auditevents
+- 查看 http-endpoints
+- 查看计划任务
+- 查看和删除活动会话（使用spring-session）
+- 下载heapdump
+- 状态变更通知（通过电子邮件，Slack，Hipchat，......）
+- 状态更改的事件日志（非持久性）
+
+###### 参考
+[Spring Boot Admin Reference Guide](https://codecentric.github.io/spring-boot-admin/2.1.0/)
+
+##### Swagger
+```
+@Api：用在请求的类上，表示对类的说明
+    tags="说明该类的作用，可以在UI界面上看到的注解"
+    value="该参数没什么意义，在UI界面上也看到，所以不需要配置"
+
+@ApiOperation：用在请求的方法上，说明方法的用途、作用
+    value="说明方法的用途、作用"
+    notes="方法的备注说明"
+
+@ApiImplicitParams：用在请求的方法上，表示一组参数说明
+    @ApiImplicitParam：用在@ApiImplicitParams注解中，指定一个请求参数的各个方面
+        name：参数名
+        value：参数的汉字说明、解释
+        required：参数是否必须传
+        paramType：参数放在哪个地方
+            · header --> 请求参数的获取：@RequestHeader
+            · query --> 请求参数的获取：@RequestParam
+            · path（用于restful接口）--> 请求参数的获取：@PathVariable
+            · body（不常用）
+            · form（不常用）    
+        dataType：参数类型，默认string
+            · string
+            · number
+            · integer
+            · boolean
+            · array
+            · object
+        defaultValue：参数的默认值
+
+@ApiResponses：用在请求的方法上，表示一组响应
+    @ApiResponse：用在@ApiResponses中，一般用于表达一个错误的响应信息
+        code：数字，例如400
+        message：信息，例如"请求参数没填好"
+        response：抛出异常的类
+
+@ApiModel：用于响应类上，表示一个返回响应数据的信息
+            （这种一般用在post创建的时候，使用@RequestBody这样的场景，
+            请求参数无法使用@ApiImplicitParam注解进行描述的时候）
+    @ApiModelProperty：用在属性上，描述响应类的属性
+```
