@@ -686,3 +686,62 @@ a.back_to_top:hover span {
 
 /*animation ends*/
 /*# sourceMappingURL=zozo.css.map */
+/* TOC */
+.post-toc {
+  position: fixed;
+  top: 2.3rem;
+  text-align: left;
+  max-width: 500px;
+  padding: 10px;
+  margin-left: -400px;
+}
+.post-toc .post-toc-title {
+  margin: 0 10px;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.post-toc .post-toc-content {
+  font-size: 15px;
+}
+.post-toc .post-toc-content.always-active ul {
+  display: block;
+}
+.post-toc .post-toc-content > nav > ul {
+  margin: 10px 0;
+}
+.post-toc .post-toc-content ul {
+  padding-left: 10px;
+  list-style: none;
+}
+.post-toc .post-toc-content ul ul {
+  padding-left: 15px;
+  display: none;
+}
+.post-toc .post-toc-content ul .has-active > ul {
+  display: block;
+}
+.post-toc .post-toc-content .toc-link.active {
+  color: #c05b4d;
+}
+#TableOfContents>ul>li>a {
+  font-size: 1.6rem;
+}
+#TableOfContents>ul ul>li>a {
+  font-size: 1.3rem;
+}
+#TableOfContents>ul ul ul>li>a {
+  font-size: 1rem;
+}
+#TableOfContents>ul ul ul ul>li>a {
+  font-size: 0.7rem;
+}
+
+#TableOfContents li>ul{
+  display: none;
+}
+
+#TableOfContents li.has-active>ul {
+  display: block;
+}
+
