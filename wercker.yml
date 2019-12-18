@@ -33,7 +33,7 @@ build:
           git submodule update --remote --recursive
     - arjen/hugo-build@2.8.0:
         # your hugo theme name
-        theme: even
+        theme: zozo
         flags: --buildDrafts=false
 deploy:
   steps:
