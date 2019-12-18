@@ -1,9 +1,0 @@
-[submodule "public"]
-	path = public
-	url = https://github.com/OrionPax19970905/OrionPax19970905.github.io.git
-[submodule "themes/even"]
-	path = themes/even
-	url = https://github.com/olOwOlo/hugo-theme-even
-[submodule "themes/zozo"]
-	path = themes/zozo
-	url = https://github.com/varkai/hugo-theme-zozo
