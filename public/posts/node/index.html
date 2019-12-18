@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="简单使用 简介 Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。 全局对象、变量、函数 全局对象 global : 表示 Node 所在的全局环境 process : 该对象表示 Node 所处的当前进程，允许开发者与该"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/node/"/>
+
+  
+
+  <title>Node 学习笔记 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/node/'>Node 学习笔记</a></h2>
+          <span class="date">2019.09.23</span>
+        </div>
+        <div class="post_content markdown">
+
+<h2 id="简单使用">简单使用</h2>
+
+<h3 id="简介">简介</h3>
+
+<p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。</p>
+
+<h3 id="全局对象-变量-函数">全局对象、变量、函数</h3>
+
+<ul>
+<li>全局对象
+
+<ul>
+<li>global : 表示 Node 所在的全局环境</li>
+<li>process : 该对象表示 Node 所处的当前进程，允许开发者与该进程互动。</li>
+<li>console : 指向 Node 内置的 console 模块，提供命令行环境中的标准输入、标准输出功能。</li>
+</ul></li>
+<li>全局方法
+
+<ul>
+<li>setTimeout()</li>
+<li>clearTimeout()</li>
+<li>setInterval()</li>
+<li>clearInterval()</li>
+<li>require()</li>
+<li>Buffer()</li>
+<li>简介 : Buffer 对象是 Node 处理二进制数据的一个接口。它是 Node 原生提供的全局对象。JavaScript 比较擅长处理字符串，对于处理二进制数据，就不太擅长，比如 TCP 数据流。Buffer 对象就是为了解决这个问题而设计的。它是一个构造函数，生成的实例代表了 V8 引擎分配的一段内存，是一个类似数组的对象，成员都为 0 到 255 的整数值，即一个 8 位的字节。</li>
+<li>write() : write 方法可以向指定的 Buffer 对象写入数据。它的第一个参数是所写入的内容，第二个参数（可省略）是所写入的起始位置（默认从 0 开始），第三个参数（可省略）是编码方式，默认为 utf8。</li>
+<li>slice() : slice 方法返回一个按照指定位置、从原对象切割出来的 Buffer 实例。它的两个参数分别为切割的起始位置和终止位置。</li>
+<li>toString() : toString 方法将 Buffer 实例，按照指定编码（默认为 utf8）转为字符串。</li>
+<li>toJSON() : toJSON 方法将 Buffer 实例转为 JSON 对象。如果 JSON.stringify 方法调用 Buffer 实例，默认会先调用 toJSON 方法。</li>
+</ul></li>
+<li>全局变量
+
+<ul>
+<li>__filename : 指向当前运行的脚本文件名。</li>
+<li>__dirname : 指向当前运行的脚本所在的目录。</li>
+</ul></li>
+</ul>
+
+<h3 id="常用标准库">常用标准库</h3>
+
+<h4 id="http-模块">http 模块</h4>
+
+<ul>
+<li><p>创建 Web 服务器</p>
+
+<pre><code>const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+//创建HTTP服务器
+const server = http.createServer((req, res) =&gt; {
+res.statusCode = 200;
+res.setHeader('Content-Type', 'text/plain');
+res.end('Hello World\n');
+});
+
+//监听指定地址下的指定端口并设置触发事件
+server.listen(port, hostname, () =&gt; {
+console.log(`Server running at http://${hostname}:${port}/`);
+});
+</code></pre></li>
+
+<li><p>模拟请求</p>
+
+<pre><code>const http = require('http');
+const querystring = require('querystring');
+
+//封装请求参数
+const data = querystring.stringify({
+  'msg': 'Hello World!'
+});
+const options = {
+  hostname: 'localhost',
+  port: 9988,
+  path: '/api/v2/product/optest',
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': Buffer.byteLength(data)
+  }
+};
+
+//创建请求对象并绑定相关事件处理方法
+const req = http.request(options, (res) =&gt; {
+  console.log(`状态码: ${res.statusCode}`);
+  res.on('data', (chunk) =&gt; {
+      console.log(`响应主体: ${chunk}`);
+  });
+  res.on('end', () =&gt; {
+      console.log('响应中已无数据');
+  });
+});
+req.on('error', (e) =&gt; {
+  console.error(`请求遇到问题: ${e.message}`);
+});
+
+//写入请求数据
+req.write(data);
+req.end();
+</code></pre></li>
+</ul>
+
+<h4 id="querystring-模块">querystring 模块</h4>
+
+<ul>
+<li><p>对象转 URL 参数字符串</p>
+
+<pre><code>querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' });
+// 返回 'foo=bar&amp;baz=qux&amp;baz=quux&amp;corge='
+
+querystring.stringify({ foo: 'bar', baz: 'qux' }, ';', ':');
+// 返回 'foo:bar;baz:qux'
+</code></pre></li>
+
+<li><p>URL 参数字符串转对象</p>
+
+<pre><code>querystring.parse(&quot;foo=bar&amp;abc=xyz&amp;abc=123&quot;);
+// 返回 { foo: 'bar', abc: ['xyz', '123'] } 对象
+</code></pre></li>
+</ul>
+
+<h4 id="url-模块">url 模块</h4>
+
+<ul>
+<li><p>解析 URL</p>
+
+<pre><code>exports.startServer = (route, handle) =&gt; {
+http
+  .createServer((req, res) =&gt; {
+    //解析URL 获取访问接口路径
+    var pathname = url.parse(req.url).pathname;
+    route(handle, pathname, res, req);
+  })
+  .listen(8888, hostname, () =&gt; {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
+};
+</code></pre></li>
+</ul>
+
+<h4 id="fs-模块">fs 模块</h4>
+
+<ul>
+<li><p>读文件</p>
+
+<pre><code>//readFile方法的第一个参数是文件的路径，可以是绝对路径，也可以是相对路径。注意，如果是相对路径，是相对于当前进程所在的路径（process.cwd()），而不是相对于当前脚本所在的路径。
+//readFile方法的第二个参数是读取完成后的回调函数。该函数的第一个参数是发生错误时的错误对象，第二个参数是代表文件内容的Buffer实例。
+fs.readFile(&quot;./image.png&quot;, function(err, buffer) {
+if (err) throw err;
+process(buffer);
+});
+
+//readFileSync方法的第一个参数是文件路径，第二个参数可以是一个表示配置的对象，也可以是一个表示文本文件编码的字符串。默认的配置对象是{encoding: null, flag: 'r'}，即文件编码默认为null，读取模式默认为r（只读）。如果第二个参数不指定编码（encoding），readFileSync方法返回一个Buffer实例，否则返回的是一个字符串。
+var text = fs.readFileSync(fileName, &quot;utf8&quot;);
+</code></pre></li>
+
+<li><p>写文件</p>
+
+<pre><code>//writeFile方法的第一个参数是写入的文件名，第二个参数是写入的字符串，第三个参数是回调函数。回调函数前面，还可以再加一个参数，表示写入字符串的编码（默认是utf8）。
+fs.writeFile(&quot;message.txt&quot;, &quot;Hello Node.js&quot;, err =&gt; {
+if (err) throw err;
+console.log(&quot;It's saved!&quot;);
+});
+
+//writeFileSync方法用于同步写入文件。它的第一个参数是文件路径，第二个参数是写入文件的字符串，第三个参数是文件编码，默认为utf8。
+fs.writeFileSync(fileName, str, &quot;utf8&quot;);
+</code></pre></li>
+
+<li><p>新建目录</p>
+
+<pre><code>//mkdir接受三个参数，第一个是目录名，第二个是权限值，第三个是回调函数。
+var fs = require(&quot;fs&quot;);
+fs.mkdir(&quot;./helloDir&quot;, 0777, function(err) {
+if (err) throw err;
+});
+</code></pre></li>
+
+<li><p>判断文件还是目录</p>
+
+<pre><code>var fs = require(&quot;fs&quot;);
+
+//stat方法的参数是一个文件或目录，它产生一个对象，该对象包含了该文件或目录的具体信息。我们往往通过该方法，判断正在处理的到底是一个文件，还是一个目录。
+fs.readdir(&quot;/etc/&quot;, function(err, files) {
+if (err) throw err;
+files.forEach(function(file) {
+  fs.stat(&quot;/etc/&quot; + file, function(err, stats) {
+    if (err) throw err;
+
+    if (stats.isFile()) {
+      console.log(&quot;%s is file&quot;, file);
+    } else if (stats.isDirectory()) {
+      console.log(&quot;%s is a directory&quot;, file);
+    }
+    console.log(&quot;stats:  %s&quot;, JSON.stringify(stats));
+  });
+});
+});
+</code></pre></li>
+
+<li><p>监听文件变化</p>
+
+<pre><code>var fs = require(&quot;fs&quot;);
+
+//watchfile方法监听一个文件，如果该文件发生变化，就会自动触发回调函数。
+fs.watchFile(&quot;./testFile.txt&quot;, function(curr, prev) {
+console.log(&quot;the current mtime is: &quot; + curr.mtime);
+console.log(&quot;the previous mtime was: &quot; + prev.mtime);
+});
+
+fs.writeFile(&quot;./testFile.txt&quot;, &quot;changed&quot;, function(err) {
+if (err) throw err;
+
+console.log(&quot;file write complete&quot;);
+});
+</code></pre></li>
+
+<li><p>使用输入输出流实现大文件 Copy</p>
+
+<pre><code>function fileCopy(filename1, filename2, done) {
+var input = fs.createReadStream(filename1);
+var output = fs.createWriteStream(filename2);
+
+input.on(&quot;data&quot;, function(d) {
+  output.write(d);
+});
+input.on(&quot;error&quot;, function(err) {
+  throw err;
+});
+input.on(&quot;end&quot;, function() {
+  output.end();
+});
+}
+</code></pre></li>
+</ul>
+
+<h4 id="events-模块">events 模块</h4>
+
+<ul>
+<li>简介 : 回调函数模式让 Node 可以处理异步操作。但是，为了适应回调函数，异步操作只能有两个状态：开始和结束。对于那些多状态的异步操作（状态 1，状态 2，状态 3，……），回调函数就会无法处理，你不得不将异步操作拆开，分成多个阶段。每个阶段结束时，调用下一个回调函数。为了解决这个问题，Node 提供 Event Emitter 接口。通过事件，解决多状态异步操作的响应问题。</li>
+
+<li><p>EventEmitter 的接口部署、事件部署和触发</p>
+
+<pre><code>const EventEmitter = require(&quot;events&quot;);
+
+class MyEmitter extends EventEmitter {}
+const myEmitter = new MyEmitter();
+//注册事件
+myEmitter.on(&quot;event&quot;, () =&gt; {
+console.log(&quot;触发事件&quot;);
+});
+//触发事件
+myEmitter.emit(&quot;event&quot;);
+</code></pre></li>
+
+<li><p>错误事件</p>
+
+<pre><code>//如果没有为 'error' 事件注册监听器，则当 'error' 事件触发时，会抛出错误、打印堆栈跟踪、并退出 Node.js 进程。
+//为了防止崩溃 Node.js 进程，可以使用 domain 模块。 （但请注意，不推荐使用 domain 模块。）作为最佳实践，应该始终为 'error' 事件注册监听器。
+const myEmitter = new MyEmitter();
+myEmitter.on(&quot;error&quot;, err =&gt; {
+console.error(&quot;错误信息&quot;);
+});
+myEmitter.emit(&quot;error&quot;, new Error(&quot;错误信息&quot;));
+// 打印: 错误信息
+</code></pre></li>
+</ul>
+
+<h4 id="stream-接口">Stream 接口</h4>
+
+<ul>
+<li>简介 : 数据流（stream）是处理系统缓存的一种方式。操作系统采用数据块（chunk）的方式读取数据，每收到一次数据，就存入缓存。Node 应用程序有两种缓存的处理方式，第一种是等到所有数据接收完毕，一次性从缓存读取，这就是传统的读取文件的方式；第二种是采用“数据流”的方式，收到一块数据，就读取一块，即在数据还没有接收完成时，就开始处理它。</li>
+<li>流动态和暂停态
+&gt; “可读数据流”有两种状态：流动态和暂停态。处于流动态时，数据会尽快地从数据源导向用户的程序；处于暂停态时，必须显式调用 stream.read()等指令，“可读数据流”才会释放数据。刚刚新建的时候，“可读数据流”处于暂停态。三种方法可以让暂停态转为流动态。
+&gt;
+&gt; - 添加 data 事件的监听函数
+&gt; - 调用 resume 方法
+&gt; - 调用 pipe 方法将数据送往一个可写数据流</li>
+<li>可读数据流
+
+<ul>
+<li>read() : read 方法从系统缓存读取并返回数据。如果读不到数据，则返回 null。</li>
+<li>setEncoding() : 调用该方法，会使得数据流返回指定编码的字符串，而不是缓存之中的二进制对象。比如，调用 setEncoding('utf8')，数据流会返回 UTF-8 字符串，调用 setEncoding('hex')，数据流会返回 16 进制的字符串。</li>
+<li>resume() : resume 方法会使得“可读数据流”继续释放 data 事件，即转为流动态。</li>
+<li>pause() : pause 方法使得流动态的数据流，停止释放 data 事件，转而进入暂停态。任何此时已经可以读到的数据，都将停留在系统缓存。</li>
+<li>pipe() : pipe 方法是自动传送数据的机制，就像管道一样。它从“可读数据流”读出所有数据，将其写出指定的目的地。整个过程是自动的。</li>
+<li>data 事件 : 对于那些没有显式暂停的数据流，添加 data 事件监听函数，会将数据流切换到流动态，尽快向外提供数据。</li>
+<li>end 事件 : 无法再读取到数据时，会触发 end 事件。也就是说，只有当前数据被完全读取完，才会触发 end 事件，比如不停地调用 read 方法。</li>
+<li>error 事件 : 当读取数据发生错误时，error 事件被触发。</li>
+</ul></li>
+<li>可写数据流
+
+<ul>
+<li>write() : write 方法用于向“可写数据流”写入数据。它接受两个参数，一个是写入的内容，可以是字符串，也可以是一个 stream 对象或 buffer 对象，另一个是写入完成后的回调函数，它是可选的。</li>
+<li>setDefaultEncoding() : setDefaultEncoding 方法用于将写入的数据编码成新的格式。它返回一个布尔值，表示编码是否成功，如果返回 false 就表示编码失败。</li>
+<li>end() : end 方法用于终止“可写数据流”。该方法可以接受三个参数，全部都是可选参数。第一个参数是最后所要写入的数据，可以是字符串，也可以是 stream 对象或 buffer 对象；第二个参数是写入编码；第三个参数是一个回调函数，finish 事件发生时，会触发这个回调函数。</li>
+<li>pipe 事件 : “可写数据流”调用 pipe 方法，将数据流导向写入目的地时，触发该事件。</li>
+</ul></li>
+</ul>
+
+<h3 id="参考">参考</h3>
+
+<blockquote>
+<p><a href="https://github.com/i0natan/nodebestpractices/blob/master/README.chinese.md">最佳实践</a></p>
+</blockquote>
+
+<h2 id="值得一提">值得一提</h2>
+
+<h3 id="node-模块系统">Node 模块系统</h3>
+
+<h4 id="概述">概述</h4>
+
+<blockquote>
+<p>Node.js 采用模块化结构，按照 CommonJS 规范定义和使用模块。模块与文件是一一对应关系，即加载一个模块，实际上就是加载对应的一个模块文件。</p>
+</blockquote>
+
+<h4 id="什么是模块化">什么是模块化？</h4>
+
+<ul>
+<li>存在文件作用域</li>
+<li>存在通信规则
+
+<ul>
+<li>加载(require)</li>
+<li>导出(module.exports)</li>
+</ul></li>
+</ul>
+
+<h4 id="导出-exports">导出 <code>exports</code></h4>
+
+<p>node 中每个 js 文件，都有一个 module 对象，其 exports 属性相当于其暴露的接口对象。可以使用<code>module.exports.xxx = xxx</code>添加向外暴露的接口。如果一个文件只向外暴露一个方法或者其他类型的属性，可以直接使用<code>module.exports = xxx</code>。注意在 Node 解释 js 文件时，会在其头部加上隐式的<code>let exports = module.exports</code>因此只要不改变指针指向的情况下，可以使用<code>export</code>代替<code>module.exports</code>。</p>
+
+<h4 id="加载-require">加载 <code>require</code></h4>
+
+<ul>
+<li>加载规则
+
+<ul>
+<li>会执行加载模块中的代码</li>
+<li>重复 require，不会执行模块中的代码，仅能拿到<code>module.exports</code>接口对象。</li>
+</ul></li>
+<li>模块标识
+
+<ul>
+<li>核心模块</li>
+<li>被编译到二进制文件中，直接使用名字加载。</li>
+<li>第三方模块</li>
+<li>凡是第三方模块都需要使用 npm 来下载</li>
+<li>加载的时候使用<code>require(’packageName’)</code></li>
+<li>加载的文件的位置在<code>node_modules/packageName/package.json</code> 中<code>{”main”:”加载文件“}</code></li>
+<li>没有配置加载文件的情况会默认为<code>index.js</code></li>
+<li><code>node_modules</code>文件夹会从当前文件所在路径，向上迭代查找使用最近的一个。</li>
+<li>自定义模块</li>
+<li><code>./</code>开头，代表当前路径,不可省。</li>
+<li><code>../</code>开头，代表上级路径,不可省。</li>
+<li>引入时<code>.js</code>后缀可省</li>
+</ul></li>
+</ul>
+
+<h4 id="参考-1">参考</h4>
+
+<blockquote>
+<p><a href="https://blog.csdn.net/zhangyuan19880606/article/details/51508699">深入浅出 NodeJs 模块机制</a><br />
+<a href="http://wiki.commonjs.org/wiki/CommonJS">CommonJS 规范</a></p>
+</blockquote>
+
+<h3 id="事件轮询">事件轮询</h3>
+
+<h4 id="工作流程">工作流程</h4>
+
+<p><img src="https://img.php.cn//upload/image/810/825/257/1534314018617481.png" alt="工作流程" /></p>
+
+<h4 id="参考-2">参考</h4>
+
+<blockquote>
+<p><a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/">What is the Event Loop?</a><br />
+<a href="http://www.php.cn/js-tutorial-408369.html">Node.js 的事件循环工作流程以及生命周期的详细讲解</a></p>
+</blockquote>
+
+<h3 id="包管理">包管理</h3>
+
+<h4 id="npm">NPM</h4>
+
+<ul>
+<li><code>npm init</code> 生成<code>package.json</code>文件
+
+<ul>
+<li><code>-y</code> 跳过向导</li>
+</ul></li>
+<li><code>npm install</code> 将<code>package.json</code>文件中的依赖项全部安装</li>
+<li><code>npm install &lt;packageName&gt;</code> 安装第三方模块到<code>node_modules</code>
+
+<ul>
+<li><code>—-save</code> 将安装第三方模块信息，添加到<code>package.json</code>文件的依赖项中。</li>
+</ul></li>
+<li><code>npm help</code> 查看帮助文档</li>
+</ul>
+
+<h4 id="yarn">Yarn</h4>
+
+<ul>
+<li><code>yarn install</code> 将<code>package.json</code>文件中的依赖项全部安装</li>
+<li><code>yarn add &lt;packageName&gt;</code> 安装第三方模块到<code>node_modules</code>，并且包第三方模块信息添加到<code>package.json</code>文件中</li>
+<li><code>yarn global add &lt;packageName&gt;</code> 安装到全局</li>
+</ul>
+
+<h4 id="package-json-文件"><code>package.json</code>文件</h4>
+
+<p>Node 项目的项目描述文件，参考<a href="http://javascript.ruanyifeng.com/nodejs/packagejson.html">package.json 常用文件参数</a>，各参数见名知意。</p>
+
+<h4 id="写-cli">写 CLI</h4>
+
+<ul>
+<li><code>#!/usr/bin/env node</code> 指定解释器</li>
+<li>npm link 创建软链放到环境变量</li>
+<li><code>package.json</code> 里添加 <code>bin</code> 属性</li>
+</ul>
+
+<h4 id="参考-3">参考</h4>
+
+<p><a href="npmjs.org">NPM 官网</a> 所有第三方模块都可以在此网站搜查看相关信息。
+<a href="https://yarnpkg.com">Yarn 官网</a></p>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+                <a href="http://blog.orionpax.top/tags/node/">Node</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

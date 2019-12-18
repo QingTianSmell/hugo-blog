@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hibernate on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/hibernate/</link>
+    <description>Recent content in Hibernate on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Jul 2019 21:37:28 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/hibernate/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hibernate 多线程下 No Session 问题</title>
+      <link>http://blog.orionpax.top/posts/hibernate-pit1/</link>
+      <pubDate>Tue, 23 Jul 2019 21:37:28 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/hibernate-pit1/</guid>
+      <description>问题 : Hibernate 使用多线程，且在线程内部获取对象懒加载的属性就会出现 No Session。 原因 : 其他线程并未获取到Session。 // 解决方法1 public static boolean bindHibernateSessionToThread(SessionFactory sessionFactory) { if (TransactionSynchronizationManager.hasResource(sessionFactory)) { return true; } else { Session session = sessionFactory.openSession(); session.setFlushMode(FlushMode.MANUAL); SessionHolder sessionHolder = new SessionHolder(session); TransactionSynchronizationManager.bindResource(sessionFactory, sessionHolder); } return false; } // 将线程上</description>
+    </item>
+    
+  </channel>
+</rss>

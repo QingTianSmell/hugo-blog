@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学习笔记 on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 学习笔记 on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 22 Nov 2019 08:35:06 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring Boot 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/spring-boot/</link>
+      <pubDate>Fri, 22 Nov 2019 08:35:06 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/spring-boot/</guid>
+      <description>What Why Where How 如何创建一个 Spring Boot 项目。 访问 Spring Initializr，配置项目的基础设置，并选择项目依赖，点击生成按钮，就可以获取到一个用来初始化项目的压缩包。解压后使用 IDEA 打开即可。 Hello World 如果项目创建时选择了 Spring Web 依</description>
+    </item>
+    
+    <item>
+      <title>Nest 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/nest/</link>
+      <pubDate>Sat, 28 Sep 2019 20:31:02 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/nest/</guid>
+      <description>基础 简介 Nest 是一个用于构建高效，可扩展的 Node.js 服务器端应用程序的框架。它使用渐进式 JavaScript，内置并完全支持 TypeScript（但仍然允许开发人员使用纯 JavaScript 编写代码）并结合了 OOP（面向对象编程）</description>
+    </item>
+    
+    <item>
+      <title>Node 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/node/</link>
+      <pubDate>Mon, 23 Sep 2019 17:11:43 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/node/</guid>
+      <description>简单使用 简介 Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。 全局对象、变量、函数 全局对象 global : 表示 Node 所在的全局环境 process : 该对象表示 Node 所处的当前进程，允许开发者与该</description>
+    </item>
+    
+    <item>
+      <title>Git 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/git/</link>
+      <pubDate>Thu, 29 Aug 2019 20:03:23 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/git/</guid>
+      <description>What 定义 一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。 Git 的三种对象 commit 提交对象是用来保存提交的作者、</description>
+    </item>
+    
+    <item>
+      <title>微信小程序学习笔记</title>
+      <link>http://blog.orionpax.top/posts/wx-mini/</link>
+      <pubDate>Sun, 04 Aug 2019 20:12:17 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/wx-mini/</guid>
+      <description>简单使用 环境搭建 获取 AppID 注册微信小程序开发者账号，进入开发设置页面复制 AppID 微信开发工具 下载微信开发者工具，功能按照界面描述理解就可以了。 基础 微信 web 小程序和传统 web 的文件结构对比 - 传统 web 微信小程序 结构 HTML WXML 样式</description>
+    </item>
+    
+    <item>
+      <title>TypeScript 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/typescript/</link>
+      <pubDate>Thu, 25 Jul 2019 11:27:43 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/typescript/</guid>
+      <description>简单使用 简介 什么是 TypeScript? TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持。 为什么选择 TypeScript? TypeScript 增加了代码的可读性和可维护性 有一定的学习成本，需要理解接口（Interfaces）、泛型（Generics）、类（C</description>
+    </item>
+    
+    <item>
+      <title>Taro 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/taro/</link>
+      <pubDate>Thu, 25 Jul 2019 11:27:29 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/taro/</guid>
+      <description>简单使用 简介 Taro 是一套遵循 React 语法规范的 多端开发 解决方案。现如今市面上端的形态多种多样，Web、React-Native、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同</description>
+    </item>
+    
+    <item>
+      <title>Tomcat 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/tomcat/</link>
+      <pubDate>Tue, 23 Jul 2019 22:41:51 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/tomcat/</guid>
+      <description>简介 Tomcat 服务器是一个免费的开放源代码的 Web 应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试 JSP 程序的首选。 作用 sevlet 管理。将 servlet 存放在服务器中，客户端访问服务器</description>
+    </item>
+    
+    <item>
+      <title>React Router 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/react-router/</link>
+      <pubDate>Tue, 23 Jul 2019 22:16:45 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/react-router/</guid>
+      <description>简介 React Router 是完整的 React 路由解决方案。React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。 为什么需要路由？ 单页应用许需要进行页面的切换 通过 URL 可以</description>
+    </item>
+    
+    <item>
+      <title>Redux 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/redux/</link>
+      <pubDate>Tue, 23 Jul 2019 22:16:26 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/redux/</guid>
+      <description>简介 Redux 是 JavaScript 状态容器，提供可预测化的状态管理。 三大原则 单一数据源 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。 State 是只读的（可预测性） 唯一改变 state 的方法就是触发 action，action</description>
+    </item>
+    
+    <item>
+      <title>Jquery 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/jquery/</link>
+      <pubDate>Tue, 23 Jul 2019 22:16:07 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/jquery/</guid>
+      <description>简单使用 简介 定义 : jQuery 是一个快速、简洁的 JavaScript 函数库，jQuery 设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装 JavaScript 常用的功能代码，提供一种简便的 JavaScript 设计模式，优化 HTML</description>
+    </item>
+    
+    <item>
+      <title>React 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/react/</link>
+      <pubDate>Tue, 23 Jul 2019 21:45:22 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/react/</guid>
+      <description>简介 React 是一个用于构建用户界面的 JavaScript 库。(就是个状态机，将根据数据源映射出 UI，遵守一定的规范可以将，UI 和 逻辑分离，更容易调试和编写单元测试) 声明式 React 可以非常轻松地创建用户交互界面。为你应用的每一个状态</description>
+    </item>
+    
+    <item>
+      <title>Java 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/java/</link>
+      <pubDate>Thu, 18 Jul 2019 22:38:46 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/java/</guid>
+      <description>简介 Java 是一门面向对象编程语言，不仅吸收了 C++语言的各种优点，还摒弃了 C++里难以理解的多继承、指针等概念，因此 Java 语言具有功能强大和简单易用两个特征。Java 语言作为静态面向对象编程语言的代表，极好地</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/javascript/</link>
+      <pubDate>Thu, 18 Jul 2019 22:04:47 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/javascript/</guid>
+      <description>简单使用 简介 定义：JavaScript 一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言。 产生原因：网页没有复杂交互行为。 语法 变量类型 number string boolean object function null undefined 关键字 流程控制 return continue break do while for if else switch case 定义 var ：定</description>
+    </item>
+    
+    <item>
+      <title>CSS 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/css/</link>
+      <pubDate>Wed, 17 Jul 2019 22:54:08 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/css/</guid>
+      <description>简单使用 简介 定义：层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现 HTML（标准通用标记语言的一个应用）或 XML（标准通用标记语言的一个子集）等文件样式的计算机语言。 产生原因：单</description>
+    </item>
+    
+    <item>
+      <title>HTML 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/html/</link>
+      <pubDate>Wed, 17 Jul 2019 22:44:04 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/html/</guid>
+      <description>简单使用 简介 定义：超文本标记语言，“超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。 产生原因：网络中非文本数据的需要展示。 常用标签 基础标签 &amp;lt;!DOCTYPE&amp;gt; : 定义文档类型。 &amp;lt;h1&amp;gt; - &amp;lt;h6&amp;gt; : 定义 HTML 标题。 &amp;lt;p&amp;gt; :</description>
+    </item>
+    
+  </channel>
+</rss>

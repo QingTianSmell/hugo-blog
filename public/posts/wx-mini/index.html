@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="简单使用 环境搭建 获取 AppID 注册微信小程序开发者账号，进入开发设置页面复制 AppID 微信开发工具 下载微信开发者工具，功能按照界面描述理解就可以了。 基础 微信 web 小程序和传统 web 的文件结构对比 - 传统 web 微信小程序 结构 HTML WXML 样式"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/wx-mini/"/>
+
+  
+
+  <title>微信小程序学习笔记 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/wx-mini/'>微信小程序学习笔记</a></h2>
+          <span class="date">2019.08.04</span>
+        </div>
+        <div class="post_content markdown">
+
+<h1 id="简单使用">简单使用</h1>
+
+<h2 id="环境搭建">环境搭建</h2>
+
+<h3 id="获取-appid">获取 AppID</h3>
+
+<p><a href="https://mp.weixin.qq.com/cgi-bin/registermidpage?action=index&amp;lang=zh_CN&amp;token=">注册</a>微信小程序开发者账号，进入<a href="https://mp.weixin.qq.com/wxopen/devprofile?action=get_profile&amp;token=1625948171&amp;lang=zh_CN">开发设置</a>页面复制 AppID</p>
+
+<h3 id="微信开发工具">微信开发工具</h3>
+
+<p>下载<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">微信开发者工具</a>，功能按照界面描述理解就可以了。</p>
+
+<h2 id="基础">基础</h2>
+
+<h3 id="微信-web-小程序和传统-web-的文件结构对比">微信 web 小程序和传统 web 的文件结构对比</h3>
+
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>传统 web</th>
+<th>微信小程序</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>结构</td>
+<td>HTML</td>
+<td>WXML</td>
+</tr>
+
+<tr>
+<td>样式</td>
+<td>CSS</td>
+<td>WXSS</td>
+</tr>
+
+<tr>
+<td>逻辑</td>
+<td>JavaScript</td>
+<td>JavaScript</td>
+</tr>
+
+<tr>
+<td>配置</td>
+<td>-</td>
+<td>JSON</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="项目目录">项目目录</h3>
+
+<h4 id="pages-小程序对应页面的目录">pages : 小程序对应页面的目录</h4>
+
+<ul>
+<li>index : 首页
+
+<ul>
+<li>index.js : index 页面下的 JS</li>
+<li>index.wxml : index 页面下的页面结构</li>
+<li>index.wxss : index 页面下的样式文件</li>
+</ul></li>
+<li>page1 : 子页面
+
+<ul>
+<li>page1.js</li>
+<li>page1.json : page1 页面的配置文件</li>
+<li>page1.wxml</li>
+<li>page1.wxss</li>
+</ul></li>
+</ul>
+
+<h4 id="components-自定义组件目录-结构类似-pages">components : 自定义组件目录(结构类似 pages)</h4>
+
+<h4 id="utils-自己封装的工具函数路径">utils : 自己封装的工具函数路径</h4>
+
+<h4 id="app-js-全局的教本文件">app.js : 全局的教本文件</h4>
+
+<h4 id="app-json-全局的配置文件">app.json : 全局的配置文件</h4>
+
+<h4 id="app-wxss-全局的样式文件">app.wxss : 全局的样式文件</h4>
+
+<h4 id="project-config-json-项目的描述文件类似-package-json">project.config.json : 项目的描述文件类似<code>package.json</code></h4>
+
+<h3 id="全局配置-app-json">全局配置 app.json</h3>
+
+<p>小程序根目录下的 app.json 文件用来对微信小程序进行全局配置，决定页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等。完整配置项说明请参考<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html">小程序全局配置</a></p>
+
+<pre><code>// 常用配置
+{
+  &quot;pages&quot;: [
+    &quot;pages/index/index&quot;,
+    &quot;pages/logs/index&quot;
+  ],
+  &quot;window&quot;: {
+    &quot;navigationBarTitleText&quot;: &quot;Demo&quot;
+  },
+  &quot;tabBar&quot;: {
+    &quot;list&quot;: [{
+      &quot;pagePath&quot;: &quot;pages/index/index&quot;,
+      &quot;text&quot;: &quot;首页&quot;
+    }, {
+      &quot;pagePath&quot;: &quot;pages/logs/logs&quot;,
+      &quot;text&quot;: &quot;日志&quot;
+    }]
+  },
+  &quot;networkTimeout&quot;: {
+    &quot;request&quot;: 10000,
+    &quot;downloadFile&quot;: 10000
+  },
+  &quot;debug&quot;: true,
+  &quot;navigateToMiniProgramAppIdList&quot;: [
+    &quot;wxe5f52902cf4de896&quot;
+  ]
+}
+</code></pre>
+
+<h3 id="页面配置">页面配置</h3>
+
+<p>每一个小程序页面也可以使用同名 .json 文件来对本页面的窗口表现进行配置，页面中配置项会覆盖 app.json 的 window 中相同的配置项。完整配置项说明请参考<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html">小程序页面配置</a></p>
+
+<pre><code>// 常用配置
+{
+  &quot;navigationBarBackgroundColor&quot;: &quot;#ffffff&quot;,
+  &quot;navigationBarTextStyle&quot;: &quot;black&quot;,
+  &quot;navigationBarTitleText&quot;: &quot;微信接口功能演示&quot;,
+  &quot;backgroundColor&quot;: &quot;#eeeeee&quot;,
+  &quot;backgroundTextStyle&quot;: &quot;light&quot;
+}
+</code></pre>
+
+<h3 id="注册小程序">注册小程序</h3>
+
+<p>每个小程序都需要在 <code>app.js</code> 中调用 <code>App</code> 方法注册小程序示例，绑定生命周期回调函数、错误监听和页面不存在监听函数等。详细的参数含义和使用请参考 <a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html">App 参考文档</a>。</p>
+
+<pre><code>// app.js
+App({
+  onLaunch (options) {
+    // Do something initial when launch.
+  },
+  onShow (options) {
+    // Do something when show.
+  },
+  onHide () {
+    // Do something when hide.
+  },
+  onError (msg) {
+    console.log(msg)
+  },
+  globalData: 'I am global data'
+})
+</code></pre>
+
+<h3 id="注册页面">注册页面</h3>
+
+<p>对于小程序中的每个页面，都需要在页面对应的 js 文件中进行注册，指定页面的初始数据、生命周期回调、事件处理函数等。</p>
+
+<pre><code>//index.js
+Page({
+  data: {
+    text: &quot;This is page data.&quot;
+  },
+  onLoad: function(options) {
+    // 页面创建时执行
+  },
+  onShow: function() {
+    // 页面出现在前台时执行
+  },
+  onReady: function() {
+    // 页面首次渲染完毕时执行
+  },
+  onHide: function() {
+    // 页面从前台变为后台时执行
+  },
+  onUnload: function() {
+    // 页面销毁时执行
+  },
+  onPullDownRefresh: function() {
+    // 触发下拉刷新时执行
+  },
+  onReachBottom: function() {
+    // 页面触底时执行
+  },
+  onShareAppMessage: function () {
+    // 页面被用户分享时执行
+  },
+  onPageScroll: function() {
+    // 页面滚动时执行
+  },
+  onResize: function() {
+    // 页面尺寸变化时执行
+  },
+  onTabItemTap(item) {
+    // tab 点击时执行
+    console.log(item.index)
+    console.log(item.pagePath)
+    console.log(item.text)
+  },
+  // 事件响应函数
+  viewTap: function() {
+    this.setData({
+      text: 'Set some data for updating view.'
+    }, function() {
+      // this is setData callback
+    })
+  },
+  // 自由数据
+  customData: {
+    hi: 'MINA'
+  }
+})
+</code></pre>
+
+<h3 id="注册自定义组件">注册自定义组件</h3>
+
+<p>开发者可以将页面内的功能模块抽象成自定义组件，以便在不同的页面中重复使用；也可以将复杂的页面拆分成多个低耦合的模块，有助于代码维护。自定义组件在使用时与基础组件非常相似。</p>
+
+<h4 id="创建自定义组件">创建自定义组件</h4>
+
+<pre><code>&lt;!--xxx.json--&gt;
+{
+&quot;component&quot;: true
+}
+</code></pre>
+
+<pre><code>Component({
+  properties: {
+    // 这里定义了innerText属性，属性值可以在组件使用时指定
+    innerText: {
+      type: String,
+      value: 'default value',
+    }
+  },
+  data: {
+    // 这里是一些组件内部数据
+    someData: {}
+  },
+  methods: {
+    // 这里是一个自定义方法
+    customMethod: function(){}
+  }
+})
+</code></pre>
+
+<h4 id="使用自定义组件">使用自定义组件</h4>
+
+<pre><code>&lt;!--xxx.json--&gt;
+{
+  &quot;usingComponents&quot;: {
+    &quot;component-tag-name&quot;: &quot;path/to/the/custom/component&quot;
+  }
+}
+</code></pre>
+
+<pre><code>&lt;view&gt;
+  &lt;!-- 以下是对一个自定义组件的引用 --&gt;
+  &lt;component-tag-name inner-text=&quot;Some text&quot;&gt;&lt;/component-tag-name&gt;
+&lt;/view&gt;
+</code></pre>
+
+<h3 id="视图结构">视图结构</h3>
+
+<h4 id="数据绑定">数据绑定</h4>
+
+<pre><code>&lt;!--wxml--&gt;
+&lt;view&gt; {{message}} &lt;/view&gt;
+</code></pre>
+
+<pre><code>// page.js
+Page({
+  data: {
+    message: 'Hello MINA!'
+  }
+})
+</code></pre>
+
+<h4 id="列表渲染">列表渲染</h4>
+
+<pre><code>&lt;!--wxml--&gt;
+&lt;view wx:for=&quot;{{array}}&quot;&gt; {{item}} &lt;/view&gt;
+</code></pre>
+
+<pre><code>// page.js
+Page({
+  data: {
+    array: [1, 2, 3, 4, 5]
+  }
+})
+</code></pre>
+
+<h4 id="条件渲染">条件渲染</h4>
+
+<pre><code>&lt;!--wxml--&gt;
+&lt;view wx:if=&quot;{{view == 'WEBVIEW'}}&quot;&gt; WEBVIEW &lt;/view&gt;
+&lt;view wx:elif=&quot;{{view == 'APP'}}&quot;&gt; APP &lt;/view&gt;
+&lt;view wx:else=&quot;{{view == 'MINA'}}&quot;&gt; MINA &lt;/view&gt;
+</code></pre>
+
+<pre><code>// page.js
+Page({
+  data: {
+    view: 'MINA'
+  }
+})
+</code></pre>
+
+<h3 id="基本组件">基本组件</h3>
+
+<h4 id="view">view</h4>
+
+<p>微信小程序的块级标签，类似 HTML 的<code>&lt;div&gt;</code>。</p>
+
+<ul>
+<li>hover-class : 指定按下去的样式类。当 <code>hover-class=&quot;none&quot;</code> 时，没有点击态效果。</li>
+</ul>
+
+<h4 id="text">text</h4>
+
+<p>微信小程序的行级标签，类似 HTML 的<code>&lt;span&gt;</code>。只能嵌套自己。</p>
+
+<ul>
+<li>selectable : 文本是否可选</li>
+<li>space : 显示连续空格</li>
+<li>decode : 是否解码</li>
+</ul>
+
+<h4 id="image">image</h4>
+
+<ul>
+<li>src : 图片资源地址</li>
+<li>lazy-load : 图片是否懒加载</li>
+</ul>
+
+<h4 id="video">video</h4>
+
+<ul>
+<li>src : 视频资源地址</li>
+</ul>
+
+<h4 id="swiper">swiper</h4>
+
+<p>轮播视图容器。其中只能放<code>swiper-item</code>。</p>
+
+<h4 id="navigator">navigator</h4>
+
+<ul>
+<li>url : 跳转链接</li>
+</ul>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="简单使用 简介 定义：超文本标记语言，“超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。 产生原因：网络中非文本数据的需要展示。 常用标签 基础标签 &amp;lt;!DOCTYPE&amp;gt; : 定义文档类型。 &amp;lt;h1&amp;gt; - &amp;lt;h6&amp;gt; : 定义 HTML 标题。 &amp;lt;p&amp;gt; :"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/html/"/>
+
+  
+
+  <title>HTML 学习笔记 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/html/'>HTML 学习笔记</a></h2>
+          <span class="date">2019.07.17</span>
+        </div>
+        <div class="post_content markdown">
+
+<h2 id="简单使用">简单使用</h2>
+
+<h3 id="简介">简介</h3>
+
+<blockquote>
+<p>定义：超文本标记语言，“超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。<br />
+产生原因：网络中非文本数据的需要展示。</p>
+</blockquote>
+
+<h3 id="常用标签">常用标签</h3>
+
+<h4 id="基础标签">基础标签</h4>
+
+<ul>
+<li>&lt;!DOCTYPE&gt; : 定义文档类型。</li>
+<li>&lt;h1&gt; - &lt;h6&gt; : 定义 HTML 标题。</li>
+<li>&lt;p&gt; : 定义段落</li>
+<li>&lt;br&gt; : 定义换行符</li>
+<li>&lt;hr&gt; : 定义水平线</li>
+<li>&lt;!--注释代码---&gt;</li>
+</ul>
+
+<h4 id="格式标签">格式标签</h4>
+
+<ul>
+<li>&lt;b&gt; : 定义粗体文本。</li>
+<li>&lt;i&gt; : 定义斜体文本。</li>
+<li>&lt;pre&gt; : 定义预格式文本。</li>
+</ul>
+
+<h4 id="表单标签">表单标签</h4>
+
+<ul>
+<li>&lt;from&gt; : 标签创建供用户输入的表单。
+
+<ul>
+<li>action : 定义一个 URL。当点击提交按钮时，向这个 URL 发送数据。</li>
+<li>method : 用于向 action URL 发送数据的 HTTP 方法。默认是 get。(通常应该使用 POST)</li>
+<li>enctype : 用于对表单内容进行编码的 MIME 类型。(当表单中含有文件时，使用 enctype=&quot;multipart/form-data&quot;表明为多部分表单数据)</li>
+</ul></li>
+<li>&lt;input&gt; : 标签定义输入字段，用户可在其中输入数据。
+
+<ul>
+<li>type : 指示 input 元素的类型。</li>
+<li>name : 为 input 元素定义唯一的名称。</li>
+<li>value : 对于按钮、重置按钮和确认按钮：定义按钮上的文本。对于复选框和单选按钮：定义 input 元素被点击时的结果。</li>
+<li>required : 定义输入字段的值是否是必需的。</li>
+<li>maxlength : 定义文本域中所允许的字符最大数目。</li>
+<li>readonly : 指示是否可修改该字段的值。(提交表单时值会被提交)</li>
+<li>disabled :当 input 元素首次加载时禁用此元素，这样用户就无法在其中写文本，或选定它。(提交表单时值不会提交)</li>
+<li>placeholder : 定义占位字符。</li>
+</ul></li>
+<li>&lt;textarea&gt; : 定义一个文本区域 (text-area) （一个多行的文本输入区域）。
+
+<ul>
+<li>cols : 规定文本区内可见的列数。</li>
+<li>rows : 规定文本区内可见的行数。</li>
+</ul></li>
+<li>&lt;button&gt; : 定义按钮。</li>
+<li>&lt;select&gt; : 标签创建下拉列表。
+
+<ul>
+<li>name : 定义下拉列表的唯一标识符。</li>
+</ul></li>
+<li>&lt;option&gt; : 定义下拉列表中的一个选项。</li>
+<li>&lt;label&gt; : 定义控件的标注。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。</li>
+</ul>
+
+<h4 id="列表标签">列表标签</h4>
+
+<ul>
+<li>&lt;ul&gt; : 定义无序列表</li>
+<li>&lt;li&gt; : 定义列表项</li>
+</ul>
+
+<h4 id="表格标签">表格标签</h4>
+
+<ul>
+<li>&lt;table&gt; : 定义表格
+
+<ul>
+<li>border : 设置表格的边框的 px 值。</li>
+<li>cellspacing : 设置表格边框的空隙的 px 值。</li>
+</ul></li>
+<li>&lt;tr&gt; : 定义表格中的行</li>
+<li>&lt;th&gt; : 表格内的表头单元格</li>
+<li>&lt;td&gt; : 定义表格中的一个单元格
+
+<ul>
+<li>colspan : 规定此单元格可横跨的列数。</li>
+<li>rowspan : 规定此单元格可横跨的行数。</li>
+</ul></li>
+</ul>
+
+<h4 id="其他标签">其他标签</h4>
+
+<ul>
+<li>&lt;a&gt; : 标签定义超链接，它用于从一个页面连接到另一个页面。
+
+<ul>
+<li>href : 链接的目标 URL。</li>
+<li>target : 在何处打开目标 URL。</li>
+</ul></li>
+<li>&lt;img&gt; : 标签定义图像。
+
+<ul>
+<li>alt : 图片加载失败时显示的的提示文字。</li>
+<li>src : 图片地址。</li>
+<li>width : 定义图片的宽度</li>
+<li>height : 定义图片的高度。</li>
+</ul></li>
+<li>&lt;link&gt; : 定义文档与外部资源的关系。</li>
+<li>&lt;script&gt; : 定义一段脚本</li>
+</ul>
+
+<h3 id="常用事件">常用事件</h3>
+
+<h4 id="窗口事件">窗口事件</h4>
+
+<ul>
+<li>onload : 当文档被载入时执行脚本</li>
+<li>onunload : 当文档被卸下时执行脚本</li>
+</ul>
+
+<h4 id="表单事件">表单事件</h4>
+
+<ul>
+<li><strong>onchange</strong> : 当元素改变时执行脚本</li>
+<li>onsubmit : 当表单被提交时执行脚本</li>
+<li>onreset : 当表单被重置时执行脚本</li>
+<li>onselect : 当元素被选取时执行脚本</li>
+<li><strong>onblur</strong> : 当元素失去焦点时执行脚本</li>
+<li><strong>onfocus</strong> : 当元素获得焦点时执行脚本</li>
+</ul>
+
+<h4 id="键盘事件">键盘事件</h4>
+
+<ul>
+<li><strong>onkeydown</strong> : 当键盘被按下时执行脚本</li>
+<li>onkeypress : 当键盘被按下后又松开时执行脚本</li>
+<li>onkeyup : 当键盘被松开时执行脚本</li>
+</ul>
+
+<h4 id="鼠标事件">鼠标事件</h4>
+
+<ul>
+<li><strong>onclick</strong> : 当鼠标被单击时执行脚本</li>
+<li>ondblclick : 当鼠标被双击时执行脚本</li>
+<li>onmousedown : 当鼠标按钮被按下时执行脚本</li>
+<li>onmousemove : 当鼠标指针移动时执行脚本</li>
+<li>onmouseout : 当鼠标指针移出某元素时执行脚本</li>
+<li>onmouseover : 当鼠标指针悬停于某元素之上时执行脚本</li>
+<li>onmouseup : 当鼠标按钮被松开时执行脚本</li>
+</ul>
+
+<h3 id="参考">参考</h3>
+
+<blockquote>
+<p><a href="http://t.mb5u.com/html/">HTML 手册</a></p>
+</blockquote>
+
+<h2 id="值得一提">值得一提</h2>
+
+<h3 id="搜索引擎相关">搜索引擎相关</h3>
+
+<pre><code>&lt;title&gt;标签内的文字是搜索引擎最主要的搜索关键字;
+&lt;meta name=&quot;keywords&quot; content=&quot;XXX|XXX|XXX&quot;/&gt;
+此meta标签的content属性里也是搜索引擎的关键字。
+&lt;meta name=&quot;description&quot; content=&quot;xxxxxx&quot;/&gt;
+此meta标签的content属性是搜索引擎显示的网站描述。
+</code></pre>
+
+<h3 id="url-的组成部分">URL 的组成部分</h3>
+
+<pre><code>URL 的英文全称是 Uniform Resource Locator，中文也译为“统一资源定位符”,遵守的语法规则：scheme://host.domain:port/path/filename
+scheme   : 定义因特网服务的类型。最常见的类型是 http
+host     : 定义域主机（http 的默认主机是 www）
+domain   : 定义因特网域名，比如w3school.com.cn
+port     : 定义主机上的端口号（http 的默认端口号是 80）
+path     : 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。
+filename : 定义文档/资源的名称
+</code></pre>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+                <a href="http://blog.orionpax.top/tags/html/">HTML</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

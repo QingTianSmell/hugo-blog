@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Taro on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/taro/</link>
+    <description>Recent content in Taro on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 16 Oct 2019 13:34:10 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/taro/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mini Progarm 技术选型</title>
+      <link>http://blog.orionpax.top/posts/mini-progarm/</link>
+      <pubDate>Wed, 16 Oct 2019 13:34:10 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/mini-progarm/</guid>
+      <description>优劣对比 名称 性能 开发效率 接入成本 原生兼容性 多端支持 状态管理 样式支持 TypeScript 校验程度 成熟程度 更新频率 Issues(open/closed) Star 原生 最高 最低 中等 - 不支持 不支持 wxss 不支持 最低 成熟 高 - - 内嵌 最低 最高 最低 不兼容 - - - - - - - - - Taro 中等 较高 较</description>
+    </item>
+    
+    <item>
+      <title>Taro 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/taro/</link>
+      <pubDate>Thu, 25 Jul 2019 11:27:29 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/taro/</guid>
+      <description>简单使用 简介 Taro 是一套遵循 React 语法规范的 多端开发 解决方案。现如今市面上端的形态多种多样，Web、React-Native、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同</description>
+    </item>
+    
+  </channel>
+</rss>

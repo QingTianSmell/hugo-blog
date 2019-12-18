@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="常用操作(插件部分为个人配置) 搜索/移动 Normal j : 下移一字符 k : 上移一字符 h : 左移一字符 l : 右移一字符 w(word)/W : 移动到下一个单词开头（WORD 将空白符分割的识别为单词） b(backword)/B : 回到上一个单词开头 gg : 移动到文件开头 G"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/vim/"/>
+
+  
+
+  <title>Vim 编辑器的使用 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/vim/'>Vim 编辑器的使用</a></h2>
+          <span class="date">2019.07.11</span>
+        </div>
+        <div class="post_content markdown">
+
+<h2 id="常用操作-插件部分为个人配置">常用操作(插件部分为个人配置)</h2>
+
+<h3 id="搜索-移动">搜索/移动</h3>
+
+<h4 id="normal">Normal</h4>
+
+<pre><code>j             : 下移一字符
+k             : 上移一字符
+h             : 左移一字符
+l             : 右移一字符
+w(word)/W     : 移动到下一个单词开头（WORD 将空白符分割的识别为单词）
+b(backword)/B : 回到上一个单词开头
+gg            : 移动到文件开头
+G             : 移动到文件结尾
+zz            : 把光标行置为屏幕中间
+*             : 当前单词向前匹配
+#             : 当前单词向后匹配
+</code></pre>
+
+<h4 id="command">Command</h4>
+
+<pre><code>:/ : 向后搜索(n/N : 跳转到下一个/上一个匹配)
+:? : 向前搜索
+</code></pre>
+
+<h4 id="vim-easymotion">vim-easymotion</h4>
+
+<pre><code>&lt;space&gt;&lt;space&gt;s{char} : 搜索跳转
+&lt;space&gt;&lt;space&gt;w       : 跳转到后面的单词首字母
+&lt;space&gt;&lt;space&gt;b       : 跳转到前面的单词首字母
+</code></pre>
+
+<h4 id="nerdtree">nerdtree</h4>
+
+<pre><code>&lt;space&gt;nt : 打开或关闭目录树
+&lt;space&gt;nf : 跳转到当前文件在目录树的位置
+</code></pre>
+
+<h4 id="vim-signature">vim-signature</h4>
+
+<pre><code>m[a-zA-Z] : 打标签
+'[a-zA-Z] : 跳转到标签位置
+'.        : 跳转到最后一次修改位置
+m&lt;space&gt;  : 去除所有标签
+</code></pre>
+
+<h4 id="leaderf-ctrlp-vim-fzf-vim">leaderF/ctrlp.vim/fzf.vim</h4>
+
+<pre><code>&lt;c-p&gt; : 文件模糊匹配
+&lt;c-n&gt; : 打开最近使用过的文件
+&lt;m-n&gt; : 打开buffer模糊匹配
+:Ag [PATTERN] : 内容搜索
+</code></pre>
+
+<h4 id="vim-choosewin">vim-choosewin</h4>
+
+<p>使用 <code>ALT+e</code> 会在不同窗口/标签上显示 A/B/C 等编号，然后字母直接跳转</p>
+
+<h3 id="编辑">编辑</h3>
+
+<h4 id="normal-1">Normal</h4>
+
+<pre><code>x       : 删除一个字符
+daw     : 删除一个单词
+[num]dd : 删除 num 行
+r       : 修改一个字符
+~       : 修改大小写
+</code></pre>
+
+<h4 id="insert">Insert</h4>
+
+<pre><code>ctrl + n : 单词补全
+ctrl + h : 删除上一个字符
+ctrl + w : 删除上一个单词
+ctrl + u : 删除当前行插入位置之前的内容
+</code></pre>
+
+<h4 id="neoformat">neoformat</h4>
+
+<pre><code>&lt;space&gt;s : 格式化同时保存
+</code></pre>
+
+<h4 id="vim-commentary">vim-commentary</h4>
+
+<pre><code>gcc : 注释
+gc : 取消注释
+</code></pre>
+
+<h4 id="far-vim">far.vim</h4>
+
+<pre><code>:Far &lt;oldString&gt; &lt;newString&gt;  &lt;path : **/*.js&gt;
+:Fardo : 确认替换
+</code></pre>
+
+<h4 id="tabular">tabular</h4>
+
+<p><code>Shift + v</code> 选中多行，使用<code>:'&lt;,'&gt; Tab/{string}</code> 按等号、冒号、表格对齐文本。</p>
+
+<h4 id="vim-sorround">vim-sorround</h4>
+
+<pre><code>ys iw {char}           : 增加
+cs {oldChar} {newChar} : 修改
+ds {char}              : 删除
+</code></pre>
+
+<h3 id="选择">选择</h3>
+
+<h4 id="normal-2">Normal</h4>
+
+<pre><code>v : 字符选择
+V : 行选择
+</code></pre>
+
+<h4 id="vim-choosewin-1">vim-choosewin</h4>
+
+<p>使用<code>Alt + +</code>或<code>Alt + -</code>扩大或缩小选中区域</p>
+
+<h3 id="宏">宏</h3>
+
+<p>使用<code>q&lt;register&gt;</code>开始录制，可以进行 insert 和 normal 模式下的正常操作，<code>q</code>结束录制。使用<code>@&lt;register&gt;</code>在当前行执行宏命令。使用 V 选中多行:进入命令模式输入<code>normal @&lt;register&gt;</code>在选中行执行宏命令。</p>
+
+<h2 id="vim-的四种模式">Vim 的四种模式</h2>
+
+<h3 id="normal-模式">Normal 模式</h3>
+
+<ul>
+<li>Normal 模式可以进行各种命令操作和移动</li>
+<li>大部分情况下你是浏览而不是编辑，所以 Vim 默认是 Normal 模式</li>
+</ul>
+
+<h3 id="insert-模式">Insert 模式</h3>
+
+<ul>
+<li>Insert 模式和普通编辑器差不多用来做文本输入</li>
+<li>使用 i(insert)、a(append)、o(open a line below)、I、A、O、gi(回到最后一次编辑的位置) 进入 Insert 模式</li>
+<li>Esc 从 Insert 模式退回到 Normal 模式</li>
+</ul>
+
+<h3 id="command-模式">Command 模式</h3>
+
+<ul>
+<li>Command 模式用来执行 Vim 命令</li>
+</ul>
+
+<h3 id="visual-模式">Visual 模式</h3>
+
+<ul>
+<li>Visual 模式用来选择 要进行操作的内容</li>
+</ul>
+
+<h2 id="插件">插件</h2>
+
+<pre><code>vim-plug                  : 插件管理
+ale                       : 代码静态检查
+vim-startify              : 启动画面，查看最近编辑及当前路径下的文件
+vim-easymotion            : 编辑区快速移动
+nerdtree                  : 文件目录树
+tabular                   : 快速对齐
+vim-signature             : 快速标记插件
+vim-choosewin             : 窗口跳转
+vim-expand-region         : 区域选择
+vim-sorround              : 成对编辑
+leaderF/ctrlp.vim/fzf.vim : 文件搜索
+far.vim                   : 文本替换
+neoformat                 : 代码格式化
+vim-commentary            : 代码注释
+vim-relativity            : 相对行号
+</code></pre>
+
+<h2 id="应用场景">应用场景</h2>
+
+<h3 id="vim-多文件操作">Vim 多文件操作</h3>
+
+<h4 id="概念">概念</h4>
+
+<ul>
+<li>Buffer 指打开的一个文件的内存缓冲区</li>
+<li>Window 是 Buffer 的可视化分割区域</li>
+<li>Tab 可以组织窗口作为一个工作区</li>
+</ul>
+
+<h4 id="相关命令">相关命令</h4>
+
+<h5 id="buffer">Buffer</h5>
+
+<pre><code>:ls   : 列举当前缓冲区
+:b&lt;n&gt; : 跳转到第 n 个缓冲区
+:bpre、bnext、bfirst、blast
+:b &lt;buffer_name&gt;
+</code></pre>
+
+<h5 id="window">Window</h5>
+
+<pre><code>&lt;Ctrl + w&gt;s         : 水平分割
+&lt;Ctrl + w&gt;v         : 垂直分割
+&lt;Ctrl + w&gt;w         : 窗口切换
+&lt;Ctrl + w&gt;[h,j,k,l] : 窗口切换
+&lt;Ctrl + w&gt;[H,J,K,L] : 窗口移动
+</code></pre>
+
+<h5 id="tab">Tab</h5>
+
+<pre><code>:tabe &lt;filename&gt; 在新标签页中打开文件
+&lt;Ctrl + w&gt;T    : 把当前窗口移动到新标签页
+:tabc[lose]    : 关闭当前页及其中所有窗口
+:tabo[nly]     : 自保留活动标签页，关闭其它
+:tabn[ext]     : 切换标签页
+gt             : 切换标签页
+</code></pre>
+
+<h3 id="操作系统剪切板">操作系统剪切板</h3>
+
+<p>Vim 中使用 delete yank put 操作时会使用寄存器保存内容，不指定的话就是无名寄存器和寄存器 0。其它还有 a-z 寄存器。+寄存器代表系统剪切板。复制到系统剪切板可以<code>&quot;+y</code>,从系统剪切板粘贴为<code>&quot;+p</code>。</p>
+
+<h3 id="vim-的自动补全">Vim 的自动补全</h3>
+
+<ul>
+<li><code>Ctrl + n</code>/<code>Ctrl + p</code> : 补全单词</li>
+<li><code>Ctrl + x</code>/<code>Ctrl + f</code> : 补全文件名</li>
+<li><code>Ctrl + x</code>/<code>Ctrl + o</code> : 补全代码(需要插件)</li>
+</ul>
+
+<h3 id="vim-的配色修改">Vim 的配色修改</h3>
+
+<ul>
+<li><code>:colorscheme</code> : 显示当前配色</li>
+<li><code>:colorscheme &lt;Ctrl + d&gt;</code> : 列出可选配色</li>
+<li><code>:colorscheme &lt;name&gt;</code> : 修改配色</li>
+</ul>
+
+<h3 id="vim-的配置持久化">VIM 的配置持久化</h3>
+
+<p>Linux/Unix 下新建一个隐藏文件 <code>vim ~/.vimrc</code><br />
+Windows 下使用<code>$MYVIMRC</code>来定位配置文件位置<br />
+NeoVIM 的配置文件的位置应为<code>~/AppData/Local/nvim/init.vim</code> 或 <code>~/.config/nvim/init.vim</code>;</p>
+
+<h3 id="快捷键映射">快捷键映射</h3>
+
+<p><code>[n(normal生效)/v(visual生效)/i(insert生效)][nore(非递归映射)]map &lt;target_key_sequence&gt; &lt;source_key_sequence&gt;</code> : 创建源操作映射为目标操作，比如<code>map - x</code>，然后按<code>-</code>就会删除字符</p>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="基础 简介 Nest 是一个用于构建高效，可扩展的 Node.js 服务器端应用程序的框架。它使用渐进式 JavaScript，内置并完全支持 TypeScript（但仍然允许开发人员使用纯 JavaScript 编写代码）并结合了 OOP（面向对象编程）"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/nest/"/>
+
+  
+
+  <title>Nest 学习笔记 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/nest/'>Nest 学习笔记</a></h2>
+          <span class="date">2019.09.28</span>
+        </div>
+        <div class="post_content markdown">
+
+<h2 id="基础">基础</h2>
+
+<h3 id="简介">简介</h3>
+
+<p>Nest 是一个用于构建高效，可扩展的 Node.js 服务器端应用程序的框架。它使用渐进式 JavaScript，内置并完全支持 TypeScript（但仍然允许开发人员使用纯 JavaScript 编写代码）并结合了 OOP（面向对象编程），FP（函数式编程）和 FRP（函数式响应编程）的元素。</p>
+
+<h3 id="hello-world">Hello World</h3>
+
+<pre><code>// 安装 Nest
+yarn global add @nestjs/cli
+
+// 初始化项目
+nest new &lt;project-name&gt;
+</code></pre>
+
+<h3 id="控制器">控制器</h3>
+
+<p><a href="https://docs.nestjs.cn/6/controllers">控制器</a>层负责处理传入的请求, 并返回对客户端的响应。使用 @Controller 进行装饰。</p>
+
+<h4 id="http-请求装饰器">HTTP 请求装饰器</h4>
+
+<p>@Get()、 @Post、 @Put() 、 @Delete()、 @Patch()、 @Options()、 @Head()和 @All()。</p>
+
+<h4 id="request-对象">Request 对象</h4>
+
+<p>「Request」对象表示 HTTP 请求，并具有「Request」查询字符串，参数，HTTP 标头 和 正文的属性（在这里阅读更多），但在大多数情况下, 不必手动获取它们。 我们可以使用专用的装饰器，比如开箱即用的 @Body() 或 @Query() 。 下面是装饰器和 普通表达对象的比较。</p>
+
+<table>
+<thead>
+<tr>
+<th>装饰器</th>
+<th>对象</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>@Request()</td>
+<td>req</td>
+</tr>
+
+<tr>
+<td>@Response()</td>
+<td>res</td>
+</tr>
+
+<tr>
+<td>@Next()</td>
+<td>next</td>
+</tr>
+
+<tr>
+<td>@Session()</td>
+<td>req.session</td>
+</tr>
+
+<tr>
+<td>@Param(key?: string)</td>
+<td>req.params / req.params[key]</td>
+</tr>
+
+<tr>
+<td>@Body(key?: string)</td>
+<td>req.body / req.body[key]</td>
+</tr>
+
+<tr>
+<td>@Query(key?: string)</td>
+<td>req.query / req.query[key]</td>
+</tr>
+
+<tr>
+<td>@Headers(name?: string)</td>
+<td>req.headers / req.headers[name]</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="路由注册顺序">路由注册顺序</h4>
+
+<p>请注意，路由注册顺序（每个路由的函数在类中出现的顺序）很重要。假设您有一个通过 identifier（cats/:id）返回 cat 的路由。如果在类定义中注册另一个端点，它会立即返回所有 cat（cats），则 GET /cats 请求不会命中第二个处理程序，因为所有路由参数都是可选的。简而言之就是把精确路由放在模糊路由下面。请参阅以下示例：</p>
+
+<pre><code>@Controller('cats')
+export class CatsController {
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return `This action returns a #${id} cat`;
+  }
+
+  @Get()
+  findAll() {
+    // This endpoint will never get called
+    // because the &quot;/cats&quot; request is going
+    // to be captured by the &quot;/cats/:id&quot; route handler
+  }
+}
+</code></pre>
+
+<h3 id="提供者">提供者</h3>
+
+<p>几乎所有的东西都可以被认为是<a href="https://docs.nestjs.cn/6/providers">提供者</a> - service, repository, factory, helper 等等。他们都可以通过 constructor 注入依赖关系，也就是说，他们可以创建各种关系。但事实上，提供者不过是一个用@Injectable() 装饰器注解的类。</p>
+
+<pre><code>// 创建提供者
+@Injectable()
+export class CatsService {...}
+
+// 注册提供者
+@Module({
+  controllers: [CatsController],
+  providers: [CatsService],
+})
+
+// 使用提供者
+@Controller('cats')
+export class CatsController {
+  // CatsService 通过类构造函数注入。不要害怕 private readonly 缩短的语法。这意味着我们已经在同一位置创建并初始化了 catsService 成员。
+  constructor(private readonly catsService: CatsService) {}
+  ...
+}
+</code></pre>
+
+<h3 id="模块">模块</h3>
+
+<p><a href="https://docs.nestjs.cn/6/modules">模块</a>是具有 @Module() 装饰器的类。 @Module() 装饰器提供了元数据，Nest 用它来组织应用程序结构。 @module() 装饰器接受一个描述模块属性的对象：</p>
+
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>providers</td>
+<td>由 Nest 注入器实例化的提供者，并且可以至少在整个模块中共享</td>
+</tr>
+
+<tr>
+<td>controllers</td>
+<td>必须创建的一组控制器</td>
+</tr>
+
+<tr>
+<td>imports</td>
+<td>导入模块的列表，这些模块导出了此模块中所需提供者</td>
+</tr>
+
+<tr>
+<td>exports</td>
+<td>由本模块提供并应在其他模块中可用的提供者的子集。</td>
+</tr>
+</tbody>
+</table>
+
+<p>默认情况下, 模块封装提供者。这意味着如果提供者如果不是当前模块的一部分, 也不是从另外已导入的模块导出的，那么它就是无法注入的。</p>
+
+<h3 id="中间件">中间件</h3>
+
+<p><a href="https://docs.nestjs.cn/6/middlewares">中间件</a>是一个在路由处理器之前被调用的函数。 中间件函数可以访问请求和响应对象，以及应用程序请求响应周期中的 next() 中间件函数。 next() 中间件函数通常由名为 next 的变量表示。Nest 中间件实际上等价于 express 中间件。 下面是 Express 官方文档中所述的中间件功能：</p>
+
+<blockquote>
+<p>中间件函数可以执行以下任务:</p>
+
+<ul>
+<li>执行任何代码。</li>
+<li>对请求和响应对象进行更改。</li>
+<li>结束请求-响应周期。</li>
+<li>调用堆栈中的下一个中间件函数。</li>
+<li>如果当前的中间件函数没有结束请求-响应周期, 它必须调用 next() 将控制传递给下一个中间件函数。否则, 请求将被挂起。</li>
+</ul>
+</blockquote>
+
+<h4 id="创建中间件">创建中间件</h4>
+
+<p>Nest 中间件可以是一个函数，也可以是一个带有 @Injectable() 装饰器的类。 这个类应该实现 NestMiddleware 接口, 而函数没有任何特殊的要求。</p>
+
+<pre><code>@Injectable()
+export class LoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: Function) {
+    console.log('Request...');
+    next();
+  }
+}
+</code></pre>
+
+<h4 id="应用中间件">应用中间件</h4>
+
+<p>中间件不能在 @Module() 装饰器中列出。我们必须使用模块类的 configure() 方法来设置它们。包含中间件的模块必须实现 NestModule 接口。我们将 LoggerMiddleware 设置在 ApplicationModule 层上。</p>
+
+<pre><code>@Module({
+  imports: [CatsModule],
+})
+export class ApplicationModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes('cats');
+  }
+}
+</code></pre>
+
+<h4 id="中间件消费者">中间件消费者</h4>
+
+<p>MiddlewareConsumer 是一个帮助类。它提供了几种内置方法来管理中间件。他们都可以被简单地链接起来。在 forRoutes() 可接受一个字符串、多个字符串、对象、一个控制器类甚至多个控制器类。在大多数情况下，您可能只会传递一个由逗号分隔的控制器列表。</p>
+
+<h4 id="函数式中间件">函数式中间件</h4>
+
+<pre><code>export function logger(req, res, next) {
+  console.log(`Request...`);
+  next();
+};
+</code></pre>
+
+<h4 id="多个中间件">多个中间件</h4>
+
+<pre><code>consumer.apply(cors(), helmet(), logger).forRoutes(CatsController);
+</code></pre>
+
+<h4 id="全局中间件">全局中间件</h4>
+
+<pre><code>const app = await NestFactory.create(ApplicationModule);
+// 为了一次将中间件绑定到每个注册路由，我们可以利用实例 INestApplication 提供的方法 use()
+app.use(logger);
+await app.listen(3000);
+</code></pre>
+
+<h3 id="异常过滤器">异常过滤器</h3>
+
+<p>内置的<a href="https://docs.nestjs.cn/6/exceptionfilters">异常层</a>负责处理整个应用程序中的所有抛出的异常。当捕获到未处理的异常时，最终用户将收到友好的响应。</p>
+
+<h3 id="管道">管道</h3>
+
+<p><a href="https://docs.nestjs.cn/6/pipes">管道</a>是具有 @Injectable() 装饰器的类。管道应实现 PipeTransform 接口。管道将输入数据转换为所需的输出。另外，它可以处理验证，因为当数据不正确时可能会抛出异常。</p>
+
+<h4 id="内置管道">内置管道</h4>
+
+<p>Nest 自带两个开箱即用的管道，即 ValidationPipe 和 ParseIntPipe。他们从 @nestjs/common 包中导出。</p>
+
+<h4 id="类验证器-class-validator">类验证器（Class validator）</h4>
+
+<p>Nest 与 class-validator 配合得很好。这个优秀的库允许您使用基于装饰器的验证。基于装饰器的验证对于管道功能非常强大，因为我们可以访问已处理属性的 metatype。在我们开始之前，我们需要安装所需的软件包。</p>
+
+<pre><code>yarn add class-validator class-transformer
+</code></pre>
+
+<p>安装完成后，我们就可以向 CreateCatDto 类添加一些装饰器。</p>
+
+<pre><code>import { IsString, IsInt } from 'class-validator';
+
+export class CreateCatDto {
+  @IsString()
+  readonly name: string;
+
+  @IsInt()
+  readonly age: number;
+
+  @IsString()
+  readonly breed: string;
+}
+</code></pre>
+
+<p>最后一步是设置 ValidationPipe 。管道，与异常过滤器相同，它们可以是方法范围的、控制器范围的和全局范围的。另外，管道可以是参数范围的。我们可以直接将管道实例绑定到路由参数装饰器，例如@Body()。让我们来看看下面的例子：</p>
+
+<pre><code>@Post()
+async create(@Body(new ValidationPipe()) createCatDto: CreateCatDto) {
+  this.catsService.create(createCatDto);
+}
+</code></pre>
+
+<p>当验证逻辑仅涉及一个指定的参数时，参数范围的管道非常有用。要在方法级别设置管道，您需要使用 UsePipes() 装饰器。</p>
+
+<pre><code>@Post()
+@UsePipes(ValidationPipe)
+async create(@Body() createCatDto: CreateCatDto) {
+  this.catsService.create(createCatDto);
+}
+</code></pre>
+
+<p>由于 ValidationPipe 被创建为尽可能通用，所以我们将把它设置为一个全局作用域的管道，用于整个应用程序中的每个路由处理器。</p>
+
+<pre><code>async function bootstrap() {
+  const app = await NestFactory.create(ApplicationModule);
+  app.useGlobalPipes(new ValidationPipe());
+  await app.listen(3000);
+}
+bootstrap();
+</code></pre>
+
+<h3 id="守卫">守卫</h3>
+
+<p><a href="https://docs.nestjs.cn/6/guards">守卫</a>是一个使用 @Injectable() 装饰器的类。 守卫应该实现 CanActivate 接口。守卫有一个单独的责任。它们确定请求是否应该由路由处理程序处理。到目前为止，访问限制逻辑大多在中间件内。这样很好，因为诸如 token 验证或将 request 对象附加属性与特定路由没有强关联。但中间件是非常笨的。它不知道调用 next() 函数后会执行哪个处理程序。另一方面，守卫可以访问 ExecutionContext 对象，所以我们确切知道将要执行什么。守卫在每个中间件之后执行的，但在拦截器和管道之前。</p>
+
+<h4 id="授权看守卫">授权看守卫</h4>
+
+<pre><code>import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  canActivate(
+    context: ExecutionContext,
+  ): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; {
+    const request = context.switchToHttp().getRequest();
+    return validateRequest(request);
+  }
+}
+</code></pre>
+
+<p>不管 validateRequest() 函数背后的逻辑是什么，重点是展示使用守卫是多么简单。每个守卫都提供一个 canActivate() 方法。守卫可能通过 (Promise 或 Observable) 同步地或异步地返回它的布尔答复。如果返回 true, 将处理用户调用。如果返回 false, 则 Nest 将忽略当前处理的请求。</p>
+
+<h4 id="execution-context">Execution context</h4>
+
+<p>ExecutionContext 提供了更多功能，它扩展了 ArgumentsHost，但是也提供了有关当前执行过程的更多详细信息。getHandler() 方法返回对当前处理的处理程序的引用,而 getClass() 返回此特定处理程序所属的 Controller 类的类型。用另外的话来说,如果用户指向在 CatsController 中定义和注册的 create() 方法, getHandler() 将返回对 create() 方法的引用，在这种情况下, getClass() 将只返回一个 CatsController 的类型（不是实例）。</p>
+
+<h4 id="基于角色的认证">基于角色的认证</h4>
+
+<h5 id="创建自定义角色装饰器">创建自定义角色装饰器</h5>
+
+<pre><code>import { SetMetadata } from '@nestjs/common';
+
+// SetMetadata() 附加自定义元数据的功能
+export const Roles = (...roles: string[]) =&gt; SetMetadata('roles', roles);
+</code></pre>
+
+<h5 id="使用角色装饰器">使用角色装饰器</h5>
+
+<pre><code>@Post()
+@Roles('admin')
+async create(@Body() createCatDto: CreateCatDto) {
+  this.catsService.create(createCatDto);
+}
+</code></pre>
+
+<h5 id="创建角色认证守卫">创建角色认证守卫</h5>
+
+<pre><code>import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Observable } from 'rxjs';
+import { Reflector } from '@nestjs/core';
+
+@Injectable()
+export class RolesGuard implements CanActivate {
+  constructor(private readonly reflector: Reflector) {}
+
+  canActivate(context: ExecutionContext): boolean {
+    // getHandler() 将返回对 create() 方法的引用
+    // 使用反射器获取方法元数据
+    const roles = this.reflector.get&lt;string[]&gt;('roles', context.getHandler());
+    if (!roles) {
+      return true;
+    }
+    const request = context.switchToHttp().getRequest();
+    const user = request.user;
+    const hasRole = () =&gt; user.roles.some((role) =&gt; roles.includes(role));
+    return user &amp;&amp; user.roles &amp;&amp; hasRole();
+  }
+}
+</code></pre>
+
+<h4 id="绑定守卫">绑定守卫</h4>
+
+<p>守卫可以是控制器范围的，方法范围的和全局范围的。为了建立守卫，我们使用 @UseGuards() 装饰器。这个装饰器可以有无数的参数，也就是说，你可以传递几个守卫并用逗号分隔它们。</p>
+
+<pre><code>// 绑定到 Controller
+@Controller('cats')
+@UseGuards(RolesGuard)
+export class CatsController {}
+</code></pre>
+
+<pre><code>// 绑定到全局
+const app = await NestFactory.create(ApplicationModule);
+app.useGlobalGuards(new RolesGuard());
+</code></pre>
+
+<h3 id="拦截器">拦截器</h3>
+
+<p><a href="https://docs.nestjs.cn/6/interceptors">拦截器</a>是使用 @Injectable() 装饰器注解的类。拦截器应该实现 NestInterceptor 接口。</p>
+
+<h3 id="自定义装饰器">自定义装饰器</h3>
+
+<p>Nest 是基于<a href="https://docs.nestjs.cn/6/customdecorators">装饰器</a>这种语言特性而创建的。ES2016 的装饰器是一个可以将目标对象，名称和属性描述符作为参数的返回函数的表达式。你可以通过装饰器前缀 @ 来使用它，并且把它放在你试图装饰的顶部。装饰器可以被定义为一个类或是属性。</p>
+
+<h4 id="参数装饰器">参数装饰器</h4>
+
+<p>在 node.js 的世界中，把属性值附加到 request 对象中是一种很常见的做法。然后你可以在任何时候在路由处理程器（route handlers）中手动取到它们，例如，使用下面这个构造：</p>
+
+<pre><code>const user = req.user;
+</code></pre>
+
+<p>为了使其更具可读性和透明性，我们可以创建 @User() 装饰器并且在所有控制器中重复利用它。</p>
+
+<pre><code>import { createParamDecorator } from '@nestjs/common';
+
+export const User = createParamDecorator((data, req) =&gt; {
+  return req.user;
+});
+</code></pre>
+
+<pre><code>@Get()
+async findOne(@User() user: UserEntity) {
+  console.log(user);
+}
+</code></pre>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/nest/">Nest</a>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

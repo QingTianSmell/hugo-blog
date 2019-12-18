@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="简单使用 简介 定义 : jQuery 是一个快速、简洁的 JavaScript 函数库，jQuery 设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装 JavaScript 常用的功能代码，提供一种简便的 JavaScript 设计模式，优化 HTML"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/jquery/"/>
+
+  
+
+  <title>Jquery 学习笔记 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/jquery/'>Jquery 学习笔记</a></h2>
+          <span class="date">2019.07.23</span>
+        </div>
+        <div class="post_content markdown">
+
+<h1 id="简单使用">简单使用</h1>
+
+<h2 id="简介">简介</h2>
+
+<blockquote>
+<p>定义 : jQuery 是一个快速、简洁的 JavaScript 函数库，jQuery 设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装 JavaScript 常用的功能代码，提供一种简便的 JavaScript 设计模式，优化 HTML 文档操作、事件处理、动画设计和 Ajax 交互。<br />
+产生原因 : JavaScript 的 DOM API 十分不好用、JavaScript 面对不同的浏览器需要写不同的代码。</p>
+</blockquote>
+
+<h2 id="常用选择器">常用选择器</h2>
+
+<ul>
+<li>基本
+
+<ul>
+<li>#id</li>
+<li>element</li>
+<li>.class</li>
+<li>*</li>
+<li>selector1,selector2,selectorN</li>
+</ul></li>
+<li>层级
+
+<ul>
+<li>ancestor descendant</li>
+<li>parent &gt; child</li>
+<li>prev + next</li>
+<li>prev ~ siblings</li>
+</ul></li>
+<li>筛选
+
+<ul>
+<li>:first</li>
+<li>:not(selector)</li>
+<li>:even</li>
+<li>:odd</li>
+<li>:eq(index)</li>
+<li>:gt(index)</li>
+<li>:last</li>
+<li>:lt(index)</li>
+<li>:focus</li>
+</ul></li>
+<li>内容
+
+<ul>
+<li>:contains(text)</li>
+<li>:empty</li>
+<li>:has(selector)</li>
+<li>:parent</li>
+</ul></li>
+<li>可见性
+
+<ul>
+<li>:hidden</li>
+<li>:visible</li>
+</ul></li>
+<li>属性
+
+<ul>
+<li>[attribute]</li>
+<li>[attribute=value]</li>
+<li>[attribute!=value]</li>
+<li>[attribute^=value]</li>
+<li>[attribute$=value]</li>
+<li>[attribute*=value]</li>
+<li>[attrSel1][attrsel2][attrSelN]</li>
+</ul></li>
+<li>子元素
+
+<ul>
+<li>:first-child</li>
+<li>:last-child</li>
+</ul></li>
+<li>表单
+
+<ul>
+<li>:input</li>
+<li>:text</li>
+<li>:password</li>
+<li>:radio</li>
+<li>:checkbox</li>
+<li>:submit</li>
+<li>:image</li>
+<li>:reset</li>
+<li>:button</li>
+<li>:file</li>
+</ul></li>
+<li>表单属性
+
+<ul>
+<li>:enabled</li>
+<li>:disabled</li>
+<li>:checked</li>
+<li>:selected</li>
+</ul></li>
+</ul>
+
+<h2 id="常用核心函数">常用核心函数</h2>
+
+<ul>
+<li>each(callback)</li>
+<li>size()</li>
+<li>get([index])</li>
+<li>index([selector|element])</li>
+<li>data([key],[value])</li>
+</ul>
+
+<h2 id="常用-ajax-函数">常用 AJAX 函数</h2>
+
+<ul>
+<li><a href="http://jquery.cuishifeng.cn/jQuery.Ajax.html"><code>$.ajax(url,[settings])</code></a></li>
+<li><a href="http://jquery.cuishifeng.cn/jQuery.getJSON.html"><code>$.getJSON(url,[data],[fn])</code></a></li>
+<li><a href="http://jquery.cuishifeng.cn/jQuery.post.html"><code>$.post(url,[data],[fn],[type])</code></a></li>
+</ul>
+
+<h2 id="常用筛选函数">常用筛选函数</h2>
+
+<ul>
+<li>过滤
+
+<ul>
+<li>eq(index|-index)</li>
+<li>first()</li>
+<li>last()</li>
+<li>hasClass(class)</li>
+<li>has(expr|ele)</li>
+</ul></li>
+<li>查找
+
+<ul>
+<li>children([expr])</li>
+<li>find(e|o|e)</li>
+<li>next([expr])</li>
+<li>parent([expr])</li>
+<li>parents([expr])</li>
+<li>prev([expr])</li>
+</ul></li>
+</ul>
+
+<h2 id="常用-dom-元素操作函数">常用 DOM 元素操作函数</h2>
+
+<ul>
+<li>attr(name|pro|key,val|fn)</li>
+<li>removeAttr(name)</li>
+<li>addClass(class|fn)</li>
+<li>removeClass([class|fn])</li>
+<li>html([val|fn])</li>
+<li>text([val|fn])</li>
+<li>val([val|fn|arr])</li>
+</ul>
+
+<h2 id="常用文档处理函数">常用文档处理函数</h2>
+
+<ul>
+<li>append(content|fn)</li>
+<li>appendTo(content)</li>
+<li>prepend(content|fn)</li>
+<li>prependTo(content)</li>
+<li>after(content|fn)</li>
+<li>before(content|fn)</li>
+<li>insertAfter(content)</li>
+<li>insertBefore(content)</li>
+<li>remove([expr])</li>
+</ul>
+
+<h2 id="常用事件函数">常用事件函数</h2>
+
+<ul>
+<li>ready(fn)</li>
+<li>on(eve,[sel],[data],fn)</li>
+<li>off(eve,[sel],[fn])</li>
+<li>eventName([[data],fn]) : HTML 事件去掉 on 就是 jQuery 的事件函数</li>
+</ul>
+
+<h2 id="参考">参考</h2>
+
+<blockquote>
+<p><a href="http://jquery.cuishifeng.cn/">JQuery 手册</a></p>
+</blockquote>
+
+<h1 id="值得一提">值得一提</h1>
+
+<h2 id="js-对象和-jquery-对象的区别">JS 对象和 jQuery 对象的区别</h2>
+
+<p>jQuery 对象就是 JS new Object()生成的普通对象。</p>
+
+<h2 id="何时使用筛选方法来进行选择">何时使用筛选方法来进行选择</h2>
+
+<p>当$选择器里的字符串需要出现this时，因为this是一个对象，而使用$选择器要么传一个对象要么传一个字符串，而不能把对象和字符串相结合使用，就使用筛选方法来选择。</p>
+
+<h1 id="应用场景">应用场景</h1>
+
+<h2 id="js-对象和-jquery-对象的相互转换方法">JS 对象和 jQuery 对象的相互转换方法</h2>
+
+<p>JS 对象-&gt;JQuery 对象 : <code>$(dom);</code><br />
+jQuery 对象-&gt;JS 对象 : <code>$('h1')[1];或者$('h1').get(1);</code></p>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+                <a href="http://blog.orionpax.top/tags/jquery/">JQuery</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

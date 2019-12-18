@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TypeScript on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/typescript/</link>
+    <description>Recent content in TypeScript on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 25 Jul 2019 11:27:43 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TypeScript 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/typescript/</link>
+      <pubDate>Thu, 25 Jul 2019 11:27:43 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/typescript/</guid>
+      <description>简单使用 简介 什么是 TypeScript? TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持。 为什么选择 TypeScript? TypeScript 增加了代码的可读性和可维护性 有一定的学习成本，需要理解接口（Interfaces）、泛型（Generics）、类（C</description>
+    </item>
+    
+  </channel>
+</rss>

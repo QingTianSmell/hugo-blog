@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="简单使用 简介 定义：JavaScript 一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言。 产生原因：网页没有复杂交互行为。 语法 变量类型 number string boolean object function null undefined 关键字 流程控制 return continue break do while for if else switch case 定义 var ：定"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/javascript/"/>
+
+  
+
+  <title>JavaScript 学习笔记 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/javascript/'>JavaScript 学习笔记</a></h2>
+          <span class="date">2019.07.18</span>
+        </div>
+        <div class="post_content markdown">
+
+<h2 id="简单使用">简单使用</h2>
+
+<h3 id="简介">简介</h3>
+
+<blockquote>
+<p>定义：JavaScript 一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言。<br />
+产生原因：网页没有复杂交互行为。</p>
+</blockquote>
+
+<h3 id="语法">语法</h3>
+
+<h4 id="变量类型">变量类型</h4>
+
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>object</li>
+<li>function</li>
+<li>null</li>
+<li>undefined</li>
+</ul>
+
+<h4 id="关键字">关键字</h4>
+
+<ul>
+<li>流程控制
+
+<ul>
+<li>return</li>
+<li>continue</li>
+<li>break</li>
+<li>do</li>
+<li>while</li>
+<li>for</li>
+<li>if</li>
+<li>else</li>
+<li>switch</li>
+<li>case</li>
+</ul></li>
+<li>定义
+
+<ul>
+<li>var ：定义变量</li>
+<li>let : 不可重复声明、块级作用域(ES6+)</li>
+<li>const : 不可重复声明、块级作用域(ES6+)</li>
+<li>function</li>
+<li>new</li>
+</ul></li>
+<li>异常处理
+
+<ul>
+<li>try ：测试代码块的错误</li>
+<li>catch：处理错误</li>
+<li>finally</li>
+<li>throw ：创建自定义错误</li>
+</ul></li>
+<li>类型判断
+
+<ul>
+<li>typeof</li>
+<li>instanceof</li>
+</ul></li>
+
+<li><p>其他</p>
+
+<ul>
+<li>this</li>
+<li>in : 与 for 一起使用用于遍历对象的属性名或判断某个对象是否具有某个属性</li>
+<li>delete : 删除对象的某个属性，只能删除自身定义的公有属性，即&quot;this.属性名&quot;定义的属性，而不能删除私有属性或通过 proptotype 定义的公有属性（已实践）。此外可删除直接在对象上添加的属性，如<code>var a = new Object();a.name = &quot;name&quot;; delete a.name;</code></li>
+<li>with : 引用一个对象，使访问属性与方法更加方便（只能访问与修改属性，不能增加属性与方法）</li>
+</ul></li>
+</ul>
+
+<h4 id="运算符">运算符</h4>
+
+<ul>
+<li>数学运算符 : +,-,*,/,%</li>
+<li>比较运算符 : &gt;,&lt;,\==,!=,&gt;=,&lt;=,=\==,!==</li>
+<li>逻辑运算符 : &amp;&amp;,||,!</li>
+<li>位操作符 : ^,~,&amp;,|,&lt;&lt;,&gt;&gt;,&gt;&gt;&gt;</li>
+</ul>
+
+<h3 id="常用对象">常用对象</h3>
+
+<h4 id="内建对象">内建对象</h4>
+
+<ul>
+<li>Math</li>
+<li>Date
+
+<ul>
+<li>getTime() : 获取毫秒值</li>
+</ul></li>
+<li>String
+
+<ul>
+<li>length : 字符串的长度</li>
+<li>indexOf() : 检索字符串。</li>
+<li>substr() : 从起始索引号提取字符串中指定数目的字符。</li>
+<li>split() : 把字符串分割为字符串数组。</li>
+</ul></li>
+<li>Array
+
+<ul>
+<li>length : 设置或返回数组中元素的数目。</li>
+<li>join() : 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。</li>
+<li>push() : 向数组的末尾添加一个或更多元素，并返回新的长度。</li>
+<li>splice() : 删除元素，并返回删除元素</li>
+</ul></li>
+<li>RegExp
+
+<ul>
+<li>修饰符</li>
+<li>i : 执行对大小写不敏感的匹配。</li>
+<li>g : 执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。</li>
+<li>中括号</li>
+<li>[abc] : 查找方括号之间的任何字符。</li>
+<li>[^abc] : 查找任何不在方括号之间的字符。</li>
+<li>[0-9] : 查找任何从 0 至 9 的数字。</li>
+<li>[a-z] : 查找任何从小写 a 到小写 z 的字符。</li>
+<li>[A-Z] : 查找任何从大写 A 到大写 Z 的字符。</li>
+<li>[A-z] : 查找任何从大写 A 到小写 z 的字符。</li>
+<li>元字符</li>
+<li>. : 查找单个字符，除了换行和行结束符。</li>
+<li>\w : 查找任意一个字母、数字或下划线字符。</li>
+<li>\W : 查找非\w 字符。</li>
+<li>\d : 查找数字。</li>
+<li>\D : 查找非数字字符。</li>
+<li>\s : 查找空白字符。</li>
+<li>\S : 查找非空白字符。</li>
+<li>\b : 匹配单词边界。</li>
+<li>\B : 匹配非单词边界。</li>
+<li>量词</li>
+<li>n+ : 匹配任何包含至少一个 n 的字符串。</li>
+<li>n* : 匹配任何包含零个或多个 n 的字符串。</li>
+<li>n? : 匹配任何包含零个或一个 n 的字符串。</li>
+<li>n{X} : 匹配包含 X 个 n 的序列的字符串。</li>
+<li>n{X,Y} : 匹配包含 X 至 Y 个 n 的序列的字符串。</li>
+<li>n{X,} : 匹配包含至少 X 个 n 的序列的字符串。</li>
+<li>n\$ : 匹配任何结尾为 n 的字符串。</li>
+<li>^n : 匹配任何开头为 n 的字符串。</li>
+<li>?=n : 匹配任何其后紧接指定字符串 n 的字符串。</li>
+<li>?!n : 匹配任何其后没有紧接指定字符串 n 的字符串。</li>
+</ul></li>
+</ul>
+
+<h4 id="html-dom-对象">HTML DOM 对象</h4>
+
+<ul>
+<li>document
+
+<ul>
+<li>document.getElementById() : 返回对拥有指定 id 的第一个对象的引用。</li>
+</ul></li>
+<li>element
+
+<ul>
+<li>id : 设置或者返回元素的 id。</li>
+<li>className : 设置或返回元素的 class 属性</li>
+<li>style : 设置或返回元素的样式属性</li>
+<li>title : 设置或返回元素的 title 属性</li>
+<li>getAttribute() : 返回指定元素的属性值</li>
+<li>setAttribute() : 设置或者改变指定属性并指定值</li>
+<li>innerHTML : 设置或者返回元素的内容</li>
+<li>outerHTML : 设置或返回元素的全部内容包括标签部分</li>
+<li>clientHeight : 在页面上返回内容的可视高度（不包括边框，边距或滚动条）</li>
+<li>clientWidth : 在页面上返回内容的可视宽度（不包括边框，边距或滚动条）</li>
+<li>scrollHeight : 返回整个元素的高度（包括带滚动条的隐蔽的地方）</li>
+<li>scrollTop : 返回滚动的高度</li>
+</ul></li>
+</ul>
+
+<h4 id="html-bom-对象">HTML BOM 对象</h4>
+
+<ul>
+<li>window
+
+<ul>
+<li>alert() : 显示带有一段消息和一个确认按钮的警告框。</li>
+<li>setInterval(函数,毫秒数) : 每隔一段时间执行函数</li>
+<li>clearInterval(定时器对象) : 结束定时器</li>
+<li>setTimeout(函数,毫秒数) : 一段时间后执行函数</li>
+<li>clearTimeout(超时器对象) : 结束超时器</li>
+</ul></li>
+<li>location
+
+<ul>
+<li>href : 返回完整的 URL(直接使用 location 就相当于调用这个属性)</li>
+</ul></li>
+<li>history
+
+<ul>
+<li>back() : 加载 history 列表中的前一个 URL</li>
+<li>forward() : 加载 history 列表中的下一个 URL</li>
+<li>go() : 加载 history 列表中的某个具体页面</li>
+</ul></li>
+<li>screen
+
+<ul>
+<li>availHeight : 返回屏幕的高度（不包括 Windows 任务栏）</li>
+<li>availWidth : 返回屏幕的宽度（不包括 Windows 任务栏）</li>
+<li>height : 返回屏幕的总高度</li>
+<li>width : 返回屏幕的总宽度</li>
+</ul></li>
+<li>navigator
+
+<ul>
+<li>userAgent : 返回由客户机发送服务器的 user-agent 头部的值</li>
+</ul></li>
+</ul>
+
+<h4 id="ajax-对象">AJAX 对象</h4>
+
+<ul>
+<li>ActiveXObject</li>
+<li>XMLHttpRequest</li>
+</ul>
+
+<h3 id="常用全局方法">常用全局方法</h3>
+
+<ul>
+<li>parseInt() : 字符串转换整型</li>
+<li>eval() : 执行字符串表达式，如果是变量需要加上括号：eval(&quot;(&quot;+var+&quot;)&quot;)</li>
+<li>encodeURI(string)：对 URI 字符串进行 UTF-8 的编码</li>
+</ul>
+
+<h3 id="参考">参考</h3>
+
+<blockquote>
+<p><a href="http://www.goodxyx.com/tool/jschm.html">JavaScript 手册</a></p>
+</blockquote>
+
+<h2 id="值得一提">值得一提</h2>
+
+<h3 id="es6-新特性">ES6 新特性</h3>
+
+<h4 id="定义相关">定义相关</h4>
+
+<ul>
+<li>let : 不可重复声明、块级作用域</li>
+<li>const : 不可重复声明、块级作用域</li>
+
+<li><p>解构赋值</p>
+
+<ul>
+<li><p>左右两边结构必须一致</p>
+
+<pre><code>let [a,b,c] = [1,2,3];
+let {a,b,c} = {a:1,b:2,c:3};
+</code></pre></li>
+
+<li><p>右边必须符合语法</p>
+
+<pre><code>let {a,b,c} = {1,2,3};//错误
+</code></pre></li>
+
+<li><p>声明和赋值不能分开</p></li>
+</ul></li>
+</ul>
+
+<h4 id="函数相关">函数相关</h4>
+
+<ul>
+<li>箭头函数<code>(args) =&gt; { code... }</code>
+
+<ul>
+<li>如果只有一个参数 <code>()</code> 可以省</li>
+<li>如果只有一个 <code>{return }</code> 可以省</li>
+<li>箭头函数不会绑定 this。 或则说箭头函数不会改变 this 本来的绑定。</li>
+</ul></li>
+<li>多参数收集<code>(...args)</code>
+
+<ul>
+<li>将函数的剩余参数接收到一个数组，必须是最后一个参数。</li>
+</ul></li>
+<li>多参数展开<code>...args</code>
+
+<ul>
+<li>将 args 的内容展开成 a,b,c 的形式。</li>
+</ul></li>
+<li>默认参数<code>function(a=1){ code...}</code></li>
+</ul>
+
+<h4 id="数组对象常用新增方法">数组对象常用新增方法</h4>
+
+<ul>
+<li>map(callback) : 映射函数</li>
+<li>reduce(callback) : 汇总函数</li>
+<li>filter(callback) : 过滤函数</li>
+</ul>
+
+<h4 id="模板字符串">模板字符串</h4>
+
+<ul>
+<li>用 `str` 反单引号定义字符串</li>
+<li>可以在其中使用 \${var} 嵌入变量(未定义报错)，如果嵌入的是对象会调用其 toString()方法。</li>
+<li>可以折行</li>
+<li>可以嵌套</li>
+</ul>
+
+<h2 id="应用场景">应用场景</h2>
+
+<h3 id="函数的定义">函数的定义</h3>
+
+<ul>
+<li>正常方式<code>function mysum(num1,num2){return num1+num2;}</code></li>
+<li>直接量/匿名方式<code>var mysum = function(num1,num2){return num1+num2;}</code></li>
+<li>构造器方式<code>new Function(&quot;num1&quot;,&quot;num2&quot;,&quot;return num1+num2;&quot;)</code></li>
+<li>箭头函数(ES6)</li>
+</ul>
+
+<h3 id="向后台传递-ids-names">向后台传递 ids / names</h3>
+
+<pre><code>// ids
+const idsStr = ids.length &gt; 0 ? ids.reduce((temp, id) =&gt; temp + ',' + id) : undefined;
+// names
+const namesStr = names.length &gt; 0 ? &quot;'&quot; + names.reduce((temp, name) =&gt; temp + &quot;','&quot; + name) + &quot;'&quot; : undefined;
+</code></pre>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+                <a href="http://blog.orionpax.top/tags/javascript/">JavaScript</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

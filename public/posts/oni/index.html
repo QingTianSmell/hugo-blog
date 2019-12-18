@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="简介 The vision of Oni is to build an editor that allows you to go from thought to code as easily as possible - bringing together the raw editing power of Vim, the feature capabilities of Atom/VSCode, and a powerful and intuitive extensibility model - wrapped up in a beautiful package. 安装 # Window 下使用 Scoop 来安装 scoop bucket add extras scoop install oni 程序员的软件包管理工具 Scoop Features Code Completion 自动 Fuzzy Finder &amp;lt;Ctrl-p&amp;gt; 打开文件搜索框。 Command Palette"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/oni/"/>
+
+  
+
+  <title>Oni Neovim 的 GUI &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/oni/'>Oni Neovim 的 GUI</a></h2>
+          <span class="date">2019.08.26</span>
+        </div>
+        <div class="post_content markdown">
+
+<h2 id="简介">简介</h2>
+
+<p>The vision of Oni is to build an editor that allows you to go from thought to code as easily as possible - bringing together the raw editing power of Vim, the feature capabilities of Atom/VSCode, and a powerful and intuitive extensibility model - wrapped up in a beautiful package.</p>
+
+<h2 id="安装">安装</h2>
+
+<pre><code># Window 下使用 Scoop 来安装
+scoop bucket add extras
+scoop install oni
+</code></pre>
+
+<blockquote>
+<p><a href="http://blog.orionpax.top/post/scoop/">程序员的软件包管理工具 Scoop</a></p>
+</blockquote>
+
+<h2 id="features">Features</h2>
+
+<h3 id="code-completion">Code Completion</h3>
+
+<p>自动</p>
+
+<h3 id="fuzzy-finder">Fuzzy Finder</h3>
+
+<p><code>&lt;Ctrl-p&gt;</code> 打开文件搜索框。</p>
+
+<h3 id="command-palette">Command Palette</h3>
+
+<p><code>&lt;Ctrl-Shift-P&gt;</code> 打开命令输入框。</p>
+
+<p>当前，命令行工具包括：</p>
+
+<ul>
+<li>很多内置的 Oni 命令，比如浏览器、配置编辑、片段编辑等等。</li>
+<li>几种常用菜单项</li>
+<li>NPM 包装脚本</li>
+<li>插件命令</li>
+<li>从发射参数奥尼文件夹</li>
+</ul>
+
+<h3 id="embedded-browser">Embedded Browser</h3>
+
+<p>在命令输入框输入 <code>Browser: Open Vertical</code> or <code>Browser: Open Horizontal</code> 可以打开浏览器。可以使用 <code>&lt;Ctrl-g&gt;</code> 在不使用鼠标的情况下导航 UI 。</p>
+
+<h3 id="quick-info">Quick Info</h3>
+
+<p>令光标悬停在一个标识符上，可以看到快捷信息。</p>
+
+<h3 id="snippets">Snippets</h3>
+
+<p>在命令输入框输入 <code>Snippets: ...</code> 以创建代码段，Oni 的<a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets">代码段配置</a>和 VSCode 保持了一致。</p>
+
+<h3 id="status-bar">Status Bar</h3>
+
+<p>ONI 具有丰富的状态栏，被设计为<code>vim-powerline</code>和<code>vim-airline</code>的替代品。</p>
+
+<h3 id="textmate-highlighting">TextMate Highlighting</h3>
+
+<p>自动</p>
+
+<h3 id="syntax-compilation-errors">Syntax / Compilation Errors</h3>
+
+<p>自动</p>
+
+<h2 id="neovim-config">Neovim Config</h2>
+
+<pre><code>&quot; ================================================================
+&quot; Created by OrionPax on 2019/08/26
+&quot; Last Modified: 2019/08/27
+&quot;
+&quot; 1. 基础设置
+&quot; 2. 插件设置
+&quot;   - 移动
+&quot;   - 编辑
+&quot;   - 增强
+&quot; 3. 按键映射
+&quot;   - 移动
+&quot;   - 编辑
+&quot; ================================================================
+
+&quot; ================================================================
+&quot; 1. 基础设置
+&quot; ================================================================
+
+&quot; 设置缩进宽度
+set number
+set noswapfile
+set smartcase
+
+set splitright
+set splitbelow
+
+&quot; Turn off statusbar, because it is externalized
+set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
+
+&quot; Enable GUI mouse behavior
+set mouse=a
+
+&quot; All config settings after this point
+&quot; can be removed, once an Oni config option is added.
+
+&quot; Use ESC to exit insert mode in :term
+tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
+
+&quot; Default tab settings
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+&quot; ================================================================
+&quot; 2. 插件设置
+&quot; ================================================================
+
+call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
+
+&quot; ---------------------------- 移动 ------------------------------
+
+&quot; 全文快速移动，
+&quot; &lt;leader&gt;&lt;leader&gt;s{char} 搜索跳转
+&quot; &lt;leader&gt;&lt;leader&gt;w 跳转到后面的单词首字母
+&quot; &lt;leader&gt;&lt;leader&gt;b 跳转到前面的单词首字母
+Plug 'easymotion/vim-easymotion'
+
+&quot; 快速标记插件
+&quot; m[a-zA-Z] : 打标签
+&quot; '[a-zA-Z] : 跳转到标签位置
+&quot; '.        : 跳转到最后一次修改位置
+&quot; m&lt;space&gt;  : 去除所有标签
+Plug 'kshenoy/vim-signature'
+
+&quot; 快速文件搜索
+Plug 'junegunn/fzf', {'dir':'~/.fzf','do':'./install  --all'}
+Plug 'junegunn/fzf.vim'
+
+&quot; ---------------------------- 编辑 ------------------------------
+
+&quot; 表格对齐，使用命令 Tabularize
+&quot; Shift + v 选中多行，使用:'&lt;,'&gt; Tab/{string} 按等号、冒号、表格对齐文本。
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
+
+&quot; 成对编辑
+&quot; ys iw {char} 增加
+&quot; cs {oldChar} {newChat} 修改
+&quot; ds {char} 删除
+Plug 'tpope/vim-surround'
+
+&quot; 用 v 选中一个区域后，alt_+/- 按分隔符扩大/缩小选区
+Plug 'terryma/vim-expand-region'
+
+&quot; 文本替换
+Plug 'brooth/far.vim'
+
+&quot; 文本格式化
+Plug 'sbdchd/neoformat'
+
+&quot; 注释
+Plug 'tpope/vim-commentary'
+autocmd FileType python,shell set commentstring=#\ %s                 &quot; 设置Python注释字符
+autocmd FileType mako set cms=##\ %s
+
+&quot; ---------------------------- 增强 ------------------------------
+
+&quot; 展示开始画面，显示最近编辑过的文件
+Plug 'mhinz/vim-startify'
+
+&quot; 相对行号
+Plug 'kennykaye/vim-relativity'
+
+&quot; 成对符号自动补全
+&quot; shift-tab 可以保持Insert模式跳到补全符号后面
+Plug 'Raimondi/delimitMate'
+
+Plug 'docunext/closetag.vim'
+
+&quot; 版本控制
+&quot; Git 支持
+Plug 'tpope/vim-fugitive'
+&quot; 用于在侧边符号栏显示 git/svn 的 diff
+Plug 'mhinz/vim-signify'
+&quot; Diff 增强，支持 histogram / patience 等更科学的 diff 算法
+Plug 'chrisbra/vim-diff-enhanced'
+&quot; signify 调优
+let g:signify_vcs_list = ['git', 'svn']
+let g:signify_sign_add               = '+'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '‾'
+let g:signify_sign_change            = '~'
+let g:signify_sign_changedelete      = g:signify_sign_change
+&quot; git 仓库使用 histogram 算法进行 diff
+let g:signify_vcs_cmds = {
+    \ 'git': 'git diff --no-color --diff-algorithm=histogram --no-ext-diff -U0 -- %f',
+	\}
+
+
+
+call plug#end()
+
+&quot; ================================================================
+&quot; 3. 按键映射
+&quot; ================================================================
+
+let mapleader=&quot;,&quot;
+&quot; ---------------------------- 移动 ------------------------------
+
+&quot; Ctrl + JK 快速移动
+nnoremap &lt;C-J&gt; 5j
+nnoremap &lt;C-K&gt; 5k
+
+&quot; &lt;leader&gt;+数字键 切换tab
+noremap &lt;silent&gt;&lt;leader&gt;1 1gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;2 2gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;3 3gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;4 4gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;5 5gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;6 6gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;7 7gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;8 8gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;9 9gt&lt;cr&gt;
+noremap &lt;silent&gt;&lt;leader&gt;0 10gt&lt;cr&gt;
+
+&quot; ---------------------------- 编辑 ------------------------------
+&quot; 保存并格式化
+nnoremap &lt;C-S&gt; :Neoformat &lt;Esc&gt; :w&lt;cr&gt;h
+inoremap &lt;C-S&gt; &lt;Esc&gt; :Neoformat &lt;Esc&gt;:w&lt;cr&gt;i
+
+&quot; ALT_+/- 用于按分隔符扩大缩小 v 选区
+map &lt;m-=&gt; &lt;Plug&gt;(expand_region_expand)
+map &lt;m--&gt; &lt;Plug&gt;(expand_region_shrink)
+</code></pre>
+
+<h2 id="oni-config">ONI Config</h2>
+
+<pre><code>import * as React from &quot;react&quot;;
+import * as Oni from &quot;oni-api&quot;;
+
+export const activate = (oni: Oni.Plugin.Api) =&gt; {
+  console.log(&quot;config activated&quot;);
+
+  // Input
+  //
+  // Add input bindings here:
+  // &lt;leader&gt;g打开版本控制
+  const LEADER_KEY = &quot;,&quot;;
+  // leader git
+  oni.input.bind(`${LEADER_KEY}g` &quot;vcs.sidebar.toggle&quot;);
+  // leader explorer
+  oni.input.bind(`${LEADER_KEY}e` &quot;sidebar.toggle&quot;);
+
+  //
+  // Or remove the default bindings here by uncommenting the below line:
+  //
+  // oni.input.unbind(&quot;&lt;c-p&gt;&quot;)
+};
+
+export const deactivate = (oni: Oni.Plugin.Api) =&gt; {
+  console.log(&quot;config deactivated&quot;);
+};
+
+export const configuration = {
+  //add custom config here, such as
+  &quot;ui.colorscheme&quot;: &quot;nord&quot;,
+  //禁用默认配置，为了修改tabSize
+  &quot;oni.useDefaultConfig&quot;: false,
+  //隐藏菜单
+  &quot;oni.hideMenu&quot;: true,
+  //隐藏左菜单
+  &quot;sidebar.enabled&quot;: false,
+  //关闭文件管理器初始就打开
+  &quot;sidebar.default.open&quot;: false,
+
+  &quot;experimental.indentLines.enabled&quot;: true,
+  &quot;experimental.vcs.sidebar&quot;: true,
+  //&quot;oni.bookmarks&quot;: [&quot;~/Documents&quot;],
+  //&quot;oni.loadInitVim&quot;: false,
+  //&quot;editor.fontSize&quot;: &quot;12px&quot;,
+  //&quot;editor.fontFamily&quot;: &quot;Monaco&quot;,
+
+  // UI customizations
+  &quot;ui.animations.enabled&quot;: true,
+  &quot;ui.fontSmoothing&quot;: &quot;auto&quot;,
+  &quot;editor.fontSize&quot;: &quot;14px&quot;
+};
+</code></pre>
+
+<h2 id="常用命令">常用命令</h2>
+
+<ul>
+<li><code>&lt;Ctrl-g&gt;</code> : 打开 sneak mode。UI 导航</li>
+<li><code>F2</code> : 重命名变量</li>
+<li><code>F12</code> : 跳转到定义</li>
+<li><code>&lt;Ctrl-p&gt;</code> : 显示快速打开菜单</li>
+<li><code>&lt;Ctrl-/&gt;</code> : 搜索当前缓冲区</li>
+<li><code>&lt;Alt&gt;</code> : 打开关闭菜单栏</li>
+<li><code>&lt;Ctrl-Shift-B&gt;</code> : 打开关闭文件树</li>
+<li><code>&lt;Ctrl-e&gt;</code> : 创建新文件</li>
+<li><code>&lt;Ctrl-f&gt;</code> : 创建新文件夹</li>
+<li><code>y</code> + <code>p</code> : 移动文件</li>
+<li><code>d</code> : 删除文件</li>
+<li><code>u</code> : 撤销上一次可逆的资源管理器操作</li>
+</ul>
+
+<blockquote>
+<p><a href="https://github.com/onivim/oni/wiki/Shortcuts">Oni Shortcuts</a></p>
+</blockquote>
+
+<h2 id="遇到的问题">遇到的问题</h2>
+
+<h3 id="配置制表符宽度失效">配置制表符宽度失效</h3>
+
+<p>useDefaultConfig 设置为 false 可以解决，设置为 false 后要把默认的配置复制到 init.vim 里调整下制表符宽度，不然会出现卡死的问题。</p>
+
+<blockquote>
+<p>actually, most of the Oni functionality will be preserved with useDefaultConfig set to false. The only thing useDefaultConfig: false turns off are these defaults:</p>
+
+<ul>
+<li><a href="https://github.com/onivim/oni/blob/master/vim/default/bundle/oni-vim-defaults/plugin/init.vim">https://github.com/onivim/oni/blob/master/vim/default/bundle/oni-vim-defaults/plugin/init.vim</a></li>
+<li>targets.vim plugin</li>
+<li>vim-commentary plugin</li>
+<li>vim-unimpaired plugin</li>
+</ul>
+
+<p>There was a bug previously where auto-completion wouldn't work correctly, but it seems addressed now. LMK if you see any issues, though.</p>
+</blockquote>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

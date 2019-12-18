@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React Router on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/react-router/</link>
+    <description>Recent content in React Router on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Jul 2019 22:16:45 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/react-router/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>React Router 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/react-router/</link>
+      <pubDate>Tue, 23 Jul 2019 22:16:45 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/react-router/</guid>
+      <description>简介 React Router 是完整的 React 路由解决方案。React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。 为什么需要路由？ 单页应用许需要进行页面的切换 通过 URL 可以</description>
+    </item>
+    
+  </channel>
+</rss>

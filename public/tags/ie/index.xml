@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IE on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/ie/</link>
+    <description>Recent content in IE on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 17 Jul 2019 22:47:36 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/ie/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DIV 添加onblur事件</title>
+      <link>http://blog.orionpax.top/posts/html-pit1/</link>
+      <pubDate>Wed, 17 Jul 2019 22:47:36 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/html-pit1/</guid>
+      <description>div添加onblur事件 一般情况下，onblur事件只在input等元素中才有，而div却没有，因为div本身就没有focus的状态(因为div没有tabindex属性)，所以要给div加上此属性。</description>
+    </item>
+    
+    <item>
+      <title>IE GET 方式请求数据缓存问题</title>
+      <link>http://blog.orionpax.top/posts/ie-pit1/</link>
+      <pubDate>Tue, 16 Jul 2019 22:54:16 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/ie-pit1/</guid>
+      <description>问题 : IE浏览器请求数据不会更新。 原因 : IE会缓存GET方式的URL访问返回的数据，如果下一次访问的URL相同的话，IE不会访问服务器而是直接从缓存取数据返回。 解决方式 : 使用 POST 请求(查询的话使用 GET 请求</description>
+    </item>
+    
+  </channel>
+</rss>

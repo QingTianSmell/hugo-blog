@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>浏览器 on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</link>
+    <description>Recent content in 浏览器 on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 17 Jul 2019 21:21:52 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Edge 浏览器乱码问题</title>
+      <link>http://blog.orionpax.top/posts/edge-pit1/</link>
+      <pubDate>Wed, 17 Jul 2019 21:21:52 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/edge-pit1/</guid>
+      <description>问题 : Microsoft Edge 浏览器乱码。 原因 : 代码里重复引入了国际化的JS文件，Edge 就会出现这个问题。 解决方式 : 不重复引入就行了。</description>
+    </item>
+    
+    <item>
+      <title>IE GET 方式请求数据缓存问题</title>
+      <link>http://blog.orionpax.top/posts/ie-pit1/</link>
+      <pubDate>Tue, 16 Jul 2019 22:54:16 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/ie-pit1/</guid>
+      <description>问题 : IE浏览器请求数据不会更新。 原因 : IE会缓存GET方式的URL访问返回的数据，如果下一次访问的URL相同的话，IE不会访问服务器而是直接从缓存取数据返回。 解决方式 : 使用 POST 请求(查询的话使用 GET 请求</description>
+    </item>
+    
+  </channel>
+</rss>

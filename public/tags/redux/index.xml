@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redux on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/redux/</link>
+    <description>Recent content in Redux on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Jul 2019 22:16:26 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/redux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Redux 学习笔记</title>
+      <link>http://blog.orionpax.top/posts/redux/</link>
+      <pubDate>Tue, 23 Jul 2019 22:16:26 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/redux/</guid>
+      <description>简介 Redux 是 JavaScript 状态容器，提供可预测化的状态管理。 三大原则 单一数据源 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。 State 是只读的（可预测性） 唯一改变 state 的方法就是触发 action，action</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="简单使用 简介 Taro 是一套遵循 React 语法规范的 多端开发 解决方案。现如今市面上端的形态多种多样，Web、React-Native、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/taro/"/>
+
+  
+
+  <title>Taro 学习笔记 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/taro/'>Taro 学习笔记</a></h2>
+          <span class="date">2019.07.25</span>
+        </div>
+        <div class="post_content markdown">
+
+<h1 id="简单使用">简单使用</h1>
+
+<h2 id="简介">简介</h2>
+
+<blockquote>
+<p>Taro 是一套遵循 React 语法规范的 多端开发 解决方案。现如今市面上端的形态多种多样，Web、React-Native、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同的端去编写多套代码的成本显然非常高，这时候只编写一套代码就能够适配到多端的能力就显得极为需要。<br />
+使用 Taro，我们可以只书写一套代码，再通过 Taro 的编译工具，将源代码分别编译出可以在不同端（微信/百度/支付宝/字节跳动/QQ 小程序、快应用、H5、React-Native 等）运行的代码。</p>
+</blockquote>
+
+<h2 id="安装及使用">安装及使用</h2>
+
+<pre><code># 使用 npm 安装 CLI
+$ npm install -g @tarojs/cli
+
+# 出现 sass 相关的错误
+$ npm install -g mirror-config-china
+
+# 创建一个模板项目
+$ taro init myApp
+
+# 运行/打包
+# h5
+$ yarn dev:h5
+$ yarn build:h5
+# 微信
+$ yarn dev:weapp
+$ yarn build:weapp
+# 支付宝
+$ yarn dev:alipay
+$ yarn build:alipay
+# 字节跳动
+$ yarn dev:tt
+$ yarn build:tt
+# QQ
+$ yarn dev:qq
+$ yarn build:qq
+# 快应用
+$ yarn dev:quickapp
+$ yarn build:quickapp
+
+# 项目检查
+$ taro doctor
+</code></pre>
+
+<h2 id="跨平台开发">跨平台开发</h2>
+
+<pre><code>if (process.env.TARO_ENV === 'weapp') {
+  require('path/to/weapp/name')
+} else if (process.env.TARO_ENV === 'h5') {
+  require('path/to/h5/name')
+}
+</code></pre>
+
+<h2 id="编译配置">编译配置</h2>
+
+<p>Taro 的编译配置文件是 config/index.js。 下面列几个用到修改的配置：</p>
+
+<pre><code>sourceRoot: 'src',   // 源码目录
+outputRoot: 'dist',  // 打包目录，如果需要打包不同的目录就要调整
+
+// Taro 的编译存在一些坑，不按照他的包结构来的话有些内容就不会编译到，可以用这项配置，来把原生小程序中不会被编译的内容 Copy 到对应 dist 目录防止引用不到。
+copy: {
+  patterns: [
+    { from: 'src/asset/tt/', to: 'dist/asset/tt/', ignore: '*.js' }, // 指定需要 copy 的目录
+    { from: 'src/asset/tt/sd.jpg', to: 'dist/asset/tt/sd.jpg' } // 指定需要 copy 的文件
+  ]
+},
+</code></pre>
+
+<h2 id="基于-taro-开发第三方多端-ui-库">基于 Taro 开发第三方多端 UI 库</h2>
+
+<pre><code>// 为了打包出可以在 H5 端使用的组件库，需要在 config/index.js 文件中增加一些配置
+if (process.env.TARO_BUILD_TYPE === 'ui') {
+  Object.assign(config.h5, {
+    enableSourceMap: false,
+    enableExtract: false,
+    enableDll: false
+  })
+  config.h5.webpackChain = chain =&gt; {
+    chain.plugins.delete('htmlWebpackPlugin')
+    chain.plugins.delete('addAssetHtmlWebpackPlugin')
+    chain.merge({
+      output: {
+        path: path.join(process.cwd(), 'dist', 'h5'),
+        filename: 'index.js',
+        libraryTarget: 'umd',
+        library: 'taro-ui-sample'
+      },
+      externals: {
+        nervjs: 'commonjs2 nervjs',
+        classnames: 'commonjs2 classnames',
+        '@tarojs/components': 'commonjs2 @tarojs/components',
+        '@tarojs/taro-h5': 'commonjs2 @tarojs/taro-h5',
+        'weui': 'commonjs2 weui'
+      }
+    })
+  }
+}
+
+// 打包命令
+taro build --ui
+
+</code></pre>
+
+<h2 id="使用小程序原生组件">使用小程序原生组件</h2>
+
+<p>直接使用即可，但是如果不做多端的兼容处理就会导致其他端无法编译了。</p>
+
+<h2 id="使用-mobx">使用 MobX</h2>
+
+<pre><code>// counter.ts
+// 定义 Store
+import { observable } from 'mobx'
+
+const counterStore = observable({
+  counter: 0,
+  counterStore() {
+    this.counter++
+  },
+  increment() {
+    this.counter++
+  },
+  decrement() {
+    this.counter--
+  },
+  incrementAsync() {
+    setTimeout(() =&gt; {
+      this.counter++
+    }, 1000)
+  }
+})
+export default counterStore
+</code></pre>
+
+<pre><code>// src/app.ts
+// 设置 Provider 和 React 类似但是全局只能有一个，且只能在 app.ts 上
+import counterStore from './store/counter'
+
+const store = {
+  counterStore
+}
+...
+render () {
+	return (
+	  &lt;Provider store={store}&gt;
+	    &lt;Index /&gt;
+	  &lt;/Provider&gt;
+	)
+}
+...
+</code></pre>
+
+<pre><code>// IndexPage.tsx
+// 消费 Store
+import Taro, { Component } from '@tarojs/taro'
+import { observer, inject } from '@tarojs/mobx'
+
+import './index.scss'
+
+@inject('counterStore')
+@observer
+class Index extends Component {
+  //...
+}
+
+export default Index
+</code></pre>
+
+<h2 id="开发第三方多端非-ui-库">开发第三方多端非 UI 库</h2>
+
+<p>前提:</p>
+
+<ul>
+<li>Taro 目前并未提供非 UI 库多端编译的命令</li>
+<li>tsc 编译，不支持 h5 。(Taro 编译的时候对于 h5 会把 @tarojs/taro 替换成 @tarojs/taro-h5，还有一些其他的兼容处理)</li>
+<li>Taro 不支持 require，因此也不支持动态导入，所以它自己也没有实现一个多端公用的包</li>
+</ul>
+
+<p>解决方案: 同时打出多端的包，然后用 require 动态导入</p>
+
+<p>配置信息:</p>
+
+<pre><code>// config/index.js
+// 借用下 Taro 开发第三方多端 UI 库的配置与导出结构，省的自己写脚本了。
+if (process.env.TARO_BUILD_TYPE === 'ui') {
+  Object.assign(config.h5, {
+    enableSourceMap: false,
+    enableExtract: false,
+    enableDll: false
+  })
+  config.h5.webpackChain = chain =&gt; {
+    chain.plugins.delete('htmlWebpackPlugin')
+    chain.plugins.delete('addAssetHtmlWebpackPlugin')
+    chain.merge({
+      output: {
+        path: path.join(process.cwd(), 'dist', 'h5'),
+        filename: 'index.js',
+        libraryTarget: 'umd',
+        library: 'taro-ui-sample'
+      },
+      externals: {
+        nervjs: 'commonjs2 nervjs',
+        classnames: 'commonjs2 classnames',
+        '@tarojs/components': 'commonjs2 @tarojs/components',
+        '@tarojs/taro-h5': 'commonjs2 @tarojs/taro-h5',
+        'weui': 'commonjs2 weui'
+      }
+    })
+  }
+}
+</code></pre>
+
+<pre><code>// tsconfig.json
+&quot;rootDir&quot;: &quot;./src&quot;,         // 源代码路径
+&quot;outDir&quot;: &quot;dist/weapp&quot;,     // 输出位置
+&quot;declaration&quot;: true,        // 自动生成声明文件
+&quot;declarationDir&quot;: &quot;types&quot;,  // 将声明文件统一生成到types路径下
+</code></pre>
+
+<pre><code>// package.json
+&quot;typings&quot;: &quot;types/index.d.ts&quot; // 指定项目声明文件位置
+</code></pre>
+
+<p>相关命令:</p>
+
+<pre><code>// 将项目作为 UI 库打包, 生成 H5 下需要引用的包。
+taro build --ui
+// TypeScript 编译
+tsc
+// NPM 打补丁(提高一个小版本)
+npm version patch
+// 发布更新
+npm publish
+// 更新引入包
+npm update @bageventjs/packageName
+</code></pre>
+
+<h2 id="速查参考">速查参考</h2>
+
+<blockquote>
+<p><a href="https://taro-docs.jd.com/taro/docs/tutorial.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE">Taro 全局配置</a><br />
+<a href="https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">Taro APP 生命周期</a><br />
+<a href="https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-1">Taro 页面生命周期</a><br />
+<a href="https://taro-docs.jd.com/taro/docs/tutorial.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F-2">Taro 组件生命周期</a><br />
+<a href="https://taro-docs.jd.com/taro/docs/config-detail.html">Taro 编译配置详情</a><br />
+<a href="https://cn.mobx.js.org/">MobX 中文文档</a></p>
+</blockquote>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+                <a href="http://blog.orionpax.top/tags/taro/">Taro</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

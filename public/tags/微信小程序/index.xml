@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微信小程序 on OrionPax 的个人博客</title>
+    <link>http://blog.orionpax.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+    <description>Recent content in 微信小程序 on OrionPax 的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 16 Oct 2019 13:34:10 +0800</lastBuildDate>
+    
+	<atom:link href="http://blog.orionpax.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mini Progarm 技术选型</title>
+      <link>http://blog.orionpax.top/posts/mini-progarm/</link>
+      <pubDate>Wed, 16 Oct 2019 13:34:10 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/mini-progarm/</guid>
+      <description>优劣对比 名称 性能 开发效率 接入成本 原生兼容性 多端支持 状态管理 样式支持 TypeScript 校验程度 成熟程度 更新频率 Issues(open/closed) Star 原生 最高 最低 中等 - 不支持 不支持 wxss 不支持 最低 成熟 高 - - 内嵌 最低 最高 最低 不兼容 - - - - - - - - - Taro 中等 较高 较</description>
+    </item>
+    
+    <item>
+      <title>微信小程序学习笔记</title>
+      <link>http://blog.orionpax.top/posts/wx-mini/</link>
+      <pubDate>Sun, 04 Aug 2019 20:12:17 +0800</pubDate>
+      
+      <guid>http://blog.orionpax.top/posts/wx-mini/</guid>
+      <description>简单使用 环境搭建 获取 AppID 注册微信小程序开发者账号，进入开发设置页面复制 AppID 微信开发工具 下载微信开发者工具，功能按照界面描述理解就可以了。 基础 微信 web 小程序和传统 web 的文件结构对比 - 传统 web 微信小程序 结构 HTML WXML 样式</description>
+    </item>
+    
+  </channel>
+</rss>

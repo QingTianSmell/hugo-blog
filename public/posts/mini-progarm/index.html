@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="OrionPax"/>
+
+  
+  <meta name="description" content="优劣对比 名称 性能 开发效率 接入成本 原生兼容性 多端支持 状态管理 样式支持 TypeScript 校验程度 成熟程度 更新频率 Issues(open/closed) Star 原生 最高 最低 中等 - 不支持 不支持 wxss 不支持 最低 成熟 高 - - 内嵌 最低 最高 最低 不兼容 - - - - - - - - - Taro 中等 较高 较"/>
+  
+
+  
+  
+  <meta name="keywords" content="OrionPax, Java 开发, Hugo, zozo"/>
+  
+
+  
+  <link rel="canonical" href="http://blog.orionpax.top/posts/mini-progarm/"/>
+
+  
+
+  <title>Mini Progarm 技术选型 &middot; OrionPax 的个人博客</title>
+
+  <link rel="shortcut icon" href="http://blog.orionpax.top/images/favicon.ico"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/animate.min.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/remixicon.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/zozo.css"/>
+  <link rel="stylesheet" href="http://blog.orionpax.top/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/skills.png">技能树</a>
+      </li>
+      
+      <li>
+        <a href="/tools.png">工具栈</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="http://blog.orionpax.top">
+          <span>OrionPax 的个人博客</span>
+          <img src="http://blog.orionpax.top/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/OrionPax19970905" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="OrionPax19970905@gmail.com" title="gmail" target="_blank"><i class="remixicon-gmail-fill"></i></a>
+        
+        
+        <a href="http://blog.orionpax.top/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/mini-progarm/'>Mini Progarm 技术选型</a></h2>
+          <span class="date">2019.10.16</span>
+        </div>
+        <div class="post_content markdown">
+
+<h2 id="优劣对比">优劣对比</h2>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>性能</th>
+<th>开发效率</th>
+<th>接入成本</th>
+<th>原生兼容性</th>
+<th>多端支持</th>
+<th>状态管理</th>
+<th>样式支持</th>
+<th>TypeScript</th>
+<th>校验程度</th>
+<th>成熟程度</th>
+<th>更新频率</th>
+<th>Issues(open/closed)</th>
+<th>Star</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>原生</td>
+<td>最高</td>
+<td>最低</td>
+<td>中等</td>
+<td>-</td>
+<td>不支持</td>
+<td>不支持</td>
+<td>wxss</td>
+<td>不支持</td>
+<td>最低</td>
+<td>成熟</td>
+<td>高</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>内嵌</td>
+<td>最低</td>
+<td>最高</td>
+<td>最低</td>
+<td>不兼容</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Taro</td>
+<td>中等</td>
+<td>较高</td>
+<td>较低</td>
+<td>中等</td>
+<td>中等</td>
+<td>Redux、Mbox、Dva</td>
+<td>sass、less、CSS Moudle</td>
+<td>支持</td>
+<td>中等</td>
+<td>较高</td>
+<td>高</td>
+<td>594 / 3274</td>
+<td>22.2k</td>
+</tr>
+
+<tr>
+<td>wepy</td>
+<td>中等</td>
+<td>中等</td>
+<td>较高</td>
+<td>较高</td>
+<td>较低</td>
+<td>Redux</td>
+<td>sass、less</td>
+<td>勉强支持</td>
+<td>较低</td>
+<td>较高</td>
+<td>高</td>
+<td>267 / 1638</td>
+<td>19.1k</td>
+</tr>
+
+<tr>
+<td>mpvue</td>
+<td>中等</td>
+<td>中等</td>
+<td>中等</td>
+<td>中等</td>
+<td>较低</td>
+<td>vuex</td>
+<td>sass、less</td>
+<td>勉强支持</td>
+<td>较低</td>
+<td>较高</td>
+<td>高</td>
+<td>374 / 1237</td>
+<td>19k</td>
+</tr>
+
+<tr>
+<td>mpx</td>
+<td>中等</td>
+<td>中等</td>
+<td>中等</td>
+<td>较高</td>
+<td>中等</td>
+<td>vuex</td>
+<td>sass、less</td>
+<td>支持</td>
+<td>中等</td>
+<td>较低</td>
+<td>高</td>
+<td>11 / 148</td>
+<td>1.8k</td>
+</tr>
+
+<tr>
+<td>chameleon</td>
+<td>中等</td>
+<td>较低</td>
+<td>中等</td>
+<td>较低</td>
+<td>较高</td>
+<td>vuex</td>
+<td>sass、less</td>
+<td>不支持</td>
+<td>中等</td>
+<td>较低</td>
+<td>高</td>
+<td>47 / 191</td>
+<td>6.7k</td>
+</tr>
+
+<tr>
+<td>uni-app</td>
+<td>中等</td>
+<td>较高</td>
+<td>中等</td>
+<td>中等</td>
+<td>中等</td>
+<td>vuex</td>
+<td>sass、less</td>
+<td>支持</td>
+<td>中等</td>
+<td>中等</td>
+<td>高</td>
+<td>193 / 609</td>
+<td>13.7k</td>
+</tr>
+</tbody>
+</table>
+
+<p>排除使用原生小程序和内嵌 web 的解决方案后各框架对比:</p>
+
+<ul>
+<li>开发效率: 得益于 Typescript 对 JSX 的支持，Taro 在编写组件时可以获得更好的自动补全。</li>
+<li>接入成本: Taro 采用 React 规范，学习成本低一点。</li>
+<li>原生兼容性: 混写代码的情况下 wepy 和 mpx 提供了更好的原生代码的支持。</li>
+<li>多端支持: chameleon 有一套自研的多态协议，uni-app 和 Taro 则是都在 H5 实现了一套兼容的组件库和 API，mpvue 和 WePY 都提供了转换各端小程序的功能，但都没有 h5 和移动端的支持。</li>
+<li>组件库/工具库/Demo: uni-app &gt; WePY &gt; Taro &gt; mpvue &gt; chameleon、mpx。uni-app 有自己的 IDE 且是国人团队开发的。</li>
+<li>流行程度: uni-app 号称有上万案例，有 30+ 个 QQ 交流群（最大人数 2000）。紧跟其后的为 Taro、mpvue、WePY。</li>
+<li>开源建设: 从第三方贡献者数量来看，Taro 在这一方面领先，并且 Taro 的一些核心包/功能（MobX、CSS Modules、alias）也是由第三方开发者贡献的。WePY 作为其中开源最早的框架紧随其后。mpvue 由于停滞开发了很久就比较落后了。uni-app 在开源建设上并不热心，甚至有些部分代码都没有开源。</li>
+</ul>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="http://blog.orionpax.top/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a>
+                
+                <a href="http://blog.orionpax.top/tags/taro/">Taro</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      
+<div class="doc_comments">
+  <div class="comments_block_title">发表评论</div>
+  <div id="vcomments"></div>
+</div>
+
+<link rel="stylesheet" href="http://blog.orionpax.top/css/comments.css"/>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script type="text/javascript">
+new Valine({
+  el: '#vcomments',
+  appId: 'nW05u87yweVedDRhj6AUgzR1-gzGzoHsz',
+  appKey: '4HgKbiggTv7ocU789S5WO6ov',
+  placeholder: '确定不说点什么?',
+  visitor: 'true',
+})
+</script>
+
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>不能记住过去的人，被判重复过去。</span>
+  </div>
+</footer>
+
+
+
+<script src="http://blog.orionpax.top/js/jquery-3.3.1.min.js"></script>
+<script src="http://blog.orionpax.top/js/zozo.js"></script>
+<script src="http://blog.orionpax.top/js/highlight.pack.js"></script>
+<link  href="http://blog.orionpax.top/css/fancybox.min.css" rel="stylesheet">
+<script src="http://blog.orionpax.top/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>
