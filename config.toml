@@ -9,8 +9,6 @@ paginate = 5                         # shows the number of articles  # 首页显
 enableEmoji = true
 googleAnalytics = ""                 # your google analytics id
 disqusShortname = ""                 # your discuss shortname
-publishdir = "./"
-contentdir = "content"
 
 [author]                             # essential                     # 必需
   name = "OrionPax"
@@ -23,6 +21,11 @@ contentdir = "content"
 [blackfriday]
   smartypants = false
 
+[[menu.main]]
+  name = "主页"
+  weight = 20
+  identifier = "home"
+  url = "/"
 [[menu.main]]
   name = "归档"
   weight = 20
