@@ -143,7 +143,6 @@ $(document).ready(
         }
         // event.preventDefault();
         // 注意：阻止默认事件不能放在外面，会阻止浏览器或者input/textarea的默认事件，应该放在相应的按键组合中去阻止
-        return false;
       };
     };
   })(this)
