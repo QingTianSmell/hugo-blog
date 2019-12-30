@@ -1,7 +1,7 @@
 ---
 title: "Git 学习笔记"
 date: 2019-08-29T20:03:23+08:00
-tags: ["通用", "学习笔记", "Git"]
+tags: ["通用", "学习笔记"]
 ---
 
 ## What
@@ -24,7 +24,8 @@ tags: ["通用", "学习笔记", "Git"]
 
 ### 工作区、暂存区、版本库
 
-![img1](https://image-static.segmentfault.com/171/646/1716463609-5bf0fbfc7c3aa_articlex) 
+![img1](https://image-static.segmentfault.com/171/646/1716463609-5bf0fbfc7c3aa_articlex)
+
 - 工作区：用来编辑保存项目文件的地方，也是用户能直接操作到的地方。
 - 暂存区：保存了下次将提交的文件列表信息，一般在 Git 仓库目录中，是一个叫 index 的文件，通常多数说法还是叫暂存区域。
 - 版本库：也叫本地版本库，之所以说 git 快，是因为它是分布式版本控制系统，大部分提交都是对本地仓库而言的，不依赖网络，最后一次会推送的到远程仓库。
@@ -39,8 +40,27 @@ tags: ["通用", "学习笔记", "Git"]
 ## Why
 ### 解决的问题
 项目的版本控制问题
+
 ### 没有此技术之前怎么做
 文件复制，人工版本号
+
+### Git和SVN有什么区别？
+
+| GIT          | SVN          |
+|--------------|--------------|
+| 分布式       | 集中式       |
+| 可以离线提交 | 只能在线提交 |
+
+### 什么是 Git 中的“裸存储库”？
+Git 中的 “裸” 存储库只包含版本控制信息而没有工作文件（没有工作树）。也就是只有 .git 文件夹。
+
+### git pull 和 git fetch 有什么区别？
+git pull = git fetch + git merge
+
+### commit 对象包含什么？
+- 一组文件，表示给定时间点的项目状态
+- 引用父提交对象
+- SHAI 名称，一个40个字符的字符串，提交对象的唯一标识
 
 ## Where
 所有需要用到版本控制的项目
@@ -49,208 +69,219 @@ tags: ["通用", "学习笔记", "Git"]
 
 ### 初始化配置
 
-```
-//最小配置信息
+```bash
+# 最小配置信息
 git config --global user.name 'your_name'
 git config --global user.email 'your_email'
 
-//config的三个作用域
-//当前仓库有效
+# config的三个作用域
+# 当前仓库有效
 git config --local
-//当前用户所有仓库有效
+# 当前用户所有仓库有效
 git config --global
-//当前系统所有用户的所有仓库有效
+# 当前系统所有用户的所有仓库有效
 git config --system
 
-//显示config配置
+# 显示config配置
 git config --list [作用域]
 ```
 
 ### 本地仓库管理
 
-```
-//已有项目加入Git管理
+```bash
+# 已有项目加入Git管理
 cd <项目目录>
 git init
 
-//新增项目并使用Git管理
+# 新增项目并使用Git管理
 git init <your_project>
 
-//检查修改内容
+# 检查修改内容
 git status
 
-//将文件加入Git版本控制(工作目录 -> 暂存区)
+# 将文件加入Git版本控制(工作目录 -> 暂存区)
 git add [文件名] [-u : 管理全部修改]
 
-//提交暂存区更新内容(暂存区 -> 版本库)
+# 提交暂存区更新内容(暂存区 -> 版本库)
 git commit -m '提交原因'
 ```
 
 ### 远程仓库管理
 
-```
-// 密钥位置 C:\Users\ibm\.ssh\*
-// 默认公钥文件名称 id_rsa.pub (需在github添加公钥)
-// 创建ssh-keygen(公私钥对)
+```bash
+# 密钥位置 C:\Users\ibm\.ssh\*
+# 默认公钥文件名称 id_rsa.pub (需在github添加公钥)
+# 创建ssh-keygen(公私钥对)
 ssh-keygen -C 'your_email'
 
-// 将本地仓库和远程仓库关联
+# 将本地仓库和远程仓库关联
 git remote add origin <*.git>
 
-// 使用本地引用更新远程引用，同时发送完成给定引用所需的对象
+# 使用本地引用更新远程引用，同时发送完成给定引用所需的对象
 git push [远程主机名: 通常origin] [-u : 指定默认主机(以后origin可省)]
 
-// 将远程存储库中的更改合并到当前分支中
+# 将远程存储库中的更改合并到当前分支中
 git pull [远程主机名] [远程分支名]
 
-// 建立追踪关系(如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名)
-// 如果当前分支只有一个追踪分支，连远程主机名都可以省略。
+# 建立追踪关系(如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名)
+# 如果当前分支只有一个追踪分支，连远程主机名都可以省略。
 git branch --set-upstream [本地分支名] origin/[远程分支名]
 ```
 
 ### 分支管理
 
-```
-// 拉去远程分支信息
+```bash
+# 拉去远程分支信息
 git fetch
 
-// 创建分支
+# 创建分支
 git branch <branchName>
 
-// 使用远程分支创建本地对应分支
+# 使用远程分支创建本地对应分支
 git checkout -b <branchName> origin/<originBranchName>
 
-// 切换分支
+# 切换分支
 git switch <branchName>
 
-// 创建并切换分支
+# 创建并切换分支
 git switch -c <branchName>
 
-// 查看分支
+# 查看分支
 git branch
 
-// 合并指定分支到当前分支
+# 合并指定分支到当前分支
 git merge <branchName>
 
-// 删除分支
+# 删除分支
 git branch -d <branchName>
 ```
 
 ### 查看 commit 历史
 
-```
+```bash
 git log [--oneline : 单行简洁] [--all : 查看所有分支] [-n<number> : 查看最近number次提交] [--graph : 分支演化]
 
-//打开可视化 git log 查看器
+# 打开可视化 git log 查看器
 gitk
 
-//常用git log 命令 设置别名
-//查看自己的提交(简洁描述)
+# 常用git log 命令 设置别名
+# 查看自己的提交(简洁描述)
 git config --global alias.lm  "log --no-merges --color --date=format:'%Y-%m-%d %H:%M:%S' --author='your_name' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-//查看自己的提交(展示修改的文件概览)
+# 查看自己的提交(展示修改的文件概览)
 git config --global alias.lms  "log --no-merges --color --stat --date=format:'%Y-%m-%d %H:%M:%S' --author='your_name' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-//查看提交(简洁描述)
-//git config --global alias.ls "log --no-merges --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
+# 查看提交(简洁描述)
+git config --global alias.ls "log --no-merges --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-//查看提交(展示修改的文件概览)
+# 查看提交(展示修改的文件概览)
 git config --global alias.lss "log --no-merges --color --stat --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
 
 ### 比较文件差异
 
-```
-// 工作区和暂存区
+```bash
+# 工作区和暂存区
 git diff [filename : 指定文件]
 
-// 暂存区和 GIT 仓库
+# 暂存区和 GIT 仓库
 git diff --cached [commit : 指定GIT仓库的提交版本] [filename : 指定文件]
 
-// 工作目录和 GIT 仓库
+# 工作目录和 GIT 仓库
 git diff [commit : 指定GIT仓库的提交版本] [filename : 指定文件]
 
-// Commit 和 Commit
+# Commit 和 Commit
 git diff <commit_id> <commit_id>
 
-// 以上命令可以不指定 <filename>，则对全部文件操作。commit 可以设置为HEAD指针。
-```
-
-### 丢弃暂存区修改
-
-```
-git reset HEAD
+# 以上命令可以不指定 <filename>，则对全部文件操作。commit 可以设置为HEAD指针。
 ```
 
 ### 丢弃工作区修改
 
-```
-// 省略commit，则会用暂存区的文件覆盖工作区中的文件
+```bash
+# 省略commit，则会用暂存区的文件覆盖工作区中的文件
 git checkout [commit : 指定提交版本覆盖暂存区和工作区的内容] -- [files : 指定需要覆盖的文件]
+# 使用暂存区覆盖工作区
+git checkout -- .
+# 使用 HEAD 覆盖工作区和暂存区
+git checkout HEAD -- .
+```
+
+### 丢弃暂存区修改
+
+```bash
+git reset HEAD
 ```
 
 ### 丢弃未提交的 commit
 
-```
-// 找到要将 HEAD 指针移动到的 commit 的 Id
+```bash
+# 找到要将 HEAD 指针移动到的 commit 的 Id
 git reset --hard <commit_id>
+```
+
+### 丢弃已提交的 commit
+
+```bash
+git revert -n <commit>
+git commit -m <message>
 ```
 
 ### 暂存工作区修改去干其它重要的事情
 
-```
-// 该命令保存本地修改，并恢复工作目录以匹配HEAD提交
+```bash
+# 该命令保存本地修改，并恢复工作目录以匹配HEAD提交
 git stash
 
-// 查看已有存储
+# 查看已有存储
 git stash list
 
-// 查看存储stash的文件变化
+# 查看存储stash的文件变化
 git stash show
 
-// 取回存储
+# 取回存储
 git stash pop [stash_name]
 ```
 
 ### 忽略已被 git 管理的文件
 
-```
-// 从git管理中删除指定文件
+```bash
+# 从git管理中删除指定文件
 git rm --cached <文件>
-// 更新 .gitignore 后提交
+# 更新 .gitignore 后提交
 ```
 
 ### 配置相关
 
 #### 修改 HTTP 传输请求数据时最大的缓存字节数
 
-```
+```bash
 git config --global http.postBuffer 524288000
 ```
 
 #### 远程 HTTPS 验证时记住密码
 
-```
+```bash
 git config --global credential.helper store
 ```
 
 #### 配置全局 git 编码
 
-```
-// 解决中文乱码情况
+```bash
+# 解决中文乱码情况
 git config --global gui.encoding utf-8
 ```
 
 #### 使用代理提高 git 速度
 
-```
+```bash
 git config --global http.proxy http://127.0.0.1:1080
 git config --global https.proxy http://127.0.0.1:1080
 ```
 
 ### 其它命令(基本没有应用场景)
 
-```
+```bash
 //git对象查看
 git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
 ```
@@ -299,17 +330,16 @@ git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
    ```
 
 7. 测试
-   ```
+   ```bash
    ssh -T git@github.com          #测试OrionPax19970905
    ssh -T git@github.zqt.com      #测试ZQianlvT
    ```
 
 ### 在 GitHub 上搜索感兴趣的项目
-[基础语法](https://help.github.com/articles/understanding-the-search-syntax/)
+[基础语法](https://help.github.com/articles/understanding-the-search-syntax/)  
 [高级搜索页面](https://github.com/search/advanced)
 
 ## 参考
-
 > [SSH Key 管理](https://www.jianshu.com/p/a3b4f61d4747)  
 > [廖雪峰的 Git 教程](https://www.liaoxuefeng.com/wiki/896043488029600)  
 > [图解 Git 工作区、暂存区、版本库之间的关系](https://segmentfault.com/a/1190000017053187)
