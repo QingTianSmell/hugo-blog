@@ -207,9 +207,10 @@ git checkout -- .
 git checkout HEAD -- .
 ```
 
-### 丢弃暂存区修改
+### 退回暂存区修改
 
 ```bash
+# 将暂存区内容退回到工作区
 git reset HEAD
 ```
 
@@ -218,6 +219,8 @@ git reset HEAD
 ```bash
 # 找到要将 HEAD 指针移动到的 commit 的 Id
 git reset --hard <commit_id>
+# 将头指针指向上一次的 commit，并覆盖工作区和暂存区
+git reset --hard HEAD~1
 ```
 
 ### 丢弃已提交的 commit
