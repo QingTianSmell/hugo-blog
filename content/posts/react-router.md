@@ -1,7 +1,7 @@
 ---
 title: "React Router 学习笔记"
 date: 2019-07-23T22:16:45+08:00
-tags: ["学习笔记", "React Router"]
+tags: ["学习笔记", "前端"]
 ---
 
 # 简介

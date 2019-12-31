@@ -1,7 +1,7 @@
 ---
 title: "React 和直接修改 DOM 的前端框架的兼容性问题"
 date: 2019-07-23T22:07:02+08:00
-tags: ["踩坑记录", "React"]
+tags: ["踩坑记录", "前端"]
 ---
 
 #### React 和 JQuery UI Sortable

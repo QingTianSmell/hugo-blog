@@ -1,7 +1,7 @@
 ---
 title: "Spring Boot 学习笔记"
 date: 2019-11-22T08:35:06+08:00
-tags: ["后端", "学习笔记", "Spring Boot"]
+tags: ["后端", "学习笔记"]
 ---
 
 ## What

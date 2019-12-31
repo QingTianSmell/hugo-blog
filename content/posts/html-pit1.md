@@ -1,7 +1,7 @@
 ---
 title: "DIV 添加onblur事件"
 date: 2019-07-17T22:47:36+08:00
-tags: ["踩坑记录","HTML","IE"]
+tags: ["踩坑记录", "前端"]
 ---
 
 ### div添加onblur事件

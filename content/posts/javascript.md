@@ -1,7 +1,7 @@
 ---
 title: "JavaScript 学习笔记"
 date: 2019-07-18T22:04:47+08:00
-tags: ["学习笔记", "JavaScript"]
+tags: ["学习笔记", "前端"]
 ---
 
 ## 简单使用

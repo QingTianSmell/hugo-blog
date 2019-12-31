@@ -1,7 +1,7 @@
 ---
 title: "WIN10 终端解决方案"
 date: 2019-10-10T18:05:34+08:00
-tags: ["环境搭建", "WSL", "Terminus", "Oh My Zsh"]
+tags: ["工具"]
 ---
 
 ## 前言

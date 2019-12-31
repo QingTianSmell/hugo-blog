@@ -1,7 +1,7 @@
 ---
 title: "Docker 学习笔记"
 date: 2019-11-26T08:42:30+08:00
-tags: ["运维", "Docker"]
+tags: ["学习笔记", "运维"]
 ---
 
 ## What
