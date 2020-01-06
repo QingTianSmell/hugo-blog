@@ -20,6 +20,15 @@ WIN10 命令行工具最终选择了 WSL + Ubuntu + Terinus + Oh My Zsh。在 Hy
 8. 设置 zsh 为默认 shell ，`chsh -s $(which zsh)`
 9. 修改 zsh 的[主题](https://github.com/robbyrussell/oh-my-zsh/wiki/themes)并添加需要的插件
 
+## 踩到的坑
+### WSL 的 PATH 会包含 WIN10 的 PATH 问题
+```
+// 两个系统里存在的同名的命令就会有问题
+sudo vim ~/.bashrc
+// 追加
+PATH=$(/usr/bin/printenv PATH | /usr/bin/perl -ne 'print join(":", grep { !/\/mnt\/[a-z]/ } split(/:/));')
+```
+
 ## 参考
 
 > [打造 Windows 10 下最强终端方案：WSL + Terminus + Oh My Zsh + The Fuck](https://p3terx.com/archives/the-strongest-terminal-solution-under-windows-10.html#E5AE89E8A385WSL)  
