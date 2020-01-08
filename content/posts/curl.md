@@ -16,18 +16,21 @@ curl是一种命令行工具，作用是发出网络请求，然后得到和提�
 ## How
 ### 常用参数
 ```
--b/--cookie <name=string/file>                                      # cookie字符串或文件读取位置
--c/--cookie-jar <file>                                              # 操作结束后把cookie写入到这个文件中
--d/--data <data>                                                    # HTTP POST方式传送数据
---data-urlencode <name=data/name@filename> HTTP POST 数据 url 编码  # HTTP POST 数据 url 编码
--e/--referer                                                        # 来源网址
--H/--header <line>                                                  # 自定义头信息传递给服务器
--i/--include                                                        # 输出时包括protocol头信息
--I/--head                                                           # 只显示请求头信息
--L/--location                                                       # 跟随重定向
--o/--output <path>                                                  # 把输出写到该文件中
--O/--remote-name                                                    # 把输出写到该文件中，保留远程文件的文件名
--s/--silent                                                         # 静默模式。不输出任何东西
+-b/--cookie <name=string/file>              # cookie字符串或文件读取位置
+-c/--cookie-jar <file>                      # 操作结束后把cookie写入到这个文件中
+-d/--data <data>                            # HTTP POST方式传送数据
+--data-urlencode <name=data/name@filename>  # HTTP POST 数据 url 编码
+-e/--referer                                # 来源网址
+-H/--header <line>                          # 自定义头信息传递给服务器
+-i/--include                                # 输出时包括protocol头信息
+-I/--head                                   # 只显示请求头信息
+-L/--location                               # 跟随重定向
+-o/--output <path>                          # 把输出写到该文件中
+-O/--remote-name                            # 把输出写到该文件中，保留远程文件的文件名
+-s/--silent                                 # 静默模式。不输出任何东西
+-X <method>                                 # 修改 request 请求的方法类型
+-x/--proxy <host[:port]>                    # 使用 HTTP 代理
+--socks5 <host[:port]>                      # 使用 socks5 代理
 ```
 
 ### 参考

@@ -117,6 +117,9 @@ ssh-keygen -C 'your_email'
 # 将本地仓库和远程仓库关联
 git remote add origin <*.git>
 
+# 克隆远程仓库
+git clone [--depth=number] <仓库地址>
+
 # 使用本地引用更新远程引用，同时发送完成给定引用所需的对象
 git push [远程主机名: 通常origin] [-u : 指定默认主机(以后origin可省)]
 
