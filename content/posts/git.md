@@ -343,7 +343,7 @@ git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
 
 ### 在 GitHub 上搜索感兴趣的项目
 [基础语法](https://help.github.com/articles/understanding-the-search-syntax/)  
-[高级搜索页面](https://github.com/search/advanced)
+[高级搜索页面](https://help.github.com/en/github/searching-for-information-on-github/searching-for-repositories)
 
 ## 参考
 > [SSH Key 管理](https://www.jianshu.com/p/a3b4f61d4747)  
