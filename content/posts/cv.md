@@ -45,7 +45,7 @@ date: 2020-02-22T21:28:40+08:00
 
 # 技能清单
 
-- WEB 基础 ：JAVA / MySQL / JavaScript / HTML / CSS
+- WEB 基础: JAVA / MySQL / JavaScript / HTML / CSS
 - 后端框架：Spring / Hibernate / Spring MVC / Spring Boot / Redis
 - 后端工具：Maven / Hutool / POI / Quartz / Log4j2 / Swagger2
 - 前端框架：JQuery / React / Redux / React Router / Node.js / TypeScript / Taro / Ant Design
