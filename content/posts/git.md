@@ -1,26 +1,38 @@
 ---
-title: "Git 学习笔记"
+title: 'Git 学习笔记'
 date: 2019-08-29T20:03:23+08:00
-tags: ["通用", "学习笔记"]
+tags: ['通用', '学习笔记']
 ---
 
 ## What
+
 ### 定义
+
 一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
 
 ### Git 的三种对象
 
-#### commit
-
-提交对象是用来保存提交的作者、时间、说明这些信息的
-
-#### tree
-
-树对象是文件目录树，记录了文件获取目录的名称、类型、模式信息。
-
-#### blob
-
-数据对象是文件的内容，不包括文件名、权限等信息。Git 会根据文件内容计算出一个 hash 值，以 hash 值作为文件索引存储在 Git 文件系统中。由于相同的文件内容的 hash 值是一样的，因此 Git 将同样内容的文件只会存储一次。
+- commit 对象
+  - 用于表示一个提交
+  - commit 对象之间会组织成一棵树的结构
+  - 每一次提交都会产生一个 commit 对象
+  - 除了第一次提交产生的 commit 对象，其它的 commit 对象都会有父亲 commit 对象
+  - 如果只是提交操作，则父亲节点只有 1 个
+  - 如果是 merge 操作，则父亲节点会有 2 个
+  - commit 对象包含的信息有
+    ```
+    parent，父亲提交对象
+    tree, 根目录树对象
+    author，作者
+    committer，提交者
+    ```
+- tree 对象
+  - 用于表示一个目录
+- blob 对象
+  - 用于表示一个文件
+- tree 和 blob 对象可以看成是 git 内部采用的文件系统对象
+- 这些对象都保存在.git/objects/目录下，每一个对象都会生成 1 个 40 位的哈希值，前 2 位作为文件夹，后 38 位作为文件名
+- 不同名，相同内容的文件，其哈希值相同，其 blob 对象也是共用的
 
 ### 工作区、暂存区、版本库
 
@@ -38,32 +50,21 @@ tags: ["通用", "学习笔记"]
 4. 如果工作区的文件改乱了（包括了误删、误改），想回到上一版本，就可以使用 git checkout 命令将版本库中的文件检出到工作区将本次更改 discard(覆盖)掉。
 
 ## Why
-### 解决的问题
-项目的版本控制问题
 
-### 没有此技术之前怎么做
-文件复制，人工版本号
-
-### Git和SVN有什么区别？
+### Git 和 SVN 有什么区别？
 
 | GIT          | SVN          |
-|--------------|--------------|
+| ------------ | ------------ |
 | 分布式       | 集中式       |
 | 可以离线提交 | 只能在线提交 |
 
 ### 什么是 Git 中的“裸存储库”？
+
 Git 中的 “裸” 存储库只包含版本控制信息而没有工作文件（没有工作树）。也就是只有 .git 文件夹。
 
 ### git pull 和 git fetch 有什么区别？
+
 git pull = git fetch + git merge
-
-### commit 对象包含什么？
-- 一组文件，表示给定时间点的项目状态
-- 引用父提交对象
-- SHAI 名称，一个40个字符的字符串，提交对象的唯一标识
-
-## Where
-所有需要用到版本控制的项目
 
 ## How
 
@@ -164,6 +165,9 @@ git branch -d <branchName>
 ```bash
 git log [--oneline : 单行简洁] [--all : 查看所有分支] [-n<number> : 查看最近number次提交] [--graph : 分支演化]
 
+# 查看参考日志
+git reflog
+
 # 打开可视化 git log 查看器
 gitk
 
@@ -231,6 +235,15 @@ git reset --hard HEAD~1
 ```bash
 git revert -n <commit>
 git commit -m <message>
+```
+
+### 恢复误操作丢弃的 commit
+
+```bash
+# 查看参考日志找到丢弃的 commit 的 id
+git reflog
+# 将头指针指向对应 commit
+git reset --hard <commit_id>
 ```
 
 ### 暂存工作区修改去干其它重要的事情
@@ -342,10 +355,12 @@ git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
    ```
 
 ### 在 GitHub 上搜索感兴趣的项目
+
 [基础语法](https://help.github.com/articles/understanding-the-search-syntax/)  
 [高级搜索页面](https://help.github.com/en/github/searching-for-information-on-github/searching-for-repositories)
 
 ## 参考
+
 > [SSH Key 管理](https://www.jianshu.com/p/a3b4f61d4747)  
 > [廖雪峰的 Git 教程](https://www.liaoxuefeng.com/wiki/896043488029600)  
 > [图解 Git 工作区、暂存区、版本库之间的关系](https://segmentfault.com/a/1190000017053187)
