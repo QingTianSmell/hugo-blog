@@ -19,7 +19,7 @@ tags: ["工具"]
 	* [安装](#安装)
 	* [常用命令](#常用命令)
 	* [注意](#注意)
-* [Powerline fonts](#powerline-fonts)
+* [Powerline fonts / Nerd fonts](#powerline-fonts-/-nerd-fonts)
 	* [安装](#安装)
 	* [参考](#参考)
 
@@ -85,23 +85,22 @@ key_bindings:
 
 目前还有不少问题，有问题后先执行`omf doctor` 自检，按提示走。检查不到问题的就上 Github 瞧瞧。
 
-## Powerline fonts
+## Powerline fonts / Nerd fonts
 
 ### 安装
 
-好看的字体也是必不可少的，有的主题是必须使用 Powerline 字体才能正常显示的，执行以下命令安装：
+好看的字体也是必不可少的，有的主题是必须使用 Powerline 字体或者 Nerd 字体才能正常显示的，执行以下命令：
 
-```
-# clone
-git clone https://github.com/powerline/fonts.git --depth=1
-# install
-cd fonts
-./install.sh
-# clean-up a bit
-cd ..
-rm -rf fonts
+```bash
+# 为 brew 添加字体库
+brew tap homebrew/cask-fonts
+# 搜索想用的字体
+brew search <name>
+# 安装字体
+brew cask install <name>
 ```
 
 ### 参考
 
-> [Powerline fonts](https://github.com/powerline/fonts)
+> [Powerline fonts](https://github.com/powerline/fonts)  
+> [Nerd fonts](https://github.com/ryanoasis/nerd-fonts#patched-fonts)
