@@ -38,7 +38,8 @@ tags: ["工具"]
 > [Ranger Wiki](https://github.com/ranger/ranger/wiki)  
 > [Custom Commands](https://github.com/ranger/ranger/wiki/Custom-Commands)  
 > [Plugins](https://github.com/ranger/ranger/wiki/Plugins)  
-> [Useful Keybindings](https://github.com/ranger/ranger/wiki/Keybindings)
+> [Useful Keybindings](https://github.com/ranger/ranger/wiki/Keybindings)  
+> [My Configuration](https://github.com/OrionPax19970905/.config/tree/master/ranger)
 
 ## 常用命令
 
