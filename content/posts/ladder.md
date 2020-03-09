@@ -1,7 +1,6 @@
 ---
 title: "科学上网"
 date: 2019-09-23T11:03:15+08:00
-draft: true
 tags: ["工具"]
 ---
 
@@ -9,18 +8,22 @@ tags: ["工具"]
 
 ### 服务器
 
-上[搬瓦工](https://bwh8.net)或者 [Vultr](https://my.vultr.com/) 买个服务器，并且能用 SSH 连接到服务器输入命令(推荐使用 XShell)。
+上[搬瓦工](https://bwh8.net) 或者 [Vultr](https://my.vultr.com/) 买个服务器，并且能用 SSH 连接到服务器输入命令（推荐使用 XShell)。
 
 ### 客户端
 
 - [shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows)
 - [v2rayN](https://github.com/2dust/v2rayN)
+- [V2rayX](https://github.com/Cenmrev/V2RayX)
+- [Polipo](https://wiki.archlinux.org/index.php/Polipo)
 
 ### 其他
 
 一键搭建脚本如果挂了，就去 Github 自己再找个。
 
 ## SSR
+
+开启 ss 或者 ssr 代理
 
 1. 下载一键搭建脚本 `git clone -b master https://github.com/flyzy2005/ss-fly`.
 2. 运行 SSR 搭建脚本 `ss-fly/ss-fly.sh -ssr`.
@@ -45,9 +48,15 @@ tags: ["工具"]
 
 ## V2Ray
 
-### 参考
+开启 v2ray 代理
 
 1. 下载一键搭建脚本 `bash <(curl -s -L https://git.io/v2ray.sh)`.
 2. 输入对应参数
 
+### 参考
+
 > [V2Ray 搭建详细图文教程](https://github.com/233boy/v2ray/wiki/V2Ray搭建详细图文教程)
+
+## Polipo
+
+开启命令行代理转发，可以将 socks5 代理转发为 http 代理供 curl 命令行工具使用。如果你也使用 V2rayX 作为客户端的话，就可以不用了，V2rayX 自带 http 代理。
