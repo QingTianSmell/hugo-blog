@@ -1,5 +1,5 @@
 ---
-title: "Ranger"
+title: "Ranger 命令行下的文件管理器"
 date: 2020-03-07T11:47:44+08:00
 tags: ["工具"]
 ---
