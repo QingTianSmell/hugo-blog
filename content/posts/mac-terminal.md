@@ -4,7 +4,7 @@ date: 2020-03-04T22:55:25+08:00
 tags: ["工具"]
 ---
 
-<!-- vim-markdown-toc Marked -->
+<!-- vim-markdown-toc GitLab -->
 
 * [前言](#前言)
 * [Alacritty](#alacritty)
@@ -13,15 +13,15 @@ tags: ["工具"]
 	* [字体设置](#字体设置)
 * [Fish](#fish)
 	* [集成功能](#集成功能)
-	* [安装](#安装)
+	* [安装](#安装-1)
 	* [参考](#参考)
 * [Oh My Fish](#oh-my-fish)
-	* [安装](#安装)
+	* [安装](#安装-2)
 	* [常用命令](#常用命令)
 	* [注意](#注意)
-* [Powerline fonts / Nerd fonts](#powerline-fonts-/-nerd-fonts)
-	* [安装](#安装)
-	* [参考](#参考)
+* [Powerline fonts / Nerd fonts](#powerline-fonts-nerd-fonts)
+	* [安装](#安装-3)
+	* [参考](#参考-1)
 
 <!-- vim-markdown-toc -->
 

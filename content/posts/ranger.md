@@ -4,7 +4,7 @@ date: 2020-03-07T11:47:44+08:00
 tags: ["工具"]
 ---
 
-<!-- vim-markdown-toc Marked -->
+<!-- vim-markdown-toc GitLab -->
 
 * [简介](#简介)
 * [安装](#安装)

@@ -4,17 +4,33 @@ date: 2020-01-06T19:36:40+08:00
 tags: ["学习笔记", "后端", "运维"]
 ---
 
+<!-- vim-markdown-toc GitLab -->
+
+* [What](#what)
+* [Why](#why)
+* [Where](#where)
+* [How](#how)
+	* [常用参数](#常用参数)
+	* [参考](#参考)
+
+<!-- vim-markdown-toc -->
+
 ## What
-curl是一种命令行工具，作用是发出网络请求，然后得到和提取数据，显示在"标准输出"（stdout）上面。
+
+curl 是一种命令行工具，作用是发出网络请求，然后得到和提取数据，显示在"标准输出"（stdout）上面。
 
 ## Why
-能够快速的进行接口测试。那为什么不选择 Postman ？ Postman 启动太慢了，对于我测试接口来说有些重了。我也不会用到一些 Postman 的其他功能。另外的一点是 Postman 只要自定义的状态码大于 999 ，就会报错（没有相应的描述），我也没有找到解决方案就只能迁移了。还能装X何乐而不为呢。
+
+能够快速的进行接口测试。那为什么不选择 Postman ？ Postman 启动太慢了，对于我测试接口来说有些重了。我也不会用到一些 Postman 的其他功能。另外的一点是 Postman 只要自定义的状态码大于 999 ，就会报错（没有相应的描述），我也没有找到解决方案就只能迁移了。还能装 X 何乐而不为呢。
 
 ## Where
+
 接口测试，文件下载
 
 ## How
+
 ### 常用参数
+
 ```
 -b/--cookie <name=string/file>              # cookie字符串或文件读取位置
 -c/--cookie-jar <file>                      # 操作结束后把cookie写入到这个文件中
@@ -34,5 +50,6 @@ curl是一种命令行工具，作用是发出网络请求，然后得到和提�
 ```
 
 ### 参考
+
 [使用 cURL 代替 Postman](https://blog.wangmao.me/awesome-curl.html)  
-[curl网站开发指南](http://www.ruanyifeng.com/blog/2011/09/curl.html)
+[curl 网站开发指南](http://www.ruanyifeng.com/blog/2011/09/curl.html)
