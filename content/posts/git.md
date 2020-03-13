@@ -23,8 +23,10 @@ tags: ["通用", "学习笔记"]
 	* [分支管理](#分支管理)
 	* [查看 commit 历史](#查看-commit-历史)
 	* [比较文件差异](#比较文件差异)
+	* [退回已提交未推送的 commit](#退回已提交未推送的-commit)
+	* [从暂存区退回工作区修改](#从暂存区退回工作区修改)
 	* [丢弃工作区修改](#丢弃工作区修改)
-	* [退回暂存区修改](#退回暂存区修改)
+	* [丢弃工作区和暂存区的修改](#丢弃工作区和暂存区的修改)
 	* [丢弃未提交的 commit](#丢弃未提交的-commit)
 	* [丢弃已提交的 commit](#丢弃已提交的-commit)
 	* [恢复误操作丢弃的 commit](#恢复误操作丢弃的-commit)
@@ -74,6 +76,8 @@ tags: ["通用", "学习笔记"]
 - 不同名，相同内容的文件，其哈希值相同，其 blob 对象也是共用的
 
 ### 工作区、暂存区、版本库
+
+[图例参考](https://www.processon.com/view/link/5e6ad76de4b0ee15dc05f18d)：
 
 ![Git 命令图解](/git1.jpg)
 
@@ -166,7 +170,7 @@ git commit -m '提交原因'
 ```bash
 # 密钥位置 C:\Users\ibm\.ssh\*
 # 默认公钥文件名称 id_rsa.pub (需在github添加公钥)
-# 创建ssh-keygen(公私钥对)
+# 没有使用过 ssh 的需要创建ssh-keygen(公私钥对)
 ssh-keygen -C 'your_email'
 
 # 将本地仓库和远程仓库关联
@@ -195,17 +199,17 @@ git fetch
 # 创建分支
 git branch <branchName>
 
+# 创建并切换分支
+git switch -c <branchName>
+
 # 使用远程分支创建本地对应分支
-git checkout -b <branchName> origin/<originBranchName>
+git switch -c <branchName> origin/<originBranchName>
 
 # 切换分支
 git switch <branchName>
 
-# 创建并切换分支
-git switch -c <branchName>
-
 # 查看分支
-git branch
+git branch [-a: 查看远程]
 
 # 合并指定分支到当前分支
 git merge <branchName>
@@ -257,22 +261,38 @@ git diff <commit_id> <commit_id>
 # 以上命令可以不指定 <filename>，则对全部文件操作。commit 可以设置为HEAD指针。
 ```
 
+### 退回已提交未推送的 commit
+
+```bash
+# 记下当前 commit 的 id
+# HEAD 指向上一次提交
+git reset --hard HEAD~1
+# 将相应的 commit 的内容覆盖回暂存区
+git checkout <commit> -- .
+```
+
+### 从暂存区退回工作区修改
+
+```bash
+git restore --staged <files>
+# or
+git reset HEAD
+```
+
 ### 丢弃工作区修改
 
 ```bash
-# 省略commit，则会用暂存区的文件覆盖工作区中的文件
-git checkout [commit : 指定提交版本覆盖暂存区和工作区的内容] -- [files : 指定需要覆盖的文件]
-# 使用暂存区覆盖工作区
+git restore <files>
+# or
 git checkout -- .
-# 使用 HEAD 覆盖工作区和暂存区
-git checkout HEAD -- .
 ```
 
-### 退回暂存区修改
+### 丢弃工作区和暂存区的修改
 
 ```bash
-# 将暂存区内容退回到工作区
-git reset HEAD
+git checkout HEAD -- .
+# or
+git reset --hard HEAD
 ```
 
 ### 丢弃未提交的 commit
@@ -417,4 +437,4 @@ git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
 
 > [SSH Key 管理](https://www.jianshu.com/p/a3b4f61d4747)  
 > [廖雪峰的 Git 教程](https://www.liaoxuefeng.com/wiki/896043488029600)  
-> [图解 Git 工作区、暂存区、版本库之间的关系](https://segmentfault.com/a/1190000017053187) > [图解 Git 工作区、暂存区、版本库之间的关系](https://segmentfault.com/a/1190000017053187) > [图解 Git 工作区、暂存区、版本库之间的关系](https://segmentfault.com/a/1190000017053187)
+> [图解 Git 工作区、暂存区、版本库之间的关系](https://segmentfault.com/a/1190000017053187)
