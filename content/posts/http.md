@@ -1,7 +1,7 @@
 ---
-title: "HTTP"
+title: "HTTP 学习笔记"
 date: 2020-03-14T15:36:54+08:00
-tags: ["通用"]
+tags: ["通用","学习笔记"]
 ---
 
 <!-- vim-markdown-toc GitLab -->
