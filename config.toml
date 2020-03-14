@@ -36,16 +36,6 @@ disqusShortname = ""                 # your discuss shortname
   weight = 30
   identifier = "tags"
   url = "/tags/"
-[[menu.main]]
-  name = "技能树"
-  weight = 40
-  identifier = "skills"
-  url = "/skills.png"
-[[menu.main]]
-  name = "工具栈"
-  weight = 50
-  identifier = "tools"
-  url = "/Tools.png"
 
 [params]
   footerSlogan = "不能记住过去的人，被判重复过去。"                                          # site's footer slogan  # 网站页脚标语

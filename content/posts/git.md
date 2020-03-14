@@ -79,7 +79,7 @@ tags: ["通用", "学习笔记"]
 
 [图例参考](https://www.processon.com/view/link/5e6ad76de4b0ee15dc05f18d)：
 
-![Git 命令图解](/git1.jpg)
+![Git 命令图解](/img/git1.jpg)
 
 - 工作区：用来编辑保存项目文件的地方，也是用户能直接操作到的地方。
 - 暂存区：保存了下次将提交的文件列表信息，一般在 Git 仓库目录中，是一个叫 index 的文件，通常多数说法还是叫暂存区域。
