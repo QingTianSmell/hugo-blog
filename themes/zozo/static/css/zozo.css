@@ -693,7 +693,7 @@ a.back_to_top:hover span {
   text-align: left;
   max-width: 500px;
   padding: 10px;
-  margin-left: -400px;
+  margin-left: -300px;
 }
 .post-toc .post-toc-title {
   margin: 0 10px;
@@ -745,3 +745,6 @@ a.back_to_top:hover span {
   display: block;
 }
 
+.language-sql span {
+	background-color: unset !important;
+}
