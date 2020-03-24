@@ -26,6 +26,7 @@ tags: ["学习笔记", "前端"]
       * [http](#http)
       * [dio](#dio)
     * [JSON 解析](#json-解析)
+    * [数据库](#数据库)
   * [State 的生命周期](#state-的生命周期)
   * [常用基础控件](#常用基础控件)
     * [Text](#text)
@@ -53,7 +54,13 @@ tags: ["学习笔记", "前端"]
     * [命名路由](#命名路由)
     * [页面参数](#页面参数)
   * [APP 的事件监听](#app-的事件监听)
+  * [本地存储](#本地存储)
+    * [文件](#文件)
+    * [SharedPreferences](#sharedpreferences)
 * [Why](#why)
+  * [为什么需要做状态管理，怎么做？](#为什么需要做状态管理怎么做)
+    * [Consumer](#consumer)
+    * [多状态的资源封装](#多状态的资源封装)
 * [How](#how)
   * [如何进行开发环境搭建](#如何进行开发环境搭建)
     * [安装 Flutter](#安装-flutter)
@@ -551,6 +558,10 @@ loadStudent() {
 //用compute函数将json解析放到新Isolate
 compute(parseStudent,jsonString).then((student)=>print(student.teacher.name));
 ```
+
+#### 数据库
+
+我们通常会使用 SQLite 数据库，除了基础的数据库读写操作之外，sqlite 还提供了更新、删除以及事务等高级特性，这与原生 Android、iOS 上的 SQLite 或是 MySQL 并无不同，因此这里就不再赘述了。你可以参考 sqflite 插件的[API 文档](https://pub.dev/documentation/sqflite/latest/)，或是查阅[SQLite 教程](http://www.sqlitetutorial.net/)了解具体的使用方法。
 
 ### State 的生命周期
 
@@ -1243,7 +1254,244 @@ class _AppLifecycleReactorState extends State<AppLifecycleReactor> with WidgetsB
 }
 ```
 
+### 本地存储
+
+数据持久化的应用场景有很多。比如，用户的账号登录信息需要保存，用于每次与 Web 服务验证身份；又比如，下载后的图片需要缓存，避免每次都要重新加载，浪费用户流量。
+
+#### 文件
+
+文件是存储在某种介质（比如磁盘）上指定路径的、具有文件名的一组有序信息的集合。从其定义看，要想以文件的方式实现数据持久化，我们首先需要确定一件事儿：数据放在哪儿？这，就意味着要定义文件的存储路径。
+
+Flutter 提供了两种文件存储的目录，即临时（Temporary）目录与文档（Documents）目录：
+
+- 临时目录是操作系统可以随时清除的目录，通常被用来存放一些不重要的临时缓存数据。这个目录在 iOS 上对应着 NSTemporaryDirectory 返回的值，而在 Android 上则对应着 getCacheDir 返回的值。
+- 文档目录则是只有在删除应用程序时才会被清除的目录，通常被用来存放应用产生的重要数据文件。在 iOS 上，这个目录对应着 NSDocumentDirectory，而在 Android 上则对应着 AppData 目录。
+
+```
+//创建文件目录
+Future<File> get _localFile async {
+  final directory = await getApplicationDocumentsDirectory();
+  final path = directory.path;
+  return File('$path/content.txt');
+}
+//将字符串写入文件
+Future<File> writeContent(String content) async {
+  final file = await _localFile;
+  return file.writeAsString(content);
+}
+//从文件读出字符串
+Future<String> readContent() async {
+  try {
+    final file = await _localFile;
+    String contents = await file.readAsString();
+    return contents;
+  } catch (e) {
+    return "";
+  }
+}
+```
+
+有了文件读写函数，我们就可以在代码中对 content.txt 这个文件进行读写操作了。
+
+#### SharedPreferences
+
+文件比较适合大量的、有序的数据持久化，如果我们只是需要缓存少量的键值对信息（比如记录用户是否阅读了公告，或是简单的计数），则可以使用 SharedPreferences。
+
+SharedPreferences 会以原生平台相关的机制，为简单的键值对数据提供持久化存储，即在 iOS 上使用 NSUserDefaults，在 Android 使用 SharedPreferences。
+
+```
+//读取SharedPreferences中key为counter的值
+Future<int>_loadCounter() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  int  counter = (prefs.getInt('counter') ?? 0);
+  return counter;
+}
+
+//递增写入SharedPreferences中key为counter的值
+Future<void>_incrementCounter() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+    int counter = (prefs.getInt('counter') ?? 0) + 1;
+    prefs.setInt('counter', counter);
+}
+```
+
+在完成了计数器存取方法的封装后，我们就可以在代码中随时更新并持久化计数器数据了。可以看到，SharedPreferences 的使用方式非常简单方便。不过需要注意的是，以键值对的方式只能存储基本类型的数据，比如 int、double、bool 和 string。
+
 ## Why
+
+### 为什么需要做状态管理，怎么做？
+
+如果我们的应用足够简单，数据流动的方向和顺序是清晰的，我们只需要将数据映射成视图就可以了。作为声明式的框架，Flutter 可以自动处理数据到渲染的全过程，通常并不需要状态管理。
+
+但，随着产品需求迭代节奏加快，项目逐渐变得庞大时，我们往往就需要管理不同组件、不同页面之间共享的数据关系。当需要共享的数据关系达到几十上百个的时候，我们就很难保持清晰的数据流动方向和顺序了，导致应用内各种数据传递嵌套和回调满天飞。在这个时候，我们迫切需要一个解决方案，来帮助我们理清楚这些共享数据的关系，于是状态管理框架便应运而生。
+
+Flutter 在设计声明式 UI 上借鉴了不少 React 的设计思想，因此涌现了诸如 flutter_redux、flutter_mobx 、fish_redux 等基于前端设计理念的状态管理框架。但这些框架大都比较复杂，且需要对框架设计概念有一定理解，学习门槛相对较高。
+
+而源自 Flutter 官方的状态管理框架 Provider 则相对简单得多，不仅容易理解，而且框架的入侵性小，还可以方便地组合和控制 UI 刷新粒度。因此，在 Google I/O 2019 大会一经面世，Provider 就成为了官方推荐的状态管理方式之一。
+
+从名字就可以看出，Provider 是一个用来提供数据的框架。它是 InheritedWidget 的语法糖，提供了依赖注入的功能，允许在 Widget 树中更加灵活地处理和传递数据。
+
+那么，什么是依赖注入呢？通俗地说，依赖注入是一种可以让我们在需要时提取到所需资源的机制，即：预先将某种“资源”放到程序中某个我们都可以访问的位置，当需要使用这种“资源”时，直接去这个位置拿即可，而无需关心“资源”是谁放进去的。
+
+为了使用 Provider，我们需要解决以下 3 个问题：
+
+- 资源（即数据状态）如何封装？
+- 资源放在哪儿，才都能访问得到？
+- 具体使用时，如何取出资源？
+
+首先需要在 pubspec.yaml 文件中添加 Provider 的依赖
+
+```
+dependencies:
+  provider: 3.0.0+1  #provider依赖
+```
+
+```
+//定义需要共享的数据模型，通过混入ChangeNotifier管理听众
+class CounterModel with ChangeNotifier {
+  int _count = 0;
+  //读方法
+  int get counter => _count;
+  //写方法
+  void increment() {
+    _count++;
+    notifyListeners();//通知听众刷新
+  }
+}
+```
+
+资源已经封装完毕，接下来我们就需要考虑把它放到哪儿了。
+
+```
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+     //通过Provider组件封装数据资源
+    return ChangeNotifierProvider.value(
+        value: CounterModel(),//需要共享的数据资源
+        child: MaterialApp(
+          home: FirstPage(),
+        )
+    );
+  }
+}
+```
+
+最后，在注入数据资源完成之后，我们就可以在 FirstPage 和 SecondPage 这两个子 Widget 完成数据的读写操作了。
+
+关于读数据，与 InheritedWidget 一样，我们可以通过 Provider.of 方法来获取资源数据。而如果我们想写数据，则需要通过获取到的资源数据，调用其暴露的更新数据方法
+
+```
+//第一个页面，负责读数据
+class FirstPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //取出资源
+    final _counter = Provider.of<CounterModel>(context);
+    return Scaffold(
+      //展示资源中的数据
+      body: Text('Counter: ${_counter.counter}'),
+      //跳转到SecondPage
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => SecondPage()))
+      ));
+  }
+}
+
+//第二个页面，负责读写数据
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //取出资源
+    final _counter = Provider.of<CounterModel>(context);
+    return Scaffold(
+      //展示资源中的数据
+      body: Text('Counter: ${_counter.counter}'),
+      //用资源更新方法来设置按钮点击回调
+      floatingActionButton:FloatingActionButton(
+          onPressed: _counter.increment,
+          child: Icon(Icons.add),
+     ));
+  }
+}
+```
+
+#### Consumer
+
+通过上面的示例可以看到，使用 Provider.of 获取资源，可以得到资源暴露的数据的读写接口，在实现数据的共享和同步上还是比较简单的。但是，滥用 Provider.of 方法也有副作用，那就是当数据更新时，页面中其他的子 Widget 也会跟着一起刷新。
+
+那么，有没有办法能够在数据资源发生变化时，只刷新对资源存在依赖关系的 Widget，而其他 Widget 保持不变呢？
+
+Consumer 使用了 Builder 模式创建 UI，收到更新通知就会通过 builder 重新构建 Widget。
+
+```
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      //使用Consumer来封装counter的读取
+      body: Consumer<CounterModel>(
+        //builder函数可以直接获取到counter参数
+        builder: (context, CounterModel counter, _) => Text('Value: ${counter.counter}')),
+      //使用Consumer来封装increment的读取
+      floatingActionButton: Consumer<CounterModel>(
+        //builder函数可以直接获取到increment参数
+        builder: (context, CounterModel counter, child) => FloatingActionButton(
+          onPressed: counter.increment,
+          child: child,
+        ),
+        child: TestIcon(),
+      ),
+    );
+  }
+}
+```
+
+可以看到，Consumer 中的 builder 实际上就是真正刷新 UI 的函数，它接收 3 个参数，即 context、model 和 child。其中：context 是 Widget 的 build 方法传进来的 BuildContext，model 是我们需要的数据资源，而 child 则用来构建那些与数据资源无关的部分。在数据资源发生变更时，builder 会多次执行，但 child 不会重建。
+
+#### 多状态的资源封装
+
+多个数据状态与单个数据的封装并无不同，如果需要支持数据的读写，我们需要一个接一个地为每一个数据状态都封装一个单独的资源封装类；而如果数据是只读的，则可以直接传入原始的数据对象，从而省去资源封装的过程。
+
+在单状态的案例中，我们通过 Provider 的升级版 ChangeNotifierProvider 实现了可读写资源的注入，而如果我们想注入多个资源，则可以使用 Provider 的另一个升级版 MultiProvider，来实现多个 Provider 的组合注入。
+
+在下面的例子中，我们通过 MultiProvider 往 App 实例内注入了 double 和 CounterModel 这两个资源 Provider：
+
+```
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(providers: [
+      Provider.value(value: 30.0),//注入字体大小
+      ChangeNotifierProvider.value(value: CounterModel())//注入计数器实例
+    ],
+    child: MaterialApp(
+      home: FirstPage(),
+    ));
+  }
+}
+```
+
+使用 Provider.of 方式来获取资源。相较于单状态资源的获取来说，获取多个资源时，我们只需要依次读取每一个资源即可：
+
+```
+final _counter = Provider.of<CounterModel>(context);//获取计时器实例
+final textSize = Provider.of<double>(context);//获取字体大小
+```
+
+而如果以 Consumer 的方式来获取资源的话，我们只要使用 Consumer2 对象（这个对象提供了读取两个数据资源的能力），就可以一次性地获取字体大小与计数器实例这两个数据资源：
+
+```
+//使用Consumer2获取两个数据资源
+Consumer2<CounterModel,double>(
+  //builder函数以参数的形式提供了数据资源
+  builder: (context, CounterModel counter, double textSize, _) => Text(
+      'Value: ${counter.counter}',
+      style: TextStyle(fontSize: textSize))
+)
+```
+
+可以看到，Consumer2 与 Consumer 的使用方式基本一致，只不过是在 builder 方法中多了一个数据资源参数。事实上，如果你希望在子 Widget 中共享更多的数据，我们最多可以使用到 Consumer6，即共享 6 个数据资源。
 
 ## How
 
