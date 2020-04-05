@@ -7,11 +7,17 @@ draft: ["学习笔记", "后端"]
 <!-- vim-markdown-toc GitLab -->
 
 * [What](#what)
+* [Why](#why)
+  * [Spring 整合 Mybatis 时，Mybatis 的一级缓存为何“失效”?](#spring-整合-mybatis-时mybatis-的一级缓存为何失效)
 * [How](#how)
   * [Spring Boot 如何整合 Mybatis?](#spring-boot-如何整合-mybatis)
-  * [通过 xml 文件使用 Mybatis 框架。](#通过-xml-文件使用-mybatis-框架)
+  * [通过 xml 文件使用 Mybatis 框架](#通过-xml-文件使用-mybatis-框架)
     * [简单的增删改查](#简单的增删改查)
     * [集联查询](#集联查询)
+    * [懒加载](#懒加载)
+    * [缓存](#缓存)
+      * [一级缓存](#一级缓存)
+      * [二级缓存](#二级缓存)
   * [如何使用逆向工程？](#如何使用逆向工程)
 
 <!-- vim-markdown-toc -->
@@ -36,6 +42,77 @@ Mybatis 是一个数据持久层(ORM)框架。但是只完成了结果集到对�
 - 框架还是比较简陋，功能尚有缺失，虽然简化了数据绑定代码，但是整个底层数据库查询实际还是要自己写的，工作量也比较大，而且不太容易适应快速数据库修改。
 - 二级缓存机制不佳
 
+## Why
+
+### Spring 整合 Mybatis 时，Mybatis 的一级缓存为何“失效”?
+
+Spring 整合 Mybatis 时，只有在事务内部 Mybatis 的一级缓存才会生效这是为什么呢？首先我们要知道 Mybatis 的一级缓存生效的范围是 SqlSession。那么从结果来看应该是只有在事务的内部，查询方法才会使用同一 SqlSession，而没有事务的时候应该是创建了新的 SqlSssion，让我们看源码确认下。
+
+```java
+// Spring 在使用 SqlSession 对其进行了动态代理，其方法调用的拦截器就是 SqlSessionTemplate 的内部类 SqlSessionInterceptor
+private class SqlSessionInterceptor implements InvocationHandler {
+    private SqlSessionInterceptor() {
+    }
+
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        // 在执行方法时获取到 SqlSession
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession(SqlSessionTemplate.this.sqlSessionFactory, SqlSessionTemplate.this.executorType, SqlSessionTemplate.this.exceptionTranslator);
+
+        Object unwrapped;
+        try {
+            Object result = method.invoke(sqlSession, args);
+            if (!SqlSessionUtils.isSqlSessionTransactional(sqlSession, SqlSessionTemplate.this.sqlSessionFactory)) {
+                sqlSession.commit(true);
+            }
+
+            unwrapped = result;
+        } catch (Throwable var11) {
+            unwrapped = ExceptionUtil.unwrapThrowable(var11);
+            if (SqlSessionTemplate.this.exceptionTranslator != null && unwrapped instanceof PersistenceException) {
+                SqlSessionUtils.closeSqlSession(sqlSession, SqlSessionTemplate.this.sqlSessionFactory);
+                sqlSession = null;
+                Throwable translated = SqlSessionTemplate.this.exceptionTranslator.translateExceptionIfPossible((PersistenceException)unwrapped);
+                if (translated != null) {
+                    unwrapped = translated;
+                }
+            }
+
+            throw (Throwable)unwrapped;
+        } finally {
+            if (sqlSession != null) {
+                SqlSessionUtils.closeSqlSession(sqlSession, SqlSessionTemplate.this.sqlSessionFactory);
+            }
+
+        }
+
+        return unwrapped;
+    }
+}
+```
+
+```java
+// 让我们再来看下 getSqlSession 方法
+public static SqlSession getSqlSession(SqlSessionFactory sessionFactory, ExecutorType executorType, PersistenceExceptionTranslator exceptionTranslator) {
+    Assert.notNull(sessionFactory, "No SqlSessionFactory specified");
+    Assert.notNull(executorType, "No ExecutorType specified");
+    // 维护了一个 SqlSessionHolder 用来关联事务和 SqlSession
+    SqlSessionHolder holder = (SqlSessionHolder)TransactionSynchronizationManager.getResource(sessionFactory);
+    // 首先从 SqlSessionHolder 里取 SqlSession
+    SqlSession session = sessionHolder(executorType, holder);
+    if (session != null) {
+        return session;
+    } else {
+        // 没有当前事务关联的 SqlSession 就直接创建一个新的返回
+        LOGGER.debug(() -> {
+            return "Creating a new SqlSession";
+        });
+        session = sessionFactory.openSession(executorType);
+        registerSessionHolder(sessionFactory, executorType, exceptionTranslator, session);
+        return session;
+    }
+}
+```
+
 ## How
 
 ### Spring Boot 如何整合 Mybatis?
@@ -56,6 +133,9 @@ mybatis:
   type-aliases-package: com.orionpax.learn.mybatis.entity
   # Mapper 接口和 Mapper.xml 不在同一包下时，配置 Mapper.xml 的位置
   mybatis.mapper-locations=classpath:mapper/*Mapper.xml
+  configuration:
+    # 配置开启懒加载
+    lazy-loading-enabled: true
 ```
 
 ```
@@ -84,7 +164,7 @@ public class MybatisApplication {
 }
 ```
 
-### 通过 xml 文件使用 Mybatis 框架。
+### 通过 xml 文件使用 Mybatis 框架
 
 #### 简单的增删改查
 
@@ -275,6 +355,90 @@ public class Far {
     </select>
 </mapper>
 ```
+
+#### 懒加载
+
+首先确保在配置文件里开启了懒加载 `mybatis.configuration.lazy-loading-enabled: true`。
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orionpax.learn.mybatis.mapper.FarMapper">
+    <resultMap id="BaseResultMap" type="com.orionpax.learn.mybatis.entity.Far">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <resultMap id="FarResultMap" type="com.orionpax.learn.mybatis.entity.Far" extends="BaseResultMap">
+        # 把结果字段映射为另一个查询的结果集
+        # select 指定目标查询
+        # column 指定当前查询的某个结果字段为目标查询的参数
+        <association property="bar" javaType="com.orionpax.learn.mybatis.entity.Bar"
+                     select="com.orionpax.learn.mybatis.mapper.BarMapper.selectById" column="bar_id"/>
+    </resultMap>
+    # 懒加载查询，当前 sql 片段只是一个简单查询，当 resultMap 的懒加载字段被调用时，会根据配置调用另一查询
+    <select id="selectByIdLazy" parameterType="java.lang.Long" resultMap="FarResultMap">
+        select id, name, create_time, bar_id
+        from far
+        where id = #{id}
+    </select>
+    # 被另一个 Mapper 的懒加载查询调用
+    <select id="selectByBarId" parameterType="java.lang.Long" resultType="com.orionpax.learn.mybatis.entity.Far">
+        select id, name, create_time
+        from far
+        where bar_id = #{id}
+    </select>
+</mapper>
+```
+
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.orionpax.learn.mybatis.mapper.BarMapper">
+    <resultMap id="BaseResultMap" type="com.orionpax.learn.mybatis.entity.Bar">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <resultMap id="BarResultMap" type="com.orionpax.learn.mybatis.entity.Bar" extends="BaseResultMap">
+        # 把结果字段映射为另一个查询的结果集
+        # select 指定目标查询
+        # column 指定当前查询的某个结果字段为目标查询的参数
+        <collection property="fars" ofType="com.orionpax.learn.mybatis.entity.Far"
+                    select="com.orionpax.learn.mybatis.mapper.FarMapper.selectByBarId" column="id"/>
+    </resultMap>
+    # 懒加载查询，当前 sql 片段只是一个简单查询，当 resultMap 的懒加载字段被调用时，会根据配置调用另一查询
+    <select id="selectByIdLazy" parameterType="java.lang.Long" resultMap="BarResultMap">
+        select id, name, create_time
+        from bar
+        where id = #{id}
+    </select>
+    # 被另一个 Mapper 的懒加载查询调用
+    <select id="selectById" parameterType="java.lang.Long" resultType="com.orionpax.learn.mybatis.entity.Bar">
+        select id, name, create_time
+        from bar
+        where id = #{id}
+    </select>
+</mapper>
+```
+
+#### 缓存
+
+##### 一级缓存
+
+SqlSession 级别，默认开启，并且不能关闭。
+
+操作数据库时需要创建 SqlSession 对象，在对象中有⼀个 HashMap ⽤于存储缓存数据，不同的
+SqlSession 之间缓存数据区域是互不影响的。
+
+需要注意的是，如果 SqlSession 执⾏了 DML 操作（insert、update、delete），MyBatis 必须将缓存
+清空以保证数据的准确性。
+
+##### 二级缓存
+
+⼆级缓存是多个 SqlSession 共享的，其作⽤域是 Mapper 的同⼀个 namespace，不同的 SqlSession
+两次执⾏相同的 namespace 下的 SQL 语句，参数也相等，则第⼀次执⾏成功之后会将数据保存到⼆级
+缓存中，第⼆次可直接从⼆级缓存中取出数据。
 
 ### 如何使用逆向工程？
 
