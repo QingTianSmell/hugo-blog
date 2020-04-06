@@ -18,6 +18,7 @@ draft: ["学习笔记", "后端"]
     * [缓存](#缓存)
       * [一级缓存](#一级缓存)
       * [二级缓存](#二级缓存)
+    * [动态 Sql](#动态-sql)
   * [如何使用逆向工程？](#如何使用逆向工程)
 
 <!-- vim-markdown-toc -->
@@ -439,6 +440,192 @@ SqlSession 之间缓存数据区域是互不影响的。
 ⼆级缓存是多个 SqlSession 共享的，其作⽤域是 Mapper 的同⼀个 namespace，不同的 SqlSession
 两次执⾏相同的 namespace 下的 SQL 语句，参数也相等，则第⼀次执⾏成功之后会将数据保存到⼆级
 缓存中，第⼆次可直接从⼆级缓存中取出数据。
+
+Mybatis 的二级缓存开启也非常简单，在 application.yml 中配置 `mybatis.configuration.cache-enabled: true` 开启二级缓存。在需要进行二级缓存的 Mapper.xml 中添加 `<cache />` 标签，最后让缓存的对象实现序列化接口即可。
+
+ehcache ⼆级缓存，因为 Mybatis 的原声的二级缓存已经简单到简陋的程度了。 ehcache 提供了 Mybatis 二级缓存更好的支持。
+
+1. pom 文件添加相关依赖
+
+```
+<dependency>
+ <groupId>org.mybatis</groupId>
+ <artifactId>mybatis-ehcache</artifactId>
+ <version>1.0.0</version>
+</dependency>
+<dependency>
+ <groupId>net.sf.ehcache</groupId>
+ <artifactId>ehcache-core</artifactId>
+ <version>2.4.3</version>
+</dependency>
+```
+
+2. 添加 ehcache.xml 配置文件
+
+```
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+ <diskStore/>
+ <defaultCache
+ maxElementsInMemory="1000"
+ maxElementsOnDisk="10000000"
+ eternal="false"
+ overflowToDisk="false"
+ timeToIdleSeconds="120"
+ timeToLiveSeconds="120"
+ diskExpiryThreadIntervalSeconds="120"
+ memoryStoreEvictionPolicy="LRU">
+ </defaultCache>
+</ehcache>
+```
+
+3. Mapper.xml 中开启二级缓存
+
+```
+<cache type="org.mybatis.caches.ehcache.EhcacheCache">
+ <!-- 缓存创建之后，最后⼀次访问缓存的时间⾄缓存失效的时间间隔 -->
+ <property name="timeToIdleSeconds" value="3600"/>
+ <!-- 缓存⾃创建时间起⾄失效的时间间隔 -->
+ <property name="timeToLiveSeconds" value="3600"/>
+ <!-- 缓存回收策略，LRU表示移除近期使⽤最少的对象 -->
+ <property name="memoryStoreEvictionPolicy" value="LRU"/>
+</cache>
+```
+
+4. 同样需要配置 `mybatis.configuration.cache-enabled: true` 开启二级缓存，但是缓存对象并不需要实现序列化接口
+
+#### 动态 Sql
+
+- if 标签，if 标签可以⾃动根据表达式的结果来决定是否将对应的语句添加到 SQL 中，如果条件不成⽴则不添加，
+  如果条件成⽴则添加
+
+```
+<select id="findByAccount" parameterType="com.southwind.entity.Account"
+resultType="com.southwind.entity.Account">
+ select * from t_account where
+ <if test="id!=0">
+ id = #{id}
+ </if>
+ <if test="username!=null">
+ and username = #{username}
+ </if>
+ <if test="password!=null">
+ and password = #{password}
+ </if>
+ <if test="age!=0">
+ and age = #{age}
+ </if>
+</select>
+```
+
+- where 标签，where 标签可以⾃动判断是否要删除语句块中的 and 关键字，如果检测到 where 直接跟 and 拼接，则
+  ⾃动删除 and，通常情况下 if 和 where 结合起来使⽤
+
+```
+<select id="findByAccount" parameterType="com.southwind.entity.Account"
+resultType="com.southwind.entity.Account">
+ select * from t_account
+ <where>
+ <if test="id!=0">
+ id = #{id}
+ </if>
+ <if test="username!=null">
+ and username = #{username}
+ </if>
+ <if test="password!=null">
+ and password = #{password}
+ </if>
+ <if test="age!=0">
+ and age = #{age}
+ </if>
+ </where>
+</select>
+```
+
+- set 标签，set 标签⽤于 update 操作，会⾃动根据参数选择⽣成 SQL 语句。
+
+```
+<update id="update" parameterType="com.southwind.entity.Account">
+ update t_account
+ <set>
+ <if test="username!=null">
+ username = #{username},
+ </if>
+ <if test="password!=null">
+ password = #{password},
+ </if>
+ <if test="age!=0">
+ age = #{age}
+ </if>
+ </set>
+ where id = #{id}
+</update>
+```
+
+- foreach 标签，foreach 标签可以迭代⽣成⼀系列值，这个标签主要⽤于 SQL 的 in 语句。
+
+```
+<select id="findByIds" parameterType="com.southwind.entity.Account"
+resultType="com.southwind.entity.Account">
+ select * from t_account
+ <where>
+ <foreach collection="ids" open="id in (" close=")" item="id"
+separator=",">
+ #{id}
+ </foreach>
+ </where>
+</select>
+```
+
+- choose 、when 标签
+
+```
+<select id="findByAccount" parameterType="com.southwind.entity.Account"
+resultType="com.southwind.entity.Account">
+ select * from t_account
+ <where>
+ <choose>
+ <when test="id!=0">
+ id = #{id}
+ </when>
+ <when test="username!=null">
+ username = #{username}
+ </when>
+ <when test="password!=null">
+ password = #{password}
+ </when>
+ <when test="age!=0">
+ age = #{age}
+ </when>
+ </choose>
+ </where>
+</select>
+```
+
+- trim 标签，trim 标签中的 prefix 和 suffix 属性会被⽤于⽣成实际的 SQL 语句，会和标签内部的语句进⾏拼接，如
+  果语句前后出现了 prefixOverrides 或者 suffixOverrides 属性中指定的值，MyBatis 框架会⾃动将其删
+  除。
+
+```
+<select id="findByAccount" parameterType="com.southwind.entity.Account"
+resultType="com.southwind.entity.Account">
+ select * from t_account
+ <trim prefix="where" prefixOverrides="and">
+ <if test="id!=0">
+ id = #{id}
+ </if>
+ <if test="username!=null">
+ and username = #{username}
+ </if>
+ <if test="password!=null">
+ and password = #{password}
+ </if>
+ <if test="age!=0">
+ and age = #{age}
+ </if>
+ </trim>
+</select>
+```
 
 ### 如何使用逆向工程？
 
