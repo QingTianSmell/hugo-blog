@@ -7,17 +7,18 @@ tags: ["学习笔记", "运维"]
 <!-- vim-markdown-toc Marked -->
 
 * [What](#what)
-	* [SSH 登录流程](#ssh-登录流程)
+  * [SSH 登录流程](#ssh-登录流程)
 * [Why](#why)
-	* [解决的问题](#解决的问题)
-	* [什么是中间人攻击？](#什么是中间人攻击？)
-	* [SSH 如何解决中间人攻击？](#ssh-如何解决中间人攻击？)
+  * [解决的问题](#解决的问题)
+  * [什么是中间人攻击？](#什么是中间人攻击？)
+  * [SSH 如何解决中间人攻击？](#ssh-如何解决中间人攻击？)
 * [Where](#where)
 * [How](#how)
-	* [基本命令](#基本命令)
-	* [scp](#scp)
-	* [sftp](#sftp)
-	* [修改 SSH 默认端口](#修改-ssh-默认端口)
+  * [基本命令](#基本命令)
+  * [scp](#scp)
+  * [sftp](#sftp)
+  * [修改 SSH 默认端口](#修改-ssh-默认端口)
+  * [免密登录](#免密登录)
 
 <!-- vim-markdown-toc -->
 
@@ -124,5 +125,18 @@ vim /etc/ssh/sshd_config
 systemctl restart sshd
 # 检查端口是否以修改成功
 ss -ntl
+```
+
+### 免密登录
+
+```
+# 客户端生成公私钥，有的就不用了
+ssh-keygen
+
+# 上传公钥到服务器
+# 相当于在服务器的 ~/.ssh/authorized_keys 里添加了公钥内容
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
+
+# 之后就可以免密登录了测试下看看吧
 ```
 
