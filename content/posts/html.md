@@ -4,91 +4,370 @@ date: 2019-07-17T22:44:04+08:00
 tags: ["学习笔记", "前端"]
 ---
 
-## 简单使用
+<!-- vim-markdown-toc GitLab -->
 
-### 简介
+* [What](#what)
+  * [简介](#简介)
+  * [文档结构](#文档结构)
+  * [简单的了解一下 HTML 属性](#简单的了解一下-html-属性)
+  * [元素](#元素)
+    * [常用基础元素](#常用基础元素)
+    * [列表元素](#列表元素)
+    * [表格元素](#表格元素)
+    * [表单元素](#表单元素)
+    * [媒体元素](#媒体元素)
+      * [视频](#视频)
+      * [音频](#音频)
+  * [常用事件](#常用事件)
+    * [窗口事件](#窗口事件)
+    * [表单事件](#表单事件)
+    * [键盘事件](#键盘事件)
+    * [鼠标事件](#鼠标事件)
+* [Further](#further)
+  * [块级元素和行内元素](#块级元素和行内元素)
+  * [深入了解 head 元素](#深入了解-head-元素)
+    * [网页基本信息](#网页基本信息)
+    * [其他文件链接](#其他文件链接)
+    * [厂商定制](#厂商定制)
+  * [HTML meta 标签总结与属性使用介绍](#html-meta-标签总结与属性使用介绍)
+  * [HTML 字符实体](#html-字符实体)
+  * [!DOCYTYPE 声明](#docytype-声明)
+* [Reference](#reference)
 
-> 定义：超文本标记语言，“超文本”就是指页面内可以包含图片、链接，甚至音乐、程序等非文字元素。  
-> 产生原因：网络中非文本数据的需要展示。
+<!-- vim-markdown-toc -->
 
-### 常用标签
+# What
 
-#### 基础标签
+## 简介
 
-- <!DOCTYPE> : 定义文档类型。
-- \<h1> - \<h6> : 定义 HTML 标题。
-- \<p> : 定义段落
-- \<br> : 定义换行符
-- \<hr> : 定义水平线
-- \<!--注释代码--->
+HTML 是一种用来描述网页的超文本标记语言，而不是编程语言，超文本就是指可以包含图片、链接，甚至音乐、程序等非文字元素。HTML 使用标记来描述网页，使用事件来处理交互。
 
-#### 格式标签
+## 文档结构
 
-- \<b> : 定义粗体文本。
-- \<i> : 定义斜体文本。
-- \<pre> : 定义预格式文本。
+```html
+<!-- 声明HTML文档 -->
+<!DOCTYPE html>
+<!-- 语言，中文简体：zh-Hans，中文繁体：zh-Hant -->
+<html lang="en">
+  <!-- 文档头部，设置文档编码集，引入的css、Script等 -->
+  <head>
+    <!-- meta标签设置网页中的元数据 -->
+    <!-- 字符集 -->
+    <meta charset="UTF-8" />
+    <title>网页标题</title>
+    <!-- CSS引入 -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- JS引入 -->
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <!-- 文档主体 -->
+    <!-- 主要放置html标签 -->
+  </body>
+</html>
+```
 
-#### 表单标签
+## 简单的了解一下 HTML 属性
 
-- \<from> : 标签创建供用户输入的表单。
-  - action : 定义一个 URL。当点击提交按钮时，向这个 URL 发送数据。
-  - method : 用于向 action URL 发送数据的 HTTP 方法。默认是 get。(通常应该使用 POST)
-  - enctype : 用于对表单内容进行编码的 MIME 类型。(当表单中含有文件时，使用 enctype="multipart/form-data"表明为多部分表单数据)
-- \<input> : 标签定义输入字段，用户可在其中输入数据。
-  - type : 指示 input 元素的类型。
-  - name : 为 input 元素定义唯一的名称。
-  - value : 对于按钮、重置按钮和确认按钮：定义按钮上的文本。对于复选框和单选按钮：定义 input 元素被点击时的结果。
-  - required : 定义输入字段的值是否是必需的。
-  - maxlength : 定义文本域中所允许的字符最大数目。
-  - readonly : 指示是否可修改该字段的值。(提交表单时值会被提交)
-  - disabled :当 input 元素首次加载时禁用此元素，这样用户就无法在其中写文本，或选定它。(提交表单时值不会提交)
-  - placeholder : 定义占位字符。
-- \<textarea> : 定义一个文本区域 (text-area) （一个多行的文本输入区域）。
-  - cols : 规定文本区内可见的列数。
-  - rows : 规定文本区内可见的行数。
-- \<button> : 定义按钮。
-- \<select> : 标签创建下拉列表。
-  - name : 定义下拉列表的唯一标识符。
-- \<option> : 定义下拉列表中的一个选项。
-- \<label> : 定义控件的标注。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+HTML 属性包含元素的额外信息，这些信息不会出现在实际的内容中,HTML 属性大致分为 3 类：全局属性(id、class、style、title)、某一类元素属性、某一个元素属性。HTML 属性写在 HTML 元素开始标签中，与标签名用空格分隔，然后就是我们元素的属性，属性一般为属性名="属性值"，属性值必须用双引号包裹，也有单独出现的属性如 input 的布尔属性 disabled。
 
-#### 列表标签
+## 元素
 
-- \<ul> : 定义无序列表
-- \<li> : 定义列表项
+元素是标签、标签的属性与其包装的内容的总称。
 
-#### 表格标签
+### 常用基础元素
 
-- \<table> : 定义表格
-  - border : 设置表格的边框的 px 值。
-  - cellspacing : 设置表格边框的空隙的 px 值。
-- \<tr> : 定义表格中的行
-- \<th> : 表格内的表头单元格
-- \<td> : 定义表格中的一个单元格
-  - colspan : 规定此单元格可横跨的列数。
-  - rowspan : 规定此单元格可横跨的行数。
+- 标题
+  ```html
+  <h1>这是H1标签，块级标签</h1>
+  <h2>H2</h2>
+  <h3>H3</h3>
+  <h4>H4</h4>
+  <h5>H5</h5>
+  <h6>H6</h6>
+  ```
+- 段落
+  ```html
+  <p>这是段落，块级标签，自动换行</p>
+  <p>段落2</p>
+  ```
+- 图片
+  ```html
+  <img src="图片地址" alt="图片描述" width="50" height="50" />
+  ```
+- 超链接
+  ```html
+  <a href="地址" target="_blank">这是超链接</a>
+  ```
+- 包裹分隔块级元素
+  ```html
+  <div>
+    <h2>区块标题</h2>
+    <p>区块描述文字</p>
+  </div>
+  ```
+- 包裹分隔行内元素
+  ```html
+  <span>作者：xxx</span>
+  <span>发布时间：xx-xx-xx</span>
+  <span>浏览量：xxxx</span>
+  ```
 
-#### 其他标签
+### 列表元素
 
-- \<a> : 标签定义超链接，它用于从一个页面连接到另一个页面。
-  - href : 链接的目标 URL。
-  - target : 在何处打开目标 URL。
-- \<img> : 标签定义图像。
-  - alt : 图片加载失败时显示的的提示文字。
-  - src : 图片地址。
-  - width : 定义图片的宽度
-  - height : 定义图片的高度。
-- \<link> : 定义文档与外部资源的关系。
-- \<script> : 定义一段脚本
+- 有序列表
+  ```html
+  <ol>
+    <li>苹果</li>
+    <li>香蕉</li>
+    <li>菠萝</li>
+    <li>西瓜</li>
+    <li>芒果</li>
+  </ol>
+  ```
+- 无序列表
+  ```html
+  <ul>
+    <li>苹果</li>
+    <li>香蕉</li>
+    <li>菠萝</li>
+    <li>西瓜</li>
+    <li>芒果</li>
+  </ul>
+  ```
 
-### 常用事件
+### 表格元素
 
-#### 窗口事件
+标题（caption）、表头单元格（th）、头部（thread）、主体（tbody）、行（tr）、单元格（td）、底部（tfoot）
+
+```html
+<!--
+  cellspacing——单元格间距，单元格之间的距离
+  cellpadding——单元格边距，单元格与边框之间的距离
+-->
+<table border="1" cellspacing="0" cellpadding="5">
+  <caption>
+    成绩表
+  </caption>
+  <thead>
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Points</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Jill</td>
+      <td>Smith</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>Eve</td>
+      <td>Jackson</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>Adam</td>
+      <td>Johnson</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <td colspan="2">跨列的表格</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td rowspan="2">跨行的表格</td>
+      <td>99</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td rowspan="2" colspan="2">跨行又跨列的表格</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### 表单元素
+
+表单标签的属性
+
+| 属性名称                            | 描述                                                                      |
+| ----------------------------------- | ------------------------------------------------------------------------- |
+| `name`                              | 表单的名称                                                                |
+| `action`                            | 表单数据接受地址                                                          |
+| `target`                            | 打开 url 的方式，`_blank` 新窗口，`_self` 当前窗口                        |
+| `method`                            | 数据传送方法，get:通过 url 地址传送参数,网址中可以看到数据，post:后台传送 |
+| `enctype`                           | 发送前如何将数据进行编码，仅与 method="post"配对使用                      |
+| `application/x-www-form-urlencoded` | 默认值，发送前对所有字符进行编码：空格转+号，特殊字符传 ASCII 16 进制值   |
+| `multipart/form-data`               | 不对发送字符进行编码，在上传文件时，必须设置                              |
+| `text/plain`                        | 纯文本方式，仅将空格转为"+"号，不对特殊字符编码                           |
+
+表单域`<input>`的属性
+
+| 属性名称  | 描述                                                        |
+| --------- | ----------------------------------------------------------- |
+| type      | 元素的类型，如 text 文本框、radio 单选按钮、select 下拉框等 |
+| name      | 元素的名称，主要用于服务端数据传送                          |
+| value     | 元素的默认值，可当占位符                                    |
+| size      | 以字符计算的元素可见宽度，注意，不是像素或百分比            |
+| maxlength | 元素允许的最大字符长度                                      |
+| disabled  | 禁用该控件，此时，既不能选择，也不能点击                    |
+| readonly  | 该控件字段内容只读，不允许修改                              |
+
+```html
+<!-- 单行文本 -->
+<input type="text" name="MyName" value="不能为空" />
+<!-- 密码 -->
+<input type="password" name="pwd" id="pwd" />
+<!-- 单选按钮 -->
+<input type="radio" name="gender" id="male" value="male" checked />男
+<input type="radio" name="gender" id="female" value="female" />女
+<!-- 复选框 -->
+<input type="checkbox" name="language" id="php" value="php" checked />
+<input type="checkbox" name="language" id="java" value="java" />
+<!-- 自定义按钮 -->
+<input type="button" value="点击" />
+<!-- 提交按钮 -->
+<input type="submit" value="提交" />
+<!-- 重置按钮 -->
+<input type="reset" value="重置" />
+<!-- 文件上传 -->
+<form action="" method="post" enctype="multipart/form-data">
+  <!-- 支持批量上传 -->
+  <input type="file" name="file" id="file" multiple />
+</form>
+<!-- 图像按钮 -->
+<input type="image" src="url" alt="图片说明" />
+<!-- 隐藏字段 -->
+<!-- 用于存储一些字段的默认值，如ID，用户不可见 -->
+<input type="hidden" name="id" value="1" />
+
+<!-- 下拉框 -->
+<select name="address" id="address">
+  <option value="bj" selected>北京</option>
+  <option value="">上海</option>
+  <option value="">天津</option>
+  <option value="">广州</option>
+  <option value="">深圳</option>
+  <option value="">重庆</option>
+</select>
+
+<!-- 下拉框分组 -->
+<select name="address" id="address">
+  <optgroup label="直辖市">
+    <option value="bj" selected>北京</option>
+    <option value="">上海</option>
+    <option value="">天津</option>
+    <option value="">重庆</option>
+  </optgroup>
+  <optgroup label="省级">
+    <option value="">广州</option>
+    <option value="">深圳</option>
+  </optgroup>
+</select>
+
+<!-- label标签 -->
+<!-- label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。
+如果您在 label 元素内点击文本，就会触发此控件。
+就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。-->
+<form action="" method="post" name="form">
+  <label for="MyName">姓名：</label>
+  <input type="text" name="MyName" id="MyName" placeholder="请输入姓名" />
+</form>
+<div>
+  <label
+    >姓名：<input
+      type="text"
+      name="MyName1"
+      id="MyName1"
+      placeholder="请输入姓名"
+  /></label>
+</div>
+
+<!-- 文本域 -->
+<!--
+cols:每行最多多少个字符
+rows:可以显示多少行
+resize:
+    both:默认值
+    none:不允许调整尺寸
+    horizontal:仅允许水平调整宽度
+    vertical:仅允许垂直调整高度 
+-->
+<textarea
+  name="message"
+  id="message"
+  cols="30"
+  rows="10"
+  style="resize: both;"
+></textarea>
+```
+
+### 媒体元素
+
+#### 视频
+
+| 属性名称 | 描述                                                                                        |
+| -------- | ------------------------------------------------------------------------------------------- |
+| autoplay | 自动播放                                                                                    |
+| controls | 向用户显示控件，如播放按钮                                                                  |
+| height   | 高度                                                                                        |
+| width    | 宽度                                                                                        |
+| loop     | 循环播放                                                                                    |
+| muted    | 静音                                                                                        |
+| poster   | 未开始播放时显示的图像                                                                      |
+| preload  | 如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 "autoplay"，则忽略该属性。 |
+| src      | 地址                                                                                        |
+
+```html
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4" />
+  <source src="movie.ogg" type="video/ogg" />
+  您的浏览器不支持 video 标签。
+</video>
+```
+
+#### 音频
+
+| 属性名称 | 描述                                                                                        |
+| -------- | ------------------------------------------------------------------------------------------- |
+| autoplay | 自动播放                                                                                    |
+| controls | 向用户显示控件，如播放按钮                                                                  |
+| loop     | 循环播放                                                                                    |
+| muted    | 静音                                                                                        |
+| preload  | 如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 "autoplay"，则忽略该属性。 |
+| src      | 地址                                                                                        |
+
+```html
+<audio controls>
+  <source src="horse.ogg" />
+  <source src="horse.mp3" />
+  您的浏览器不支持 audio 元素。
+</audio>
+```
+
+## 常用事件
+
+### 窗口事件
 
 - onload : 当文档被载入时执行脚本
 - onunload : 当文档被卸下时执行脚本
 
-#### 表单事件
+### 表单事件
 
 - **onchange** : 当元素改变时执行脚本
 - onsubmit : 当表单被提交时执行脚本
@@ -97,13 +376,13 @@ tags: ["学习笔记", "前端"]
 - **onblur** : 当元素失去焦点时执行脚本
 - **onfocus** : 当元素获得焦点时执行脚本
 
-#### 键盘事件
+### 键盘事件
 
 - **onkeydown** : 当键盘被按下时执行脚本
 - onkeypress : 当键盘被按下后又松开时执行脚本
 - onkeyup : 当键盘被松开时执行脚本
 
-#### 鼠标事件
+### 鼠标事件
 
 - **onclick** : 当鼠标被单击时执行脚本
 - ondblclick : 当鼠标被双击时执行脚本
@@ -113,30 +392,112 @@ tags: ["学习笔记", "前端"]
 - onmouseover : 当鼠标指针悬停于某元素之上时执行脚本
 - onmouseup : 当鼠标按钮被松开时执行脚本
 
-### 参考
+# Further
 
-> [HTML 手册](http://t.mb5u.com/html/)
+## 块级元素和行内元素
 
-## 值得一提
+在 HTML 中有两种你需要知道的重要元素类别，块级元素和行内元素。
 
-### 搜索引擎相关
+块级元素默认占据整行宽度，在页面中以块的形式展现 —— 相对与其前面的内容它会出现在新的一行，其后的内容也会被挤到下一行展现。块级元素通常用于展示页面上结构化的内容，例如段落、列表、导航菜单、页脚等等。一个以 block 形式展现的块级元素不会被嵌套进行内元素中，但可以嵌套在其它块级元素中，如(p、div、hn、ul、ol、li)。
 
+行内元素同行显示，默认宽度由内容决定，通常出现在块级元素中并包裹文档内容的一小部分，而不是一整个段落或者一组内容。行内元素不会导致文本换行：它通常出现在一堆文字之间例如超链接元素或者强调元素。
+
+## 深入了解 head 元素
+
+\<head\>元素用于定义网页的常规信息和元数据，虽然在网页中不可见，但是也是非常的重要。总得来说其里面的子元素大概分为三类，分别是：描述网页基本信息的，指向渲染网页需要其他文件链接的，各大厂商根据自己需要定制的。
+
+### 网页基本信息
+
+一个网页，首先得有个标题，就跟人有名字一样。除此之外，还可以根据实际需要补充一些基本信息。
+
+- 文档标题（浏览器标签中显示的文本）：
+  ```html
+  <title>深入了解 head 元素</title>
+  ```
+- 编码格式：
+  ```html
+  <meta charset="utf-8" />
+  ```
+- 视窗设置：
+  ```html
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ```
+- 搜索引擎优化相关内容：
+  ```html
+  <meta name="keywords" content="学习,前端,html,笔记" />
+  <meta name="description" content="告诉搜索引擎网站的基本简介" />
+  ```
+- IE 浏览器版本渲染设置：
+  ```html
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  ```
+
+### 其他文件链接
+
+一个完整的网页光有 HTML 结构是非常简陋的，就如一个毛坯房。有了结构之后，我们还需要加入样式与行为为网页增添色彩。
+
+- CSS 文件：`<link>` 元素经常位于文档的头部，用于引入样式文件
+  ```html
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  ```
+- JavaScript 文件：JavaScript 部分没必要非要放在文档头部; 实际上，把它放在文档的尾部（在 `</body>`标签之前）是一个更好的选择 ，这样可以确保在加载脚本之前浏览器已经解析了 HTML 内容（如果脚本加载某个不存在的元素，浏览器会报错）。
+  ```html
+  <script src=“script.js"></script>
+  ```
+
+### 厂商定制
+
+比如开启双核浏览器先河的 360 浏览器就定制了一个默认使用哪个内核来渲染页面，可以设置为 webkit 内核、IE 标准，IE 兼容三种模式。代码分别为：
+
+```html
+<!-- 默认webkit内核 -->
+<meta name="renderer" content="webkit" />
+<!-- 默认IE标准模式 -->
+<meta name="renderer" content="ie-stand" />
+<!-- 默认IE兼容模式 -->
+<meta name="renderer" content="ie-comp" />
 ```
-<title>标签内的文字是搜索引擎最主要的搜索关键字;
-<meta name="keywords" content="XXX|XXX|XXX"/>
-此meta标签的content属性里也是搜索引擎的关键字。
-<meta name="description" content="xxxxxx"/>
-此meta标签的content属性是搜索引擎显示的网站描述。
+
+同样分享页面到 QQ 的聊天窗口，有些页面直接就是一个链接，但是有些页面有标题，图片，还有文字介绍。为什么区别这么明显呢？其实就是看有没有设置下面这三个内容（具体参阅：[腾讯移动 WEB 开发平台](https://open.mobile.qq.com/api/mqq/index)）。
+
+```html
+<meta itemprop="name" content="这是分享的标题" />
+<meta
+  itemprop="image"
+  content="http://imgcache.qq.com/qqshow/ac/v4/global/logo.png"
+/>
+<meta name="description" itemprop="description" content="这是要分享的内容" />
 ```
 
-### URL 的组成部分
+## HTML meta 标签总结与属性使用介绍
 
-```
-URL 的英文全称是 Uniform Resource Locator，中文也译为“统一资源定位符”,遵守的语法规则：scheme://host.domain:port/path/filename
-scheme   : 定义因特网服务的类型。最常见的类型是 http
-host     : 定义域主机（http 的默认主机是 www）
-domain   : 定义因特网域名，比如w3school.com.cn
-port     : 定义主机上的端口号（http 的默认端口号是 80）
-path     : 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。
-filename : 定义文档/资源的名称
-```
+[HTML meta 标签总结与属性使用介绍](https://segmentfault.com/a/1190000004279791)
+
+## HTML 字符实体
+
+在 HTML 中，某些字符是预留的不能直接使用，如小于号（\<）和大于号（\>），直接使用会误认为它们是标签。
+
+所以如果我们希望正确地显示预留字符，那必须在 HTML 源代码中使用字符实体（character entities）。
+
+| 显示结果 | 描述     | 实体名称  |
+| -------- | -------- | --------- |
+|          | 空格     | `&nbsp;`  |
+| `<`      | 小于号   | `&lt;`    |
+| `>`      | 大于号   | `&gt;`    |
+| `&`      | 和号     | `&amp;`   |
+| `©`      | 版权符号 | `&copy;`  |
+| `×`      | 乘号     | `&times;` |
+
+## !DOCYTYPE 声明
+
+Web 世界中存在许多不同的文档。只有了解文档的类型，浏览器才能正确地显示文档。
+HTML 也有多个不同的版本，只有完全明白页面中使用的确切 HTML 版本，浏览器才能完全正确地显示出 HTML 页面。这就是`<!DOCTYPE>`的用处。
+`<!DOCTYPE>`不是 HTML 标签。它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的。
+
+`<!DOCYTYPE>`是 HTML5 的版本声明
+
+# Reference
+
+> [HTML 手册](http://t.mb5u.com/html/)  
+> [HTML——学习笔记](https://imweb.io/topic/5b169935d4c96b9b1b4c4ec1)  
+> [HTML meta 标签总结与属性使用介绍](https://segmentfault.com/a/1190000004279791)
