@@ -1,19 +1,19 @@
 ---
-title: "RESTful 学习笔记"
+title: "RESTful 知识总结"
 date: 2020-03-14T22:24:11+08:00
-tags: ["学习笔记", "通用"]
+tags: ["术","程序开发","知识总结"]
 ---
 
 <!-- vim-markdown-toc GitLab -->
 
 * [What](#what)
-	* [什么是 RESTful?](#什么是-restful)
-	* [REST 的原则](#rest-的原则)
-	* [HTTP 动词](#http-动词)
-	* [参考](#参考)
+  * [什么是 RESTful?](#什么是-restful)
+  * [REST 的原则](#rest-的原则)
+  * [HTTP 动词](#http-动词)
+  * [参考](#参考)
 * [Why](#why)
-	* [为什么要使用 RESTful?](#为什么要使用-restful)
-	* [RESTful 的好处？](#restful-的好处)
+  * [为什么要使用 RESTful?](#为什么要使用-restful)
+  * [RESTful 的好处？](#restful-的好处)
 
 <!-- vim-markdown-toc -->
 

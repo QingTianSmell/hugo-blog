@@ -1,23 +1,23 @@
 ---
-title: "HTTP 学习笔记"
+title: "HTTP 知识总结"
 date: 2020-03-14T15:36:54+08:00
-tags: ["通用","学习笔记"]
+tags: ["术","程序开发","知识总结"]
 ---
 
 <!-- vim-markdown-toc GitLab -->
 
 * [What](#what)
-	* [HTTP 协议是什么？](#http-协议是什么)
-	* [HTTP 特点](#http-特点)
-	* [HTTP 报文组成](#http-报文组成)
-		* [请求报文](#请求报文)
-		* [响应报文](#响应报文)
-	* [常见的请求方法](#常见的请求方法)
-	* [常见状态码](#常见状态码)
+  * [HTTP 协议是什么？](#http-协议是什么)
+  * [HTTP 特点](#http-特点)
+  * [HTTP 报文组成](#http-报文组成)
+    * [请求报文](#请求报文)
+    * [响应报文](#响应报文)
+  * [常见的请求方法](#常见的请求方法)
+  * [常见状态码](#常见状态码)
 * [Why](#why)
-	* [URI 和 URL 的区别？](#uri-和-url-的区别)
-	* [POST 和 GET 的区别？](#post-和-get-的区别)
-	* [HTTPS 和 HTTP 的区别？](#https-和-http-的区别)
+  * [URI 和 URL 的区别？](#uri-和-url-的区别)
+  * [POST 和 GET 的区别？](#post-和-get-的区别)
+  * [HTTPS 和 HTTP 的区别？](#https-和-http-的区别)
 
 <!-- vim-markdown-toc -->
 
