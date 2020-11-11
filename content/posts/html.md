@@ -1,12 +1,12 @@
 ---
-title: "HTML 学习笔记"
+title: "HTML 知识总结"
 date: 2019-07-17T22:44:04+08:00
-tags: ["学习笔记", "前端"]
+tags: ["术","程序开发","前端","知识总结"]
 ---
 
 <!-- vim-markdown-toc GitLab -->
 
-* [What](#what)
+* [基础](#基础)
   * [简介](#简介)
   * [文档结构](#文档结构)
   * [元素](#元素)
@@ -25,18 +25,18 @@ tags: ["学习笔记", "前端"]
     * [键盘事件](#键盘事件)
     * [鼠标事件](#鼠标事件)
   * [HTML 字符实体](#html-字符实体)
-* [Further](#further)
+* [扩展](#扩展)
   * [深入了解 head 元素](#深入了解-head-元素)
     * [网页基本信息](#网页基本信息)
     * [其他文件链接](#其他文件链接)
     * [厂商定制](#厂商定制)
   * [HTML meta 标签总结与属性使用介绍](#html-meta-标签总结与属性使用介绍)
   * [!DOCYTYPE 声明](#docytype-声明)
-* [Reference](#reference)
+* [参考](#参考)
 
 <!-- vim-markdown-toc -->
 
-# What
+# 基础
 
 ## 简介
 
@@ -415,7 +415,7 @@ resize:
 | `©`      | 版权符号 | `&copy;`  |
 | `×`      | 乘号     | `&times;` |
 
-# Further
+# 扩展
 
 ## 深入了解 head 元素
 
@@ -496,7 +496,7 @@ HTML 也有多个不同的版本，只有完全明白页面中使用的确切 HT
 
 `<!DOCYTYPE>`是 HTML5 的版本声明
 
-# Reference
+# 参考
 
 > [HTML 手册](http://t.mb5u.com/html/)  
 > [HTML——学习笔记](https://imweb.io/topic/5b169935d4c96b9b1b4c4ec1)  
