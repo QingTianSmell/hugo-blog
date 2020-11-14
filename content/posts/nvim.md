@@ -1,13 +1,171 @@
 ---
 title: "neovim 的使用"
 date: 2020-03-12T13:34:31+08:00
-tags: ["技","程序开发","工具"]
+tags: ["技","程序开发","工具", "折腾"]
 ---
 
+<!-- vim-markdown-toc GitLab -->
+
+* [使用](#使用)
+  * [前言](#前言)
+  * [常用基础命令](#常用基础命令)
+    * [Normal](#normal)
+    * [Insert](#insert)
+  * [Vim 的四种模式](#vim-的四种模式)
+    * [Normal 模式](#normal-模式)
+    * [Insert 模式](#insert-模式)
+    * [Command 模式](#command-模式)
+    * [Visual 模式](#visual-模式)
+  * [Vim 多文件操作](#vim-多文件操作)
+    * [概念](#概念)
+    * [相关命令](#相关命令)
+      * [Buffer](#buffer)
+      * [Window](#window)
+      * [Tab](#tab)
+  * [操作系统剪切板](#操作系统剪切板)
+  * [Vim 的自动补全](#vim-的自动补全)
+  * [VIM 的配置持久化](#vim-的配置持久化)
+  * [快捷键映射](#快捷键映射)
+  * [宏](#宏)
+* [配置](#配置)
+
+<!-- vim-markdown-toc -->
+
+
+# 使用
 ## 前言
 为了更快的速度和很多 neovim 才支持的插件，从 vim 迁移过来了。
 
-## 配置
+## 常用基础命令
+### Normal
+
+```
+j             : 下移一字符
+k             : 上移一字符
+h             : 左移一字符
+l             : 右移一字符
+w(word)/W     : 移动到下一个单词开头（WORD 将空白符分割的识别为单词）
+b(backword)/B : 回到上一个单词开头
+gg            : 移动到文件开头
+G             : 移动到文件结尾
+zz            : 把光标行置为屏幕中间
+*             : 当前单词向前匹配
+#             : 当前单词向后匹配
+```
+
+```
+:/ : 向后搜索(n/N : 跳转到下一个/上一个匹配)
+:? : 向前搜索
+```
+
+```
+x       : 删除一个字符
+daw     : 删除一个单词
+[num]dd : 删除 num 行
+r       : 修改一个字符
+~       : 修改大小写
+```
+
+```
+v : 字符选择
+V : 行选择
+```
+
+### Insert
+
+```
+ctrl + n : 单词补全
+ctrl + h : 删除上一个字符
+ctrl + w : 删除上一个单词
+ctrl + u : 删除当前行插入位置之前的内容
+```
+
+## Vim 的四种模式
+
+### Normal 模式
+
+- Normal 模式可以进行各种命令操作和移动
+- 大部分情况下你是浏览而不是编辑，所以 Vim 默认是 Normal 模式
+
+### Insert 模式
+
+- Insert 模式和普通编辑器差不多用来做文本输入
+- 使用 i(insert)、a(append)、o(open a line below)、I、A、O、gi(回到最后一次编辑的位置) 进入 Insert 模式
+- Esc 从 Insert 模式退回到 Normal 模式
+
+### Command 模式
+
+- Command 模式用来执行 Vim 命令
+
+### Visual 模式
+
+- Visual 模式用来选择 要进行操作的内容
+
+## Vim 多文件操作
+
+### 概念
+
+- Buffer 指打开的一个文件的内存缓冲区
+- Window 是 Buffer 的可视化分割区域
+- Tab 可以组织窗口作为一个工作区
+
+### 相关命令
+
+#### Buffer
+
+```
+:ls   : 列举当前缓冲区
+:b<n> : 跳转到第 n 个缓冲区
+:bpre、bnext、bfirst、blast
+:b <buffer_name>
+```
+
+#### Window
+
+```
+<Ctrl + w>s         : 水平分割
+<Ctrl + w>v         : 垂直分割
+<Ctrl + w>w         : 窗口切换
+<Ctrl + w>[h,j,k,l] : 窗口切换
+<Ctrl + w>[H,J,K,L] : 窗口移动
+```
+
+#### Tab
+
+```
+:tabe <filename> 在新标签页中打开文件
+<Ctrl + w>T    : 把当前窗口移动到新标签页
+:tabc[lose]    : 关闭当前页及其中所有窗口
+:tabo[nly]     : 自保留活动标签页，关闭其它
+:tabn[ext]     : 切换标签页
+gt             : 切换标签页
+```
+
+## 操作系统剪切板
+
+Vim 中使用 delete yank put 操作时会使用寄存器保存内容，不指定的话就是无名寄存器和寄存器 0。其它还有 a-z 寄存器。+寄存器代表系统剪切板。复制到系统剪切板可以`"+y`,从系统剪切板粘贴为`"+p`。
+
+## Vim 的自动补全
+
+- `Ctrl + n`/`Ctrl + p` : 补全单词
+- `Ctrl + x`/`Ctrl + f` : 补全文件名
+- `Ctrl + x`/`Ctrl + o` : 补全代码(需要插件)
+
+## VIM 的配置持久化
+
+Linux/Unix 下新建一个隐藏文件 `vim ~/.vimrc`  
+Windows 下使用`$MYVIMRC`来定位配置文件位置  
+NeoVIM 的配置文件的位置应为`~/AppData/Local/nvim/init.vim` 或 `~/.config/nvim/init.vim`;
+
+## 快捷键映射
+
+`[n(normal生效)/v(visual生效)/i(insert生效)][nore(非递归映射)]map <target_key_sequence> <source_key_sequence>` : 创建源操作映射为目标操作，比如`map - x`，然后按`-`就会删除字符
+
+## 宏
+
+使用`q<register>`开始录制，可以进行 insert 和 normal 模式下的正常操作，`q`结束录制。使用`@<register>`在当前行执行宏命令。使用 V 选中多行:进入命令模式输入`normal @<register>`在选中行执行宏命令。
+
+# 配置
 
 Show You Code
 
@@ -48,8 +206,10 @@ set relativenumber
 set cursorline
 " 一个tab等于多少个空格，当 expandtab的情况下，会影响在插入模式下按下<tab>键输入的空格，以及真正的 \t 用多少个空格显示
 set tabstop=2
+" 将 tab 转层空格
+set expandtab
 " noexpandtab 的情况下，tabstop 只会影响 \t 显示多少个空格（因为插入模式下按 <tab> 将会输入一个字符 \t
-set noexpandtab
+" set noexpandtab
 " 使用 >> << 或 == 来缩进代码的时候补出的空格数。这个值也会影响 autoindent 自动缩进的值。
 set shiftwidth=2
 " insert 模式下，一个 tab 键按下后，展示成几个空格
@@ -281,7 +441,7 @@ Plug 'brooth/far.vim'
 Plug 'hotoo/pangu.vim'
 
 " 注释
-" 选中 gc、gcc
+" " 选中 gc、gcc
 Plug 'tpope/vim-commentary'
 
 " 代码片段
@@ -296,18 +456,14 @@ Plug 'jiangmiao/auto-pairs'
 " 使用 + - 放大缩小选中区域
 Plug 'terryma/vim-expand-region'
 
-" va=  visual after =
-" ca=  change after =
-" da=  delete after =
-" ya=  yank after =
-Plug 'junegunn/vim-after-object'
-
 " <LEADER>ssip 替换当前段落中光标下方的单词
 Plug 'svermeulen/vim-subversive'
 
 " 格式化
-" :Autoformat 格式化代码
-Plug 'chiel92/vim-autoformat'
+" :Prettier 格式化代码
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " -------------------------- 文件类型支持 -------------------------
 
@@ -433,9 +589,6 @@ let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
 
-" vim-after-object
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
-
 " vim-bookmarks
 let g:bookmark_no_default_key_mappings = 1
 let g:bookmark_auto_save = 1
@@ -470,12 +623,16 @@ nnoremap <S-K> 5k
 " 保存并格式化
 nnoremap <C-S> :w<cr>h
 inoremap <C-S> <Esc>:w<cr>i
-autocmd Filetype markdown nnoremap <C-S> :Autoformat <Esc>:w<cr>h
-autocmd Filetype markdown inoremap <C-S> <Esc> :Autoformat <Esc>:w<cr>i
+autocmd Filetype markdown nnoremap <C-S> :Prettier<Esc>:w<cr>h
+autocmd Filetype markdown inoremap <C-S> <Esc> :Prettier<Esc>:w<cr>i
 
 " 空格转 Tab
 nnoremap stt :%s/    /\t/g
 vnoremap stt :s/    /\t/g
+
+" Tab 转空格
+nnoremap tts :%s/\t/    /g
+vnoremap tts :s/\t/    /g
 
 " 普通模式按一下 </> 缩进
 nnoremap < <<
