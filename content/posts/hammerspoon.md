@@ -7,22 +7,22 @@ tags: ["技","折腾","工具"]
 <!-- vim-markdown-toc GitLab -->
 
 * [简介](#简介)
-* [安装使用](#安装使用)
-* [Spoons](#spoons)
-* [我的配置](#我的配置)
+* [安装](#安装)
+* [使用](#使用)
+* [配置](#配置)
 * [参考](#参考)
 
 <!-- vim-markdown-toc -->
 
-## 简介
+# 简介
 
 [Hammerspoon](https://github.com/Hammerspoon/hammerspoon) 是一个 MacOS 下的开源的自动化工具。在操作系统和 Lua 脚本之间构建了桥梁。Hammerspoon 除了本身提供的操作系统的 api 外，同时提供了一批特定系统功能扩建的封装工具集，让编写 Lua 脚本来操作系统更为简单。
 
-## 安装使用
+# 安装
 
 执行 `brew cask install hammerspoon` 安装，安装完成后在偏好设置里点击 `Enable Accessibility` 授权 hammerspoon 使用辅助功能的权限。之后只要在 `~/.hammerspoon/init.lua` 中编写脚本然后选择 `Reload Config` 就可以生效了。可以 [Getting Started with Hammerspoon](http://www.hammerspoon.org/go/) 上复制 `Hello World` 自己试下。
 
-## Spoons
+# 使用
 
 官方提供了很多有用的工具集封装，简单的功能基本覆盖，如果没有特殊需求的话基本没有必要使用更底层的 api。以下是我用到的几个：
 
@@ -31,7 +31,7 @@ tags: ["技","折腾","工具"]
 - KSheet : 显示当前应用的快捷键位
 - SpeedMenu : 工具栏显示网速
 
-## 我的配置
+# 配置
 
 ```lua
 --- 这里只是展示我的配置，实际使用的话去下面参考部分克隆下来，复制到本地的 `~/.hammerspoon` 下修改
@@ -284,7 +284,7 @@ end
 spoon.ModalMgr.supervisor:enter()
 ```
 
-## 参考
+# 参考
 
 > [Getting Started with Hammerspoon](http://www.hammerspoon.org/go/)  
 > [Hammerspoon Spoons](http://www.hammerspoon.org/Spoons/index.html)  

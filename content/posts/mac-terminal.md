@@ -1,37 +1,34 @@
 ---
 title: "MacOS 下的终端 + Shell 选择"
 date: 2020-03-04T22:55:25+08:00
-tags: ["技","程序开发","折腾","工具"]
+tags: ["技","折腾","工具"]
 ---
 
 <!-- vim-markdown-toc GitLab -->
 
 * [前言](#前言)
-* [Alacritty](#alacritty)
-  * [安装](#安装)
-  * [新建 Alacritty 应用](#新建-alacritty-应用)
-  * [字体设置](#字体设置)
-* [Fish](#fish)
-  * [集成功能](#集成功能)
-  * [安装](#安装-1)
-  * [参考](#参考)
-* [Oh My Fish](#oh-my-fish)
-  * [安装](#安装-2)
-  * [常用命令](#常用命令)
-  * [注意](#注意)
-* [Powerline fonts / Nerd fonts](#powerline-fonts-nerd-fonts)
-  * [安装](#安装-3)
-  * [参考](#参考-1)
+* [安装](#安装)
+  * [Alacritty](#alacritty)
+    * [新建 Alacritty 应用](#新建-alacritty-应用)
+    * [字体设置](#字体设置)
+  * [Fish](#fish)
+    * [集成功能](#集成功能)
+  * [Oh My Fish](#oh-my-fish)
+    * [常用命令](#常用命令)
+    * [注意](#注意)
+  * [Powerline fonts / Nerd fonts](#powerline-fonts-nerd-fonts)
+* [参考](#参考)
 
 <!-- vim-markdown-toc -->
 
-## 前言
+# 前言
 
 MacOS 下个人的解决方案为 [Alacritty](https://github.com/alacritty/alacritty) + [fishshell](https://fishshell.com/) + [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)， 从 zsh 转到 fish 的原因就是因为 zsh 太慢了。Alacritty 是一个跨平台、GPU 增强的终端模拟器，目前还在实验阶段有不少问题，选择它的原因是因为它足够的简单以及出乎意料的快。
 
-## Alacritty
 
-### 安装
+# 安装
+
+## Alacritty
 
 1. 执行命令安装`brew cask install alacritty`
 2. 下载 [配置文件](https://github.com/alacritty/alacritty/releases/download/v0.4.1/alacritty.yml) 并将其复制到`$HOME/.config/alacritty/alacritty.yml` , 你可以在 [GitHub releases page](https://github.com/alacritty/alacritty/releases) 找到最新版本的配置文件。
@@ -52,6 +49,8 @@ key_bindings:
 
 ## Fish
 
+执行命令`brew install fish`安装 Fish，将 fish 设置为默认 shell `sudo chsh -s /usr/bin/fish`。
+
 ### 集成功能
 
 - 语法高亮
@@ -59,17 +58,7 @@ key_bindings:
 - Tab 补全，超过一个列出全部供选择
 - alias，命令别名
 
-### 安装
-
-执行命令`brew install fish`安装 Fish，将 fish 设置为默认 shell `sudo chsh -s /usr/bin/fish`。
-
-### 参考
-
-> [宇宙第一 fish shell 入门](https://www.jianshu.com/p/7ffd9d1af788)
-
 ## Oh My Fish
-
-### 安装
 
 执行`curl -L https://get.oh-my.fish | fish` 安装 Oh My Fish 管理 fish 插件和切换主题。主题可以参考 [Themes](https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md#agnoster)。
 
@@ -87,8 +76,6 @@ key_bindings:
 
 ## Powerline fonts / Nerd fonts
 
-### 安装
-
 好看的字体也是必不可少的，有的主题是必须使用 Powerline 字体或者 Nerd 字体才能正常显示的，执行以下命令：
 
 ```bash
@@ -100,7 +87,8 @@ brew search <name>
 brew cask install <name>
 ```
 
-### 参考
+# 参考
 
+> [宇宙第一 fish shell 入门](https://www.jianshu.com/p/7ffd9d1af788)  
 > [Powerline fonts](https://github.com/powerline/fonts)  
-> [Nerd fonts](https://github.com/ryanoasis/nerd-fonts#patched-fonts)
+> [Nerd fonts](https://github.com/ryanoasis/nerd-fonts#patched-fonts)  
