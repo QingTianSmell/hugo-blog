@@ -1,7 +1,7 @@
 ---
 title: "Hammerspoon 的使用"
 date: 2020-03-08T21:06:45+08:00
-tags: ["技","杂谈","工具"]
+tags: ["技","折腾","工具"]
 ---
 
 <!-- vim-markdown-toc GitLab -->

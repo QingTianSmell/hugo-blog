@@ -1,7 +1,7 @@
 ---
 title: "MacOS 下的终端 + Shell 选择"
 date: 2020-03-04T22:55:25+08:00
-tags: ["技","程序开发","杂谈","工具"]
+tags: ["技","程序开发","折腾","工具"]
 ---
 
 <!-- vim-markdown-toc GitLab -->
