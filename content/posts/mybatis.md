@@ -1,7 +1,7 @@
 ---
 title: "Mybatis 的使用"
 date: 2020-04-04T11:29:00+08:00
-draft: ["技","程序开发","后端","框架"]
+draft: ["程序开发","后端","框架"]
 ---
 
 <!-- vim-markdown-toc GitLab -->

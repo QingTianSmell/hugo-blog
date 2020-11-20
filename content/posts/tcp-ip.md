@@ -1,7 +1,7 @@
 ---
 title: "TCP/IP 知识总结"
 date: 2020-01-08T17:40:25+08:00
-tags: ["术","程序开发","知识总结"]
+tags: ["程序开发","知识总结"]
 ---
 
 <!-- vim-markdown-toc GitLab -->

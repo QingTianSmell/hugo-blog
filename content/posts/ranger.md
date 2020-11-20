@@ -1,7 +1,7 @@
 ---
 title: "Ranger 命令行下的文件管理器"
 date: 2020-03-07T11:47:44+08:00
-tags: ["技","折腾","工具"]
+tags: ["折腾","工具"]
 ---
 
 <!-- vim-markdown-toc GitLab -->

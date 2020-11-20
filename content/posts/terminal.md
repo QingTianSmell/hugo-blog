@@ -1,7 +1,7 @@
 ---
 title: "WIN10 下终端解决方案"
 date: 2019-10-10T18:05:34+08:00
-tags: ["技","折腾","工具"]
+tags: ["折腾","工具"]
 ---
 
 <!-- vim-markdown-toc GitLab -->

@@ -1,7 +1,7 @@
 ---
 title: "Angular 的使用"
 date: 2020-04-12T14:28:05+08:00
-tags: ["技","程序开发","前端","框架"]
+tags: ["程序开发","前端","框架"]
 ---
 
 <!-- vim-markdown-toc GitLab -->

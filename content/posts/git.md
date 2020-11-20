@@ -1,7 +1,7 @@
 ---
 title: "Git 的使用"
 date: 2019-08-29T20:03:23+08:00
-tags: ["技","程序开发","工具"]
+tags: ["程序开发","工具"]
 ---
 
 <!-- vim-markdown-toc GitLab -->

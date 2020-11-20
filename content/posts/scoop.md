@@ -1,7 +1,7 @@
 ---
 title: "Windows 下的软件包管理工具 Scoop"
 date: 2019-07-11T21:56:57+08:00
-tags: ["技","折腾","工具"]
+tags: ["折腾","工具"]
 ---
 
 <!-- vim-markdown-toc GitLab -->

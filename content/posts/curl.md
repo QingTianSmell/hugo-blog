@@ -1,7 +1,7 @@
 ---
 title: "curl 的使用"
 date: 2020-01-06T19:36:40+08:00
-tags: ["技","程序开发","工具"]
+tags: ["程序开发","工具"]
 ---
 
 <!-- vim-markdown-toc GitLab -->
