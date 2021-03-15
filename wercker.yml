@@ -21,10 +21,11 @@ build:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - script:
-        name: install git
+        name: install git nodejs
         code: |
           apt-get update
           apt-get install git -y
+          apt-get install nodejs -y
     - script:
         # 如果使用submodules, 记得添加配置文件.gitmodules
         name: initialize and update git submodules
