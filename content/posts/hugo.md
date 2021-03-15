@@ -11,7 +11,7 @@ Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。
 
 ## 本地搭建流程
 
-```
+```shell
 # 安装hugo
 # 创建site
 hugo new site <siteName>
@@ -27,7 +27,7 @@ hugo server
 
 ## 主题配置
 
-```
+```shell
 # 挑选一个好看的主题这里使用的是 LoveIt
 # 将主题clone到themes目录, 并且把主题仓库作为你的网站目录的子模块
 git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
@@ -37,7 +37,7 @@ theme = 'themeName'
 
 ## GitHub Page 配置
 
-```
+```shell
 # hugo命令会将site内容生成静态文件放在public目录下, 注意所有 draft: true 的文章不会被build
 hugo
 # 切换目录
@@ -67,7 +67,7 @@ CI 使用的[Wercker](https://app.wercker.com), 简单直接使用 GitHub 账号
 
 ### wercker.yml
 
-```yml
+```yaml
 # This references a standard debian container from the
 # Docker Hub https://registry.hub.docker.com/_/debian/
 # Read more about containers on our dev center
