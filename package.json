@@ -1,0 +1,24 @@
+{
+  "name": "hugo-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "algolia": "atomic-algolia"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OrionPax19970905/hugo-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OrionPax19970905/hugo-blog/issues"
+  },
+  "homepage": "https://github.com/OrionPax19970905/hugo-blog#readme",
+  "dependencies": {
+    "atomic-algolia": "^0.3.19"
+  }
+}

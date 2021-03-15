@@ -1,85 +1,90 @@
-baseURL = "http://blog.orionpax.top"
-languageCode = "zh-cn"
+baseURL = "http://blog.orionpax.top/"
+# [en, zh-cn, fr, ...] 设置默认的语言
 defaultContentLanguage = "zh-cn"
-title = "OrionPax 的个人博客"                    # site title  # 网站标题
-theme = "zozo"
-hasCJKLanguage = true                # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
-summaryLength = 100
-paginate = 5                         # shows the number of articles  # 首页显示文章数量
-enableEmoji = true
-googleAnalytics = ""                 # your google analytics id
-disqusShortname = ""                 # your discuss shortname
+# 网站语言, 仅在这里 CN 大写
+languageCode = "zh-CN"
+# 是否包括中日韩文字
+hasCJKLanguage = true
+# 网站标题
+title = "OrionPax 的个人博客"
 
-[author]                             # essential                     # 必需
-  name = "OrionPax"
-
-[sitemap]                 # essential                     # 必需
-  changefreq = "weekly"
-  priority = 0.5
-  filename = "sitemap.xml"
-
-[blackfriday]
-  smartypants = false
-
-[[menu.main]]
-  name = "主页"
-  weight = 20
-  identifier = "home"
-  url = "/"
-[[menu.main]]
-  name = "归档"
-  weight = 20
-  identifier = "archive"
-  url = "/posts/"
-[[menu.main]]
-  name = "标签"
-  weight = 30
-  identifier = "tags"
-  url = "/tags/"
+# 更改使用 Hugo 构建网站时使用的默认主题
+theme = "LoveIt"
 
 [params]
-  footerSlogan = "不能记住过去的人，被判重复过去。"                                          # site's footer slogan  # 网站页脚标语
-  keywords = ["OrionPax", "Java 开发", "Hugo","zozo"]                                  # site's keywords  # 网站关键字
-  description = "个人博客小站"                        # site's description  # 网站描述
+  # LoveIt 主题版本
+  version = "0.2.X"
+  # 网站关键词
+  keywords = ["OrionPax", "Java 开发", "Hugo", "LoveIt"]
 
-# mathjax
-  enableMathJax = true                                                 # enable mathjax  # 是否使用mathjax（数学公式）
-  enableSummary = true                                                 # display the article summary  # 是否显示文章摘要
+  [params.social]
+  	GitHub = "https://github.com/OrionPax19970905"
+  	Email = "OrionPax19970905@gmail.com"
 
-# paginate of archives, tags and categories             # 归档、标签、分类每页显示的文章数目，建议修改为一个较大的值
-archivePaginate = 25
+  [params.search]
+    enable = true
+    # 搜索引擎的类型 ("lunr", "algolia")
+    type = "algolia"
+    # 文章内容最长索引长度
+    contentLength = 4000
+    # 搜索框的占位提示语
+    placeholder = ""
+    # LoveIt 新增 | 0.2.1 最大结果数目
+    maxResultLength = 10
+    # LoveIt 新增 | 0.2.3 结果内容片段长度
+    snippetLength = 50
+    # LoveIt 新增 | 0.2.1 搜索结果中高亮部分的 HTML 标签
+    highlightTag = "em"
+    # LoveIt 新增 | 0.2.4 是否在搜索索引中使用基于 baseURL 的绝对路径
+    absoluteURL = false
+    [params.search.algolia]
+      index = "OrionPax Blog"
+      appID = "1Z7P4N2DNP"
+      searchKey = "12b884f5e1e54aeab4cba52aeaf76362"
 
-# show 'xx Posts In Total' in archive page ?            # 是否在归档页显示文章的总数
-showArchiveCount = true
+# 作者配置
+[author]
+  name = "OrionPax"
+  email = "OrionPax19970905@gmail.com"
+  link = "https://github.com/OrionPax19970905"
 
-# show word count and read time ?                       # 是否显示字数统计与阅读时间
-moreMeta = true
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
+    pre = ""
+    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
+    post = ""
+    name = "文章"
+    url = "/posts/"
+    # 当你将鼠标悬停在此菜单链接上时, 将显示的标题
+    title = ""
+    weight = 1
+  [[menu.main]]
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "标签"
+    url = "/tags/"
+    title = ""
+    weight = 2
+  [[menu.main]]
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "分类"
+    url = "/categories/"
+    title = ""
+    weight = 3
 
-# Syntax highlighting by highlight.js
-highlightInClient = true
+# 用于 Hugo 输出文档的设置
+[outputs]
+  # LoveIt 更改 | 0.2.0
+  home = ["HTML", "RSS", "JSON"]
 
-# 一些全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能，在 archetypes/default.md 查看更多信息。
-# Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
-toc = true                                                                            # 是否开启目录
-autoCollapseToc = false   # Auto expand and collapse toc                              # 目录自动展开/折叠
-fancybox = true           # see https://github.com/fancyapps/fancybox                 # 是否启用fancybox（图片可点击）
-  
-# Valine.
-# You can get your appid and appkey from https://leancloud.cn
-# more info please open https://valine.js.org
-[params.valine]
-  enable = true
-  appId = "nW05u87yweVedDRhj6AUgzR1-gzGzoHsz"
-  appKey = "4HgKbiggTv7ocU789S5WO6ov"
-  placeholder = "确定不说点什么?"
-  visitor = true
-
-[params.busuanzi]         # count web traffic by busuanzi                             # 是否使用不蒜子统计站点访问量
-  enable = true
-  siteUV = true
-  sitePV = true
-  pagePV = true
-
-[social]
-  github = "https://github.com/OrionPax19970905"
-  gmail = "OrionPax19970905@gmail.com"
+# Hugo 解析文档的配置
+[markup]
+  # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
+  [markup.highlight]
+    # false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
+    noClasses = false

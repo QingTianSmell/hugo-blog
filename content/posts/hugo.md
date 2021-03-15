@@ -4,24 +4,6 @@ date: 2019-07-08T21:19:27+08:00
 tags: ["折腾","工具"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
-
-* [简介](#简介)
-* [使用](#使用)
-  * [本地搭建流程](#本地搭建流程)
-* [配置](#配置)
-  * [主题配置](#主题配置)
-  * [GitHub Page 配置](#github-page-配置)
-  * [访问量和访问人数统计](#访问量和访问人数统计)
-  * [使用 Valine 开启评论功能](#使用-valine-开启评论功能)
-  * [持续集成](#持续集成)
-    * [Wercker 简介](#wercker-简介)
-    * [Hugo + Wercker](#hugo-wercker)
-    * [wercker.yml](#werckeryml)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
-
 # 简介
 Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。
 
@@ -70,15 +52,6 @@ git push -u origin master
 # 如果你有自己的域名的话，可以将GitHub Page映射到自己的域名
 ```
 
-## 访问量和访问人数统计
-
-使用[不蒜子](http://busuanzi.ibruce.info/), 如使用 even 主题，在`[params.busuanzi]`下配置`enable = true`将开启不蒜子计数。
-
-## 使用 Valine 开启评论功能
-使用 [Valine](https://valine.js.org/) ,如使用 zozo 主题，在 `[params.valine]` 下配置 `enable = true` 来开启。
-
-## 持续集成
-
 ### Wercker 简介
 
 CI 使用的[Wercker](https://app.wercker.com), 简单直接使用 GitHub 账号注册登录，不需要麻烦的过程。CI 的简单理解就是向一个仓库提交代码后会自动执行的脚本。
@@ -94,7 +67,7 @@ CI 使用的[Wercker](https://app.wercker.com), 简单直接使用 GitHub 账号
 
 ### wercker.yml
 
-```
+```yml
 # This references a standard debian container from the
 # Docker Hub https://registry.hub.docker.com/_/debian/
 # Read more about containers on our dev center
@@ -128,10 +101,14 @@ build:
         code: |
           git submodule init
           git submodule update --remote --recursive
-    - arjen/hugo-build@2.8.0:
-        # your hugo theme name
-        theme: even
-        flags: --buildDrafts=false
+    - arjen/hugo-build:
+        theme: LoveIt
+        flags: --buildDrafts=true
+    - npm-install
+    - script:
+        name: publish algolia json
+        code: |
+          npm run algolia
 deploy:
   steps:
     - install-packages:
@@ -140,7 +117,7 @@ deploy:
     # 部署public目录下的静态文件至username.github.io的master分支
     - sf-zhou/gh-pages@0.2.6:
         token: $GIT_TOKEN
-        domain: blog.orionpax.top
+        domain: http://blog.orionpax.top
         repo: OrionPax19970905/OrionPax19970905.github.io
         branch: master
         basedir: public
