@@ -1,7 +1,7 @@
 ---
 title: "如何使用 Hugo 进行个人博客搭建"
 date: 2019-07-08T21:19:27+08:00
-tags: ["折腾","工具"]
+tags: ["折腾", "工具"]
 ---
 
 # 简介
@@ -20,7 +20,7 @@ cd .\siteName\
 # 创建helloWorld
 hugo new post/hello-world.md
 # 运行本地服务查看效果
-hugo server -D
+hugo server
 ```
 
 # 配置
@@ -28,9 +28,9 @@ hugo server -D
 ## 主题配置
 
 ```
-# 挑选一个好看的主题这里使用的是zozo
-# 将主题clone到themes目录
-git clone https://github.com/OrionPax19970905/hugo-theme-zozo.git themes/zozo
+# 挑选一个好看的主题这里使用的是 LoveIt
+# 将主题clone到themes目录, 并且把主题仓库作为你的网站目录的子模块
+git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
 # 阅读你选择的主题的README, 并修改config.toml文件(主题有特殊配置的根据给出的Demo配置)。
 theme = 'themeName'
 ```
@@ -128,5 +128,6 @@ deploy:
 > [Hugo Themes](https://themes.gohugo.io/)  
 > [hugo-theme-even](https://github.com/olOwOlo/hugo-theme-even)  
 > [hugo-theme-zozo](https://github.com/OrionPax19970905/hugo-theme-zozo)  
+> [hugo-theme-LoveIt](https://github.com/dillonzq/LoveIt)  
 > [如何使用 Github Page](https://pages.github.com/)  
 > [自定义域名设置](https://www.jianshu.com/p/8ac6c7c037c5)
