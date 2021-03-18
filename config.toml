@@ -173,23 +173,6 @@ theme = "LoveIt"
       # 默认展开显示的代码行数
       maxShownLines = 10
 
-    # LoveIt 新增 | 0.2.0 Mapbox GL JS 配置
-    [params.page.mapbox]
-      # Mapbox GL JS 的 access token
-      accessToken = "pk.eyJ1Ijoib3Jpb25wYXgxOTk3MDkwNSIsImEiOiJja21ha3I4MXMxc3NhMm9vZjF4emNxbGx3In0.h6HJHNTItX1f3uXfUnyNyg"
-      # 浅色主题的地图样式
-      lightStyle = "mapbox://styles/mapbox/light-v9"
-      # 深色主题的地图样式
-      darkStyle = "mapbox://styles/mapbox/dark-v9"
-      # 是否添加 NavigationControl
-      navigation = true
-      # 是否添加 GeolocateControl
-      geolocate = true
-      # 是否添加 ScaleControl
-      scale = true
-      # 是否添加 FullscreenControl
-      fullscreen = true
-
     [params.page.share]
       enable = true
       Twitter = true
