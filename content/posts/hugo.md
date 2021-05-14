@@ -1,18 +1,24 @@
 ---
 title: "如何使用 Hugo 进行个人博客搭建"
 date: 2019-07-08T21:19:27+08:00
-tags: ["折腾", "工具"]
+tags: ["工具", "折腾"]
 ---
 
-# 简介
+## 简介
 Hugo 是 Go 编写的静态网站生成器，速度快，易用，可配置。
 
-# 使用
+## 安装
+```shell
+# windows 下使用 scoop 安装
+scoop install hugo
+# macOS 下使用 brew 安装
+brew install hugo
+```
 
-## 本地搭建流程
+## 使用
+### 本地搭建流程
 
 ```shell
-# 安装hugo
 # 创建site
 hugo new site <siteName>
 # 进入site目录
@@ -23,9 +29,8 @@ hugo new post/hello-world.md
 hugo server
 ```
 
-# 配置
-
-## 主题配置
+## 配置
+### 主题配置
 
 ```shell
 # 挑选一个好看的主题这里使用的是 LoveIt
@@ -35,7 +40,7 @@ git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
 theme = 'themeName'
 ```
 
-## GitHub Page 配置
+### GitHub Page 配置
 
 ```shell
 # hugo命令会将site内容生成静态文件放在public目录下, 注意所有 draft: true 的文章不会被build
@@ -52,11 +57,12 @@ git push -u origin master
 # 如果你有自己的域名的话，可以将GitHub Page映射到自己的域名
 ```
 
-### Wercker 简介
+### Wercker 配置
+#### Wercker 简介
 
 CI 使用的[Wercker](https://app.wercker.com), 简单直接使用 GitHub 账号注册登录，不需要麻烦的过程。CI 的简单理解就是向一个仓库提交代码后会自动执行的脚本。
 
-### Hugo + Wercker
+#### Hugo + Wercker
 
 - 首先要在 github 上新建两个仓库，一个用来存放 site 项目，一个用来存放静态的 public 项目(如使用 GitHub Page 项目名称必须为 username.github.io)。
 - 在[Wercker](https://app.wercker.com)下创建 Application, 请参考[教程](https://gohugo.io/hosting-and-deployment/deployment-with-wercker/), 注意需要关联的仓库为 site, 会读取仓库下的 wercker.yml 文件执行脚本。
@@ -65,7 +71,7 @@ CI 使用的[Wercker](https://app.wercker.com), 简单直接使用 GitHub 账号
 - 在你的 site 仓库根目录下创建 wercker.yml 文件，参考下面。
 - 最后进行 push, 去你的 Wercker 后台看看吧，Enjoy!
 
-### wercker.yml
+#### wercker.yml
 
 ```yaml
 # This references a standard debian container from the
@@ -123,7 +129,7 @@ deploy:
         basedir: public
 ```
 
-# 参考
+## 参考
 
 > [Hugo Themes](https://themes.gohugo.io/)  
 > [hugo-theme-even](https://github.com/olOwOlo/hugo-theme-even)  
