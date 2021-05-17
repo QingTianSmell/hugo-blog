@@ -19,3 +19,5 @@ date: 2021-05-14T10:02:32+08:00
 
 1. [如何学习使用新工具](http://blog.orionpax.top/2021/05/function-tool/)
 2. [如何记录一个问题](http://blog.orionpax.top/2021/05/function-exception/)
+3. [如何学习一门编程语言](http://blog.orionpax.top/2021/05/function-programming-language/)
+3. [如何学习一个框架](http://blog.orionpax.top/2021/05/function-framework/)
