@@ -4,6 +4,9 @@ date: 2021-05-14T10:02:32+08:00
 ---
 
 ## 技术
+### 框架
+
+1. [唯二好用的连接池之 Druid 的使用](http://blog.orionpax.top/2021/05/druid/)
 
 ## [工具](http://blog.orionpax.top/tags/%E5%B7%A5%E5%85%B7/)
 ### [折腾](http://blog.orionpax.top/tags/%E6%8A%98%E8%85%BE/)
