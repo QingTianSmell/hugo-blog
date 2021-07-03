@@ -21,8 +21,8 @@ date: 2021-05-14T10:02:32+08:00
 ## [问题](http://blog.orionpax.top/tags/%E9%97%AE%E9%A2%98/)
 
 1. [POI 单元格数据过长问题](http://blog.orionpax.top/2019/07/poi-e1/)
-1. [IE GET 方式请求数据缓存问题](http://blog.orionpax.top/2019/07/html/#ie-get-%E6%96%B9%E5%BC%8F%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98)
-2. [sup 标签导致行距变大的问题](http://blog.orionpax.top/2019/09/css-pit1/)
+1. [IE GET 方式请求数据缓存问题](http://blog.orionpax.top/2021/07/ie-e1/)
+2. [sup 标签导致行距变大的问题](http://blog.orionpax.top/2019/07/css/#sup-%E6%A0%87%E7%AD%BE%E5%AF%BC%E8%87%B4%E8%A1%8C%E8%B7%9D%E5%8F%98%E5%A4%A7%E7%9A%84%E9%97%AE%E9%A2%98)
 
 ## [方法](http://blog.orionpax.top/tags/%E6%96%B9%E6%B3%95/)
 
