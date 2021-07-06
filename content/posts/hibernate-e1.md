@@ -1,15 +1,20 @@
 ---
 title: "Hibernate 多线程下 No Session 问题"
 date: 2019-07-23T21:37:28+08:00
-tags: ["踩坑", "后端"]
+tags: ["问题"]
 ---
 
-```
-问题     : Hibernate 使用多线程，且在线程内部获取对象懒加载的属性就会出现 No Session。
-原因     : 其他线程并未获取到Session。
-```
+## 问题描述
 
-```
+ Hibernate 使用多线程，且在线程内部获取对象懒加载的属性就会出现 No Session。
+
+## 产生原因
+
+其他线程并未获取到Session。
+
+## 解决方式
+
+```java
 // 解决方法1
 
 public static boolean bindHibernateSessionToThread(SessionFactory sessionFactory) {
@@ -37,8 +42,9 @@ SessionFactory sessionFactory = ContextHolder.getBean(SessionFactory.class);
 boolean participate = ConcurrentUtil.bindHibernateSessionToThread(sessionFactory);
 //...Method
 ConcurrentUtil.closeHibernateSessionFromThread(participate, sessionFactory);
+```
 
-
+```
 // 解决方法2
 // 配置 Hibernate Lazy="false"
 ```
