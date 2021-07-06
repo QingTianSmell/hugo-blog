@@ -1,46 +1,8 @@
 ---
 title: "React 的使用"
 date: 2019-07-23T21:45:22+08:00
-tags: ["程序开发","前端","框架"]
+tags: ["框架"]
 ---
-
-<!-- vim-markdown-toc GitLab -->
-
-* [基础](#基础)
-  * [简介](#简介)
-  * [Hello World](#hello-world)
-  * [理解 JSX](#理解-jsx)
-  * [元素渲染](#元素渲染)
-  * [理解 React 组件](#理解-react-组件)
-    * [概念](#概念)
-    * [实例](#实例)
-    * [创建一个 React 组件](#创建一个-react-组件)
-    * [受控组件和非受控组件](#受控组件和非受控组件)
-  * [Props](#props)
-  * [State](#state)
-  * [React 组件生命周期及使用场景](#react-组件生命周期及使用场景)
-  * [React 事件处理](#react-事件处理)
-  * [条件渲染](#条件渲染)
-  * [Keys](#keys)
-  * [表单](#表单)
-  * [状态提升](#状态提升)
-* [扩展](#扩展)
-  * [理解 Virtual DOM](#理解-virtual-dom)
-  * [组件设计模式](#组件设计模式)
-    * [高阶组件](#高阶组件)
-    * [框架(外包装)组件](#框架外包装组件)
-  * [Context](#context)
-  * [脚手架工具](#脚手架工具)
-  * [生态圈](#生态圈)
-    * [Redux](#redux)
-    * [React Router](#react-router)
-    * [webpack](#webpack)
-    * [react-loadable](#react-loadable)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
-
-# 基础
 
 ## 简介
 
@@ -51,7 +13,9 @@ React 是一个用于构建用户界面的 JavaScript 库。(就是个状态机�
 > 组件化  
 > 创建好拥有各自状态的组件，再由组件构成更加复杂的界面。无需再用模版代码，通过使用 JavaScript 编写的组件你可以更好地传递数据，将应用状态和 DOM 拆分开来。
 
-## Hello World
+## 基础
+
+### Hello World
 
 ```
 ReactDOM.render(
@@ -60,7 +24,7 @@ ReactDOM.render(
 );
 ```
 
-## 理解 JSX
+### 理解 JSX
 
 - 本质 : 不是模板引擎而是动态创建组件(使用 JavaScript 原生的 DOM API `document.createElement()`)的语法糖。JSX 防注入攻击。React DOM 在渲染之前默认会过滤所有传入的值。它可以确保你的应用不会被注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 XSS(跨站脚本)攻击。
 - 对比其他模板语言的优点
@@ -72,19 +36,19 @@ ReactDOM.render(
   - 大写字母开头的为自定义组件。
   - JAX 标记可以直接使用属性语法，例如:`<menu.Item>`。
 
-## 元素渲染
+### 元素渲染
 
 React 只会更新必要的部分。React DOM 首先会比较元素内容先后的不同，而在渲染过程中只会更新改变了的部分。根据我们以往的经验，将界面视为一个个特定时刻的固定内容（就像一帧一帧的动画），而不是随时处于变化之中（而不是处于变化中的一整段动画），将会有利于我们理清开发思路，减少各种 bug。
 
-## 理解 React 组件
+### 理解 React 组件
 
-### 概念
+#### 概念
 
 - React 组件一般不提供方法，而是某种状态机。
 - React 组件可以理解为一个纯函数(输入是什么结果一定是什么)。
 - 单向数据绑定(外部通过 props 传递参数给内部，内部发生变化时暴露事件给外部)。
 
-### 实例
+#### 实例
 
 ```
 //JavaScript函数方式
@@ -102,7 +66,7 @@ class Welcome extends React.Component {
 }
 ```
 
-### 创建一个 React 组件
+#### 创建一个 React 组件
 
 - 方法论
   1. 创建静态 UI(原型)。
@@ -115,19 +79,19 @@ class Welcome extends React.Component {
   1. 能够计算得到的状态就不要单独存储。
   2. 组件尽量无状态，所需数据通过 props 获取。
 
-### 受控组件和非受控组件
+#### 受控组件和非受控组件
 
 - 受控组件 : 组件或表单元素状态由使用者维护。React 中表单元素通常作为受控组件使用。对外暴露修改事件的静态组件也属于受控组件。
 - 非受控组件 : 组件状态由自身维护，或表单元素状态由 DOM 自身维护。
 
-## Props
+### Props
 
 - 当 React 遇到的元素是用户自定义的组件，它会将 JSX 属性作为单个对象传递给该组件，这个对象称之为“props”。
 - Props 的只读性。无论是使用函数或是类来声明一个组件，它决不能修改它自己的 props。
 - 我们建议从组件自身的角度来命名 props，而不是根据使用组件的上下文命名。
 - React 是非常灵活的，但它也有一个严格的规则：所有的 React 组件必须像纯函数那样使用它们的 props。
 
-## State
+### State
 
 - 不要直接更新状态。应当使用 setState()。构造函数是唯一能够初始化 this.state 的地方。
 - 状态更新可能是异步的。React 可以将多个 setState() 调用合并成一个调用来提高性能。因为 this.props 和 this.state 可能是异步更新的，你不应该依靠它们的值来计算下一个状态。
@@ -135,7 +99,7 @@ class Welcome extends React.Component {
 - 经过计算后的值不应该赋给 state，正确的模式应该是在渲染时计算这些值。这样保证了计算后的值永远不会与派生出它的 props 值不同步。
 - 在 React 应用程序中，组件是有状态还是无状态被认为是可能随时间而变化的组件的实现细节。 可以在有状态组件中使用无状态组件，反之亦然。
 
-## React 组件生命周期及使用场景
+### React 组件生命周期及使用场景
 
 ![React组件生命周期](https://img.bagevent.com/2019-04-03_125257.png)
 
@@ -168,7 +132,7 @@ class Welcome extends React.Component {
   - 一般可以由 PureComponent 自动实现
   - 典型场景：性能优化
 
-## React 事件处理
+### React 事件处理
 
 - React 事件绑定属性的命名采用驼峰式写法，而不是小写。
 - 如果采用 JSX 的语法你需要传入一个函数作为事件处理函数，而不是一个字符串(DOM 元素的写法)
@@ -183,19 +147,19 @@ class Welcome extends React.Component {
   <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
   ```
 
-## 条件渲染
+### 条件渲染
 
 - 与运算符 &&
 - 三目运算符
 - 阻止组件渲染。在极少数情况下，你可能希望隐藏组件，即使它被其他组件渲染。让 render 方法返回 null 而不是它的渲染结果即可实现。
 
-## Keys
+### Keys
 
 - Keys 可以在 DOM 中的某些元素被增加或删除的时候帮助 React 识别哪些元素发生了变化。因此你应当给数组中的每一个元素赋予一个确定的标识。
 - 一个元素的 key 最好是这个元素在列表中拥有的一个独一无二的字符串。通常，我们使用来自数据的 id 作为元素的 key。当元素没有确定的 id 时，你可以使用他的序列号索引 index 作为 key。==如果列表项目的顺序可能会变化，我们不建议使用索引来用作键值，因为这样做会导致性能的负面影响==，还可能引起组件状态问题。如果你选择不指定显式的键值，那么 React 将默认使用索引用作为列表项目的键值。
 - 元素的 key 只有放在其环绕数组的上下文中才有意义。比方说，如果你提取出一个 ListItem 组件，你应该把 key 保存在数组中的这个\<ListItem />元素上，而不是放在 ListItem 组件中的\<li\>元素上。
 
-## 表单
+### 表单
 
 - 在 HTML 当中，像`<input>`,`<textarea>`, 和 `<select>`这类表单元素会维持自身状态，并根据用户输入进行更新。但在 React 中，可变的状态通常保存在组件的状态属性中，并且只能用 `setState()` 方法进行更新。我们通过使 react 变成一种单一数据源的状态来结合二者。<mark>React 负责渲染表单的组件仍然控制用户后续输入时所发生的变化。相应的，其值由 React 控制的输入表单元素称为“受控组件”。</mark>
 - 多个输入的解决方法
@@ -213,7 +177,7 @@ class Welcome extends React.Component {
   }
   ```
 
-## 状态提升
+### 状态提升
 
 - 在 React 应用中，对应任何可变数据理应只有一个单一“数据源”。通常，状态都是首先添加在需要渲染数据的组件中。然后，如果另一个组件也需要这些数据，你可以将数据提升至离它们最近的共同祖先中。
 - 向下传递父组件的 State 及其更新方法。
@@ -221,9 +185,9 @@ class Welcome extends React.Component {
 - 如果某些数据可以由 props 或者 state 推导出来，那么它很有可能不应该在 state 中出现。
 
 
-# 扩展
+## 扩展
 
-## 理解 Virtual DOM
+### 理解 Virtual DOM
 
 - 虚拟 DOM 如何工作(DIFF 算法)
   - 广度优先分层比较，针对 UI 很少发生跨层移动
@@ -233,9 +197,9 @@ class Welcome extends React.Component {
   - 组件的 DOM 结构是相对稳定的
   - 类型相同的兄弟节点可以被唯一标识
 
-## 组件设计模式
+### 组件设计模式
 
-### 高阶组件
+#### 高阶组件
 
 - 高阶组件接收组件作为参数，定义通用逻辑、状态，render 方法中将定义的状态和逻辑作为 props 传给接收的组件并直接返回。
 - 高阶组件类似于已实现的功能接口，子组件引入高阶组件`import 高阶组件函数名 form "组件路径"`，在内部使用高阶组件将会传递的 props，然后导出通过高阶组件封装的组件给外部使用`export default 高阶组件函数名(组件)`
@@ -288,12 +252,12 @@ class Welcome extends React.Component {
 - 典型场景：通用逻辑复用
 - 参考：[高阶组件](https://react.docschina.org/docs/higher-order-components.html)
 
-### 框架(外包装)组件
+#### 框架(外包装)组件
 
 - 框架组件接收 props.children 作为可变的 UI 显示。定义通用 UI，变化部分使用 props.children，使用者决定这部分如何展示。
 - 典型场景：通用 UI 复用
 
-## Context
+### Context
 
 - Context 通过组件树提供了一个传递数据的方法，从而避免了在每一个层级手动的传递 props 属性。
 - 不要仅仅为了避免在几个层级下的组件传递 props 而使用 context，它是被用于在多个层级的多个组件需要访问相同数据的情景。
@@ -353,7 +317,7 @@ class Welcome extends React.Component {
 
 > [Context 使用教程](https://react.docschina.org/docs/context.html)
 
-## 脚手架工具
+### 脚手架工具
 
 [Create React App](https://github.com/facebook/create-react-app) 是 Facebook 的一个最简依赖的脚手架工具，适合学习 React 或者开发简单应用。
 
@@ -361,21 +325,21 @@ class Welcome extends React.Component {
 
 [Codesandbox](https://codesandbox.io) 在线 IDE + 脚手架，不关注项目细节，打包部署过程隐藏。
 
-## 生态圈
+### 生态圈
 
-### Redux
+#### Redux
 
 [Redux](https://redux.js.org) 是 React 全家桶的一员，Redux 是 JavaScript 状态容器，提供可预测化的状态管理。
 
-### React Router
+#### React Router
 
 React Router 是完整的 React 路由解决方案。React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。
 
-### webpack
+#### webpack
 
 前端打包工具
 
-### react-loadable
+#### react-loadable
 
 和 webpack 结合实现按需加载，提高 APP 第一次访问速度
 
@@ -395,6 +359,11 @@ export default class App extends React.Component {
 }
 ```
 
-# 参考
+## 问题
+
+### [JAX 中 HTML 代码段被识别为字符串的问题](http://blog.orionpax.top/2019/07/react-e1/)
+### [React 和直接修改 DOM 的前端框架的兼容性问题](https://blog.orionpax.top/2019/07/react-e2/)
+
+## 参考
 
 > [React 官方文档](https://react.docschina.org/docs/hello-world.html)
