@@ -8,6 +8,7 @@ date: 2021-05-14T10:02:32+08:00
 1. [HTML 知识总结](http://blog.orionpax.top/2019/07/html/)
 2. [CSS 知识总结](http://blog.orionpax.top/2019/07/css/)
 3. [JavaScript 知识总结](http://blog.orionpax.top/2019/07/javascript/)
+4. [Java 知识总结](http://blog.orionpax.top/2019/07/java/)
 
 ## [框架](http://blog.orionpax.top/tags/%E6%A1%86%E6%9E%B6/)
 
@@ -24,9 +25,14 @@ date: 2021-05-14T10:02:32+08:00
 1. [IE GET 方式请求数据缓存问题](http://blog.orionpax.top/2021/07/ie-e1/)
 2. [sup 标签导致行距变大的问题](http://blog.orionpax.top/2019/07/css/#sup-%E6%A0%87%E7%AD%BE%E5%AF%BC%E8%87%B4%E8%A1%8C%E8%B7%9D%E5%8F%98%E5%A4%A7%E7%9A%84%E9%97%AE%E9%A2%98)
 
+## [读书](http://blog.orionpax.top/tags/%E8%AF%BB%E4%B9%A6/)
+
+1. [《SQL 必知必会》](http://blog.orionpax.top/2019/07/sql-book1/)
+
 ## [方法](http://blog.orionpax.top/tags/%E6%96%B9%E6%B3%95/)
 
 1. [如何学习使用新工具](http://blog.orionpax.top/2021/05/function-tool/)
 2. [如何记录一个问题](http://blog.orionpax.top/2021/05/function-exception/)
 3. [如何学习一门编程语言](http://blog.orionpax.top/2021/05/function-programming-language/)
-3. [如何学习一个框架](http://blog.orionpax.top/2021/05/function-framework/)
+4. [如何学习一个框架](http://blog.orionpax.top/2021/05/function-framework/)
+5. [如何读一本书](http://blog.orionpax.top/2021/07/function-book/)
