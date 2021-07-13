@@ -1,8 +1,10 @@
 ---
-title: "MySQL UPDATE 误操作后恢复数据"
+title: "MySQL UPDATE 误操作后如何恢复数据"
 date: 2019-09-29T17:52:45+08:00
-tags: ["踩坑记录", "后端"]
+tags: ["方法"]
 ---
+
+使用 sed 命令恢复。
 
 ## 注意
 

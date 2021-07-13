@@ -1,26 +1,16 @@
 ---
 title: "WIN10 下终端解决方案"
 date: 2019-10-10T18:05:34+08:00
-tags: ["折腾","工具"]
+tags: ["工具"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
+## 前言
 
-* [前言](#前言)
-* [搭建](#搭建)
-* [使用](#使用)
-  * [WSL 的 PATH 会包含 WIN10 的 PATH 问题](#wsl-的-path-会包含-win10-的-path-问题)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
-
-# 前言
-
-本文已过时。现在个人的解决方案为 [Alacritty](https://github.com/alacritty/alacritty) + [fishshell](https://fishshell.com/) + [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)， 从 zsh 转到 fish 的原因就是因为 zsh 太慢了。Alacritty 是一个跨平台、GPU 增强的终端模拟器，目前还在实验阶段有不少问题，选择它的原因是因为它足够的简单以及出乎意料的快。
+本文已过时。现在个人的解决方案为 Windows Terminal + [fishshell](https://fishshell.com/) + [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)， 从 zsh 转到 fish 的原因就是因为 zsh 太慢了。
 
 WIN10 命令行工具最终选择了 WSL + Ubuntu + Terinus + Oh My Zsh。在 Hyper 和 Terminus 之前选择了 Terminus，只是因为 Terminus 模糊透明真的好看，一位伟人曾经说过好看就是第一生产力。
 
-# 搭建
+## 搭建
 
 1. 启用 WSL ，管理员运行 PowerShell ，执行 `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`
 2. 去 Microsoft Store 搜索 WSL 下载一个，推荐选择 Ubuntu
@@ -32,7 +22,6 @@ WIN10 命令行工具最终选择了 WSL + Ubuntu + Terinus + Oh My Zsh。在 Hy
 8. 设置 zsh 为默认 shell ，`chsh -s $(which zsh)`
 9. 修改 zsh 的[主题](https://github.com/robbyrussell/oh-my-zsh/wiki/themes)并添加需要的插件
 
-# 使用
 ## WSL 的 PATH 会包含 WIN10 的 PATH 问题
 ```
 // 两个系统里存在的同名的命令就会有问题
@@ -41,7 +30,7 @@ sudo vim ~/.bashrc
 PATH=$(/usr/bin/printenv PATH | /usr/bin/perl -ne 'print join(":", grep { !/\/mnt\/[a-z]/ } split(/:/));')
 ```
 
-# 参考
+## 参考
 
 > [打造 Windows 10 下最强终端方案：WSL + Terminus + Oh My Zsh + The Fuck](https://p3terx.com/archives/the-strongest-terminal-solution-under-windows-10.html#E5AE89E8A385WSL)  
 > [Hyper.js + Oh My ZSH as Ubuntu on Windows (WSL) Terminal](https://medium.com/@ssharizal/hyper-js-oh-my-zsh-as-ubuntu-on-windows-wsl-terminal-8bf577cdbd97)

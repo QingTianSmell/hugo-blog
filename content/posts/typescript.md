@@ -1,27 +1,25 @@
 ---
 title: "TypeScript 知识总结"
 date: 2019-07-25T11:27:43+08:00
-tags: ["程序开发","前端","知识总结"]
+tags: ["语言"]
 ---
 
-## 简单使用
+## 简介
 
-### 简介
-
-#### 什么是 TypeScript?
+### 什么是 TypeScript?
 
 [TypeScript](http://www.typescriptlang.org) 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持。
 
-#### 为什么选择 TypeScript?
+### 为什么选择 TypeScript?
 
 - TypeScript 增加了代码的可读性和可维护性
 - 有一定的学习成本，需要理解接口（Interfaces）、泛型（Generics）、类（Classes）、枚举类型（Enums）等前端工程师可能不是很熟悉的概念
 - 短期可能会增加一些开发成本，毕竟要多写一些类型的定义，不过对于一个需要长期维护的项目，TypeScript 能够减少其维护成本
 - 可能和一些库结合的不是很完美
 
-### 基础
+## 基础
 
-#### 原始数据类型
+### 原始数据类型
 
 原始数据类型包括：布尔值、数值、字符串、null、undefined 以及 ES6 中的新类型 Symbol。
 
@@ -37,7 +35,7 @@ function alertName(): void {
 }
 ```
 
-#### 任意值
+### 任意值
 
 ```
 // 如果是一个普通类型，在赋值过程中改变类型是不被允许的 error TS2322: Type 'number' is not assignable to type 'string'.
@@ -58,11 +56,11 @@ let something: any;
 - 也允许调用任何方法
 - 声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值
 
-#### 类型推论
+### 类型推论
 
 如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型。其实就是根据初始化的值来确认类型，不进行初始化就是 any
 
-#### 接口
+### 接口
 
 TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。
 
@@ -87,7 +85,7 @@ interface Person {
 }
 ```
 
-#### 数组的类型
+### 数组的类型
 
 ```
 // 「类型 + 方括号」表示法
@@ -103,7 +101,7 @@ interface NumberArray {
 let fibonacci: NumberArray = [1, 1, 2, 3, 5];
 ```
 
-#### 函数的类型
+### 函数的类型
 
 ```
 // 简单的函数定义 声明式
@@ -151,7 +149,7 @@ function reverse(x: number | string): number | string {
 }
 ```
 
-#### 类型断言
+### 类型断言
 
 将一个联合类型的变量指定为一个更加具体的类型。类型断言不是类型转换，断言成一个联合类型中不存在的类型是不允许的。
 
@@ -161,7 +159,7 @@ function reverse(x: number | string): number | string {
 值 as 类型 // 在 tsx 语法（React 的 jsx 语法的 ts 版）中必须用这一种
 ```
 
-#### 声明文件
+### 声明文件
 
 当使用第三方库时，我们需要引用它的声明文件，才能获得对应的代码补全、接口提示等功能。
 
@@ -185,9 +183,9 @@ declare module // 扩展模块
 
 > [TypeScript 声明文件使用](https://ts.xcatliu.com/basics/declaration-files)
 
-### 进阶
+## 扩展
 
-#### 类型别名
+### 类型别名
 
 ```
 // 简单的例子 类型别名常用于联合类型
@@ -203,7 +201,7 @@ function getName(n: NameOrResolver): Name {
 }
 ```
 
-#### 字符串字面量类型
+### 字符串字面量类型
 
 ```
 // 字符串字面量类型用来约束取值只能是某几个字符串中的一个。类型别名与字符串字面量类型都是使用 type 进行定义。
@@ -213,7 +211,7 @@ function handleEvent(ele: Element, event: EventNames) {
 }
 ```
 
-#### 类
+### 类
 
 ```
 // 属性和方法
@@ -272,7 +270,7 @@ class Animal {
 }
 ```
 
-#### 类与接口
+### 类与接口
 
 ```
 interface Alarm {

@@ -1,22 +1,11 @@
 ---
 title: "如何科学上网"
 date: 2019-09-23T11:03:15+08:00
-tags: ["折腾","工具"]
+tags: ["方法"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
-
-* [安装](#安装)
-  * [前置条件](#前置条件)
-  * [SSR](#ssr)
-  * [V2Ray](#v2ray)
-  * [Trajan](#trajan)
-  * [客户端](#客户端)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
-
-# 安装
+## 简介
+除了个人搭建梯子的方式，还可以选用各大主流机场或者小型机场。
 
 ## 前置条件
 
@@ -69,7 +58,7 @@ tags: ["折腾","工具"]
 - [v2rayN](https://github.com/2dust/v2rayN)
 - [Clash](https://github.com/Dreamacro/clash)
 
-# 参考
+## 参考
 
 > [搬瓦工一键搭建 shadowsocks-shadowsocksR 并开启 BBR 加速](https://github.com/flyzy2005/ss-fly/wiki/搬瓦工一键搭建shadowsocks-shadowsocksR并开启BBR加速)  
 > [V2Ray 搭建详细图文教程](https://github.com/233boy/v2ray/wiki/V2Ray搭建详细图文教程)  

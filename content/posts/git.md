@@ -1,57 +1,14 @@
 ---
 title: "Git 的使用"
 date: 2019-08-29T20:03:23+08:00
-tags: ["程序开发","工具"]
+tags: ["工具"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
-
-* [What](#what)
-  * [定义](#定义)
-  * [Git 的三种对象](#git-的三种对象)
-  * [工作区、暂存区、版本库](#工作区暂存区版本库)
-* [Why](#why)
-  * [Git 和 SVN 有什么区别？](#git-和-svn-有什么区别)
-  * [什么是 Git 中的“裸存储库”？](#什么是-git-中的裸存储库)
-  * [git pull 和 git fetch 有什么区别？](#git-pull-和-git-fetch-有什么区别)
-  * [如果想要在提交之前运行代码性检查工具，并在测试失败时阻止提交，该怎样配置 Git 存储库？](#如果想要在提交之前运行代码性检查工具并在测试失败时阻止提交该怎样配置-git-存储库)
-  * [Git 有什么分支策略？](#git-有什么分支策略)
-* [How](#how)
-  * [初始化配置](#初始化配置)
-  * [本地仓库管理](#本地仓库管理)
-  * [远程仓库管理](#远程仓库管理)
-  * [分支管理](#分支管理)
-  * [查看 commit 历史](#查看-commit-历史)
-  * [比较文件差异](#比较文件差异)
-  * [退回已提交未推送的 commit](#退回已提交未推送的-commit)
-  * [从暂存区退回工作区修改](#从暂存区退回工作区修改)
-  * [丢弃工作区修改](#丢弃工作区修改)
-  * [丢弃工作区和暂存区的修改](#丢弃工作区和暂存区的修改)
-  * [丢弃未提交的 commit](#丢弃未提交的-commit)
-  * [丢弃已提交的 commit](#丢弃已提交的-commit)
-  * [恢复误操作丢弃的 commit](#恢复误操作丢弃的-commit)
-  * [暂存工作区修改去干其它重要的事情](#暂存工作区修改去干其它重要的事情)
-  * [忽略已被 git 管理的文件](#忽略已被-git-管理的文件)
-  * [配置相关](#配置相关)
-    * [修改 HTTP 传输请求数据时最大的缓存字节数](#修改-http-传输请求数据时最大的缓存字节数)
-    * [远程 HTTPS 验证时记住密码](#远程-https-验证时记住密码)
-    * [配置全局 git 编码](#配置全局-git-编码)
-    * [使用代理提高 git 速度](#使用代理提高-git-速度)
-  * [其它命令(基本没有应用场景)](#其它命令基本没有应用场景)
-  * [多人协作工作流程](#多人协作工作流程)
-  * [多个 SSH Key 管理](#多个-ssh-key-管理)
-  * [在 GitHub 上搜索感兴趣的项目](#在-github-上搜索感兴趣的项目)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
-
-## What
-
-### 定义
+## 简介
 
 一个开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
 
-### Git 的三种对象
+## Git 的三种对象
 
 - commit 对象
   - 用于表示一个提交
@@ -75,7 +32,7 @@ tags: ["程序开发","工具"]
 - 这些对象都保存在.git/objects/目录下，每一个对象都会生成 1 个 40 位的哈希值，前 2 位作为文件夹，后 38 位作为文件名
 - 不同名，相同内容的文件，其哈希值相同，其 blob 对象也是共用的
 
-### 工作区、暂存区、版本库
+## Git 中的工作区、暂存区、版本库
 
 [图例参考](https://www.processon.com/view/link/5e6ad76de4b0ee15dc05f18d)：
 
@@ -92,28 +49,26 @@ tags: ["程序开发","工具"]
 3. 提交更新，找到暂存区域的文件，将暂存区的文件 commit 到版本库；
 4. 如果工作区的文件改乱了（包括了误删、误改），想回到上一版本，就可以使用 git checkout 命令将版本库中的文件检出到工作区将本次更改 discard(覆盖)掉。
 
-## Why
-
-### Git 和 SVN 有什么区别？
+## Git 和 SVN 有什么区别？
 
 | GIT          | SVN          |
 | ------------ | ------------ |
 | 分布式       | 集中式       |
 | 可以离线提交 | 只能在线提交 |
 
-### 什么是 Git 中的“裸存储库”？
+## 什么是 Git 中的“裸存储库”？
 
 Git 中的 “裸” 存储库只包含版本控制信息而没有工作文件（没有工作树）。也就是只有 .git 文件夹。
 
-### git pull 和 git fetch 有什么区别？
+## git pull 和 git fetch 有什么区别？
 
 git pull = git fetch + git merge
 
-### 如果想要在提交之前运行代码性检查工具，并在测试失败时阻止提交，该怎样配置 Git 存储库？
+## 如果想要在提交之前运行代码性检查工具，并在测试失败时阻止提交，该怎样配置 Git 存储库？
 
 可以通过与存储库的 pre-commit hook 相关的简单脚本来完成。git 会在提交之前触发 pre-commit hook。你可以在脚本里对代码进行检查，如果脚本以非 0 退出，将会阻止提交操作。
 
-### Git 有什么分支策略？
+## Git 有什么分支策略？
 
 - 功能分支（Feature branching）  
   要素分支模型将特定要素的所有更改保留在分支内。当通过自动化测试对功能进行全面测试和验证时，该分支将合并到主服务器中。
@@ -124,8 +79,7 @@ git pull = git fetch + git merge
 - 发布分支（Release branching）  
   一旦开发分支获得了足够的发布功能，你就可以克隆该分支来形成发布分支。创建该分支将会启动下一个发布周期，所以在此之后不能再添加任何新功能，只有错误修复，文档生成和其他面向发布的任务应该包含在此分支中。一旦准备好发布，该版本将合并到主服务器并标记版本号。此外，它还应该再将自发布以来已经取得的进展合并回开发分支。
 
-## How
-
+## 配置
 ### 初始化配置
 
 ```bash
@@ -145,6 +99,33 @@ git config --system
 git config --list [作用域]
 ```
 
+### 修改 HTTP 传输请求数据时最大的缓存字节数
+
+```bash
+git config --global http.postBuffer 524288000
+```
+
+### 远程 HTTPS 验证时记住密码
+
+```bash
+git config --global credential.helper store
+```
+
+### 配置全局 git 编码
+
+```bash
+# 解决中文乱码情况
+git config --global gui.encoding utf-8
+```
+
+### 使用代理提高 git 速度
+
+```bash
+git config --global http.proxy http://127.0.0.1:1080
+git config --global https.proxy http://127.0.0.1:1080
+```
+
+## 应用场景
 ### 本地仓库管理
 
 ```bash
@@ -347,41 +328,14 @@ git rm --cached <文件>
 # 更新 .gitignore 后提交
 ```
 
-### 配置相关
-
-#### 修改 HTTP 传输请求数据时最大的缓存字节数
-
-```bash
-git config --global http.postBuffer 524288000
-```
-
-#### 远程 HTTPS 验证时记住密码
-
-```bash
-git config --global credential.helper store
-```
-
-#### 配置全局 git 编码
-
-```bash
-# 解决中文乱码情况
-git config --global gui.encoding utf-8
-```
-
-#### 使用代理提高 git 速度
-
-```bash
-git config --global http.proxy http://127.0.0.1:1080
-git config --global https.proxy http://127.0.0.1:1080
-```
-
-### 其它命令(基本没有应用场景)
+### 查看 git 对象
 
 ```bash
 //git对象查看
 git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
 ```
 
+## 扩展
 ### 多人协作工作流程
 
 1. 首先，可以试图用`git push origin <branch-name>`推送自己的修改；
@@ -394,7 +348,7 @@ git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
 - 在本地创建和远程分支对应的分支，使用`git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
 - 如果 git pull 提示 no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream-to <branch-name> origin/<branch-name>`；
 
-### 多个 SSH Key 管理
+### 如何进行多个 SSH Key 的管理
 
 1. 生成 SSH Key 时，对文件进行命名。
 2. 检查是否有已配置的代理 `ssh-add -l`
@@ -431,7 +385,7 @@ git cat-file [-t : 查看类型] [-p : 查看内容] <git对象hash>
    ssh -T git@github.zqt.com      #测试ZQianlvT
    ```
 
-### 在 GitHub 上搜索感兴趣的项目
+### 如何在 GitHub 上搜索感兴趣的项目
 
 [基础语法](https://help.github.com/articles/understanding-the-search-syntax/)  
 [高级搜索页面](https://help.github.com/en/github/searching-for-information-on-github/searching-for-repositories)

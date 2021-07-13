@@ -1,17 +1,21 @@
 ---
 title: "Spring Boot 的使用"
 date: 2019-11-22T08:35:06+08:00
-tags: ["程序开发","后端","框架"]
+tags: ["框架"]
 ---
 
-## What
+## 简介
 
-## Why
+Spring Boot是在Spring框架基础上创建的全新框架。相比于以往的一些开发框架，Spring Boot使用更加简单，而且功能更加丰富，性能更加稳定而健壮。Spring Boot的设计目的就是简化开发，让开发者能把更多的精力投入到实际业务中。Spring Boot核心理念是 Convention Over Configuration （约定优于配置）。
 
-## Where
+## Spring Boot特点
 
-## How
+- 开箱即用，根据项目依赖自动配置。
+- 功能强大的服务体系，如：嵌入式服务、安全、性能指标、健康检查
+- 绝无代码生成，可以不需要任何xml配置（使用Java配置和注解来代替）
+- 对第三方技术几乎完美整合
 
+## 基础
 ### 如何创建一个 Spring Boot 项目。
 访问 [Spring Initializr](https://start.spring.io/)，配置项目的基础设置，并选择项目依赖，点击生成按钮，就可以获取到一个用来初始化项目的压缩包。解压后使用 IDEA 打开即可。
 
@@ -40,6 +44,7 @@ public class HelloWorldController {
 </dependency>
 ```
 
+## 应用场景
 ### 配置数据源
 ```
 <dependency>
@@ -123,9 +128,9 @@ transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 [Spring AOP 开发文档](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#aop)   
 [Pointcut 定义文档](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/core.html#aop-pointcuts)
 
-### 依赖及其使用
-#### Spring Web
-##### 相关常用注解
+## 扩展
+### Spring Web
+#### 相关常用注解
 - @RestController : 相当于 @Controller + @ResponseBody 两个注解的结合，返回json数据不需要在方法前面加 @ResponseBody 注解了，但使用 @RestController 这个注解，就不能返回 jsp,html 页面，视图解析器无法解析 jsp,html 页面
 - @RequestMapping
 - @GetMapping : 是一个组合注解是 @RequestMapping(method = RequestMethod.GET) 的缩写
@@ -140,10 +145,10 @@ transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 - @RequestParam
 - @RequestHeader
 
-##### 参考
+#### 参考
 [相关注解](https://docs.spring.io/spring/docs/5.2.1.RELEASE/spring-framework-reference/web.html#mvc-ann-return-types)
 
-#### Spring Data JDBC
+### Spring Data JDBC
 ```
 // Show You Code
 @Slf4j
@@ -209,8 +214,8 @@ public class JdbcFooRepository {
 }
 ```
 
-#### Spring Data JPA
-##### 常用 JPA 注解
+### Spring Data JPA
+#### 常用 JPA 注解
 - 实体
   - @Entity、@MappedSuperclass
   - @Table(name)
@@ -225,10 +230,10 @@ public class JdbcFooRepository {
   - @OneToOne、@OneToMany、@ManyToOne、@ManyToMany
   - @OrderBy
 
-#### Spring Boot Actuator
+### Spring Boot Actuator
 Spring Boot 自带监控功能的 Actuator，可以帮助实现对程序内部运行情况监控，比如监控状况、Bean加载情况、环境变量、日志信息、线程信息等
 
-##### 使用
+#### 使用
 - pom.xml 文件引入依赖
 - 浏览器打开链接 [http://localhost:8080/actuator/](http://localhost:8080/actuator/) 测试
 - 默认支持的只有 `info` 和 `health`，需要添加其他 endpoint 配置 `management.endpoints.web.exposure.include=*`
@@ -240,7 +245,7 @@ Spring Boot 自带监控功能的 Actuator，可以帮助实现对程序内部�
 </dependency>
 ```
 
-##### Endpoints
+#### Endpoints
 | ID             | 描述                                                                                                                              |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------|
 | auditevents    | 显示当前应用程序的审计事件信息                                                                                                    |
@@ -263,7 +268,7 @@ Spring Boot 自带监控功能的 Actuator，可以帮助实现对程序内部�
 | logfile        | 返回日志文件内容（如果设置了logging.file或logging.path属性的话），支持使用HTTP Range头接收日志文件内容的部分信息                  |
 | prometheus     | 以可以被Prometheus服务器抓取的格式显示metrics信息                                                                                 |
 
-#### Lombok
+### Lombok
 我们在开发过程中，通常都会定义大量的JavaBean，然后通过IDE去生成其属性的构造器、getter、setter、equals、hashcode、toString方法，当要增加属性或者对某个属性进行改变时，比如命名、类型等，都需要重新去生成上面提到的这些方法。这样重复的劳动没有任何意义，Lombok里面的注解可以轻松解决这些问题。以下是常用相关注解：
 
 - @Data：注解在类上，将类提供的所有属性都添加get、set方法，并添加、equals、canEquals、hashCode、toString方法
@@ -278,19 +283,19 @@ Spring Boot 自带监控功能的 Actuator，可以帮助实现对程序内部�
 - @Slf4j / @CommonsLog / @Log4j2
 - @Accessors(chain = true)使用链式设置属性，set方法返回的是this对象
 
-#### Spring cache abstraction
-##### 基本注解
+### Spring cache abstraction
+#### 基本注解
 - @EnableCaching : 开启 Spring Cache 注解 `@EnableCaching(proxyTargetClass = true)`
 - @Cacheable : 缓存方法返回结果
 - @CacheEvict : 缓存清理
 - @CachePut : 保证方法被调用，又希望结果被缓存。与@Cacheable区别在于是否每次都调用方法，常用于更新。
 - @CacheConfig : 统一配置本类的缓存注解的属性
 
-##### 参考
+#### 参考
 [史上最全的Spring Boot Cache使用与整合](https://www.cnblogs.com/yueshutong/p/9381540.html)
 
-#### Spring Data Redis
-##### Redis Template
+### Spring Data Redis
+#### Redis Template
 ```
 // Show You Code
 public Optional<RedisFoo> findOneCacheFooByRedisTemplate(String bar) {
@@ -314,7 +319,7 @@ public Optional<RedisFoo> findOneCacheFooByRedisTemplate(String bar) {
 }
 ```
 
-##### Redis Repository
+#### Redis Repository
 ```
 // Show You Code
 // RedisFooCache.java
@@ -351,11 +356,11 @@ public Optional<RedisFoo> findOneCacheFooByRedisRepository(String bar) {
 }
 ```
 
-##### Spring Boot Admin
-###### 简介
+### Spring Boot Admin
+#### 简介
 Spring Boot Admin是一个开源社区项目，用于管理和监控SpringBoot应用程序。 应用程序作为Spring Boot Admin Client向为Spring Boot Admin Server注册（通过HTTP）或使用SpringCloud注册中心（例如Eureka，Consul）发现。 UI是的AngularJs应用程序，展示Spring Boot Admin Client的Actuator端点上的一些监控。
 
-###### 常用的功能
+#### 常用的功能
 - 显示健康状况
 - 显示 JVM 和内存指标
 - 显示数据源指标
@@ -376,10 +381,10 @@ Spring Boot Admin是一个开源社区项目，用于管理和监控SpringBoot�
 - 状态变更通知，可以通过自定义的方式发送WeChat通知（通过电子邮件，Slack，Hipchat，......）
 - 状态更改的事件日志（非持久性）
 
-###### 参考
+#### 参考
 [Spring Boot Admin Reference Guide](https://codecentric.github.io/spring-boot-admin/2.1.0/)
 
-##### Slf4j + Log4j2
+### Slf4j + Log4j2
 引入依赖时，需要注意的是，需要排除掉 Spring Boot 默认对 Logback 的依赖
 pom.xml
 ```
@@ -462,10 +467,10 @@ log4j2-spring.xml
 </Configuration>
 ```
 
-###### 参考
+#### 参考
 [聊一聊log4j2配置文件log4j2.xml](https://www.cnblogs.com/hafiz/p/6170702.html)
 
-##### Swagger
+### Swagger
 ```
 @Api：用在请求的类上，表示对类的说明
     tags="说明该类的作用，可以在UI界面上看到的注解"

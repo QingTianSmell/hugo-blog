@@ -1,16 +1,14 @@
 ---
 title: "Nest 的使用"
 date: 2019-09-28T20:31:02+08:00
-tags: ["程序开发","后端","框架"]
+tags: ["框架"]
 ---
 
-## 基础
-
-### 简介
+## 简介
 
 Nest 是一个用于构建高效，可扩展的 Node.js 服务器端应用程序的框架。它使用渐进式 JavaScript，内置并完全支持 TypeScript（但仍然允许开发人员使用纯 JavaScript 编写代码）并结合了 OOP（面向对象编程），FP（函数式编程）和 FRP（函数式响应编程）的元素。
 
-### Hello World
+## 安装
 
 ```
 // 安装 Nest
@@ -20,6 +18,7 @@ yarn global add @nestjs/cli
 nest new <project-name>
 ```
 
+## 基础
 ### 控制器
 
 [控制器](https://docs.nestjs.cn/6/controllers)层负责处理传入的请求, 并返回对客户端的响应。使用 @Controller 进行装饰。
@@ -172,6 +171,7 @@ app.use(logger);
 await app.listen(3000);
 ```
 
+## 扩展
 ### 异常过滤器
 
 内置的[异常层](https://docs.nestjs.cn/6/exceptionfilters)负责处理整个应用程序中的所有抛出的异常。当捕获到未处理的异常时，最终用户将收到友好的响应。
