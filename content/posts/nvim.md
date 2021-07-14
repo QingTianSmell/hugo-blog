@@ -1,43 +1,13 @@
 ---
 title: "neovim 的使用"
 date: 2020-03-12T13:34:31+08:00
-tags: ["程序开发","折腾","工具"]
+tags: ["工具"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
-
-* [前言](#前言)
-* [使用](#使用)
-  * [常用基础命令](#常用基础命令)
-    * [Normal](#normal)
-    * [Insert](#insert)
-  * [Vim 的四种模式](#vim-的四种模式)
-    * [Normal 模式](#normal-模式)
-    * [Insert 模式](#insert-模式)
-    * [Command 模式](#command-模式)
-    * [Visual 模式](#visual-模式)
-  * [Vim 多文件操作](#vim-多文件操作)
-    * [概念](#概念)
-    * [相关命令](#相关命令)
-      * [Buffer](#buffer)
-      * [Window](#window)
-      * [Tab](#tab)
-  * [操作系统剪切板](#操作系统剪切板)
-  * [Vim 的自动补全](#vim-的自动补全)
-  * [VIM 的配置持久化](#vim-的配置持久化)
-  * [快捷键映射](#快捷键映射)
-  * [宏](#宏)
-* [配置](#配置)
-
-<!-- vim-markdown-toc -->
-
-
-# 前言
+## 前言
 为了更快的速度和很多 neovim 才支持的插件，从 vim 迁移过来了。
 
-# 使用
-
-## 常用基础命令
+## 基础
 ### Normal
 
 ```
@@ -166,7 +136,7 @@ NeoVIM 的配置文件的位置应为`~/AppData/Local/nvim/init.vim` 或 `~/.con
 
 使用`q<register>`开始录制，可以进行 insert 和 normal 模式下的正常操作，`q`结束录制。使用`@<register>`在当前行执行宏命令。使用 V 选中多行:进入命令模式输入`normal @<register>`在选中行执行宏命令。
 
-# 配置
+## 配置
 
 Show You Code
 

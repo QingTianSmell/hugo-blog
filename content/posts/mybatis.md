@@ -1,29 +1,10 @@
 ---
 title: "Mybatis 的使用"
 date: 2020-04-04T11:29:00+08:00
-draft: ["程序开发","后端","框架"]
+draft: ["框架"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
-
-* [What](#what)
-* [Why](#why)
-  * [Spring 整合 Mybatis 时，Mybatis 的一级缓存为何“失效”?](#spring-整合-mybatis-时mybatis-的一级缓存为何失效)
-* [How](#how)
-  * [Spring Boot 如何整合 Mybatis?](#spring-boot-如何整合-mybatis)
-  * [通过 xml 文件使用 Mybatis 框架](#通过-xml-文件使用-mybatis-框架)
-    * [简单的增删改查](#简单的增删改查)
-    * [集联查询](#集联查询)
-    * [懒加载](#懒加载)
-    * [缓存](#缓存)
-      * [一级缓存](#一级缓存)
-      * [二级缓存](#二级缓存)
-    * [动态 Sql](#动态-sql)
-  * [如何使用逆向工程？](#如何使用逆向工程)
-
-<!-- vim-markdown-toc -->
-
-## What
+## 简介
 
 Mybatis 是一个数据持久层(ORM)框架。但是只完成了结果集到对象的映射，而 Hibernate 是数据表到对象的映射。
 
@@ -43,8 +24,7 @@ Mybatis 是一个数据持久层(ORM)框架。但是只完成了结果集到对�
 - 框架还是比较简陋，功能尚有缺失，虽然简化了数据绑定代码，但是整个底层数据库查询实际还是要自己写的，工作量也比较大，而且不太容易适应快速数据库修改。
 - 二级缓存机制不佳
 
-## Why
-
+## 问题
 ### Spring 整合 Mybatis 时，Mybatis 的一级缓存为何“失效”?
 
 Spring 整合 Mybatis 时，只有在事务内部 Mybatis 的一级缓存才会生效这是为什么呢？首先我们要知道 Mybatis 的一级缓存生效的范围是 SqlSession。那么从结果来看应该是只有在事务的内部，查询方法才会使用同一 SqlSession，而没有事务的时候应该是创建了新的 SqlSssion，让我们看源码确认下。
@@ -114,8 +94,7 @@ public static SqlSession getSqlSession(SqlSessionFactory sessionFactory, Executo
 }
 ```
 
-## How
-
+## 应用场景
 ### Spring Boot 如何整合 Mybatis?
 
 ```

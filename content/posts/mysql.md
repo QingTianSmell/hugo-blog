@@ -1,36 +1,14 @@
 ---
 title: "MySQL 的使用"
 date: 2020-03-15T11:50:21+08:00
-tags: ["程序开发","数据库","工具"]
+tags: ["工具"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
-
-* [What](#what)
-  * [基础命令](#基础命令)
-  * [基础 SQL 语句](#基础-sql-语句)
-    * [库相关](#库相关)
-    * [表相关](#表相关)
-    * [数据相关](#数据相关)
-  * [列类型](#列类型)
-  * [列约束](#列约束)
-  * [内置函数](#内置函数)
-* [Why](#why)
-  * [如何进行 SQL 优化？](#如何进行-sql-优化)
-* [How](#how)
-  * [查询相关](#查询相关)
-    * [分页查询](#分页查询)
-    * [多表查询](#多表查询)
-    * [子查询](#子查询)
-    * [分组统计查询](#分组统计查询)
-  * [MySQL UPDATE 误操作后恢复数据](#mysql-update-误操作后恢复数据)
-
-<!-- vim-markdown-toc -->
-
-## What
+## 简介
 
 MySQL 是最流行的关系型数据库管理系统，在 WEB 应用方面 MySQL 是最好的 RDBMS(Relational Database Management System：关系数据库管理系统)应用软件之一。
 
+## 基础
 ### 基础命令
 
 ```bash
@@ -45,7 +23,6 @@ mysql -u <user> -p <database> < <path>
 ```
 
 ### 基础 SQL 语句
-
 #### 库相关
 
 ```sql
@@ -204,8 +181,7 @@ md5();
 default();
 ```
 
-## Why
-
+## 扩展
 ### 如何进行 SQL 优化？
 
 其实需要优化的主要是慢 sql 和热点 sql 两部分，其他的只要不是写的太难看，基本根据常用的条件字段加个索引就足以解决问题了。
@@ -217,11 +193,8 @@ default();
 > [优化 sql 语句的一般步骤](https://segmentfault.com/a/1190000010941790)  
 > [一张图彻底搞懂 MySQL 的 explain](https://segmentfault.com/a/1190000021458117?utm_source=tag-newest)
 
-## How
-
-### 查询相关
-
-#### 分页查询
+## 应用场景
+### 分页查询
 
 ```sql
 -- 使用 limit 子句进行分页查询, limit <(page-1)*pageSize>,<pageSize>
@@ -229,7 +202,7 @@ default();
 select <columns> from <table> limit 0,15;
 ```
 
-#### 多表查询
+### 多表查询
 
 ```sql
 -- 内连接查询
@@ -243,7 +216,7 @@ select <columns> from <table1> left outer join <table2> on <table1_id>=<table2_i
 select <columns> from <table> as a inner join <table> as b on <a_id>=<b_xxx>;
 ```
 
-#### 子查询
+### 子查询
 
 ```sql
 -- 查询条件未知的问题时，可以分解成多个条件已知的问题
@@ -254,7 +227,7 @@ select * from <table1> where <column1> = (select <column1> from <table2> where .
 select * from <table1> where <column1> in (select <column1> from <table2> where ...);
 ```
 
-#### 分组统计查询
+### 分组统计查询
 
 ```sql
 -- 分组查询 column 列并统计数目
@@ -265,4 +238,4 @@ select <column>,count(*) from <table> group by <column> having count(*) > 100;
 
 ### MySQL UPDATE 误操作后恢复数据
 
-> [mysqlbinlog 结合 sed 命令恢复 update 时未加 where 条件之前的数据](https://blog.51cto.com/wujianwei/2294284)
+使用 sed 命令恢复。参考 [mysqlbinlog 结合 sed 命令恢复 update 时未加 where 条件之前的数据](https://blog.51cto.com/wujianwei/2294284)

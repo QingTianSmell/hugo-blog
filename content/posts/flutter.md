@@ -1,88 +1,11 @@
 ---
 title: "Flutter 的使用"
 date: 2020-03-21T21:04:37+08:00
-tags: ["程序开发","前端","框架"]
+tags: ["框架"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
-
-* [What](#what)
-  * [Dart](#dart)
-    * [什么是 Dart ?](#什么是-dart-)
-    * [变量类型定义](#变量类型定义)
-      * [num、bool 与 String](#numbool-与-string)
-      * [List 与 Map](#list-与-map)
-      * [常量定义](#常量定义)
-    * [函数](#函数)
-    * [类](#类)
-      * [类的定义及初始化](#类的定义及初始化)
-      * [复用](#复用)
-    * [运算符](#运算符)
-    * [Event Loop 机制](#event-loop-机制)
-    * [异步函数](#异步函数)
-    * [多线程](#多线程)
-    * [HTTP 网络编程](#http-网络编程)
-      * [HttpClient](#httpclient)
-      * [http](#http)
-      * [dio](#dio)
-    * [JSON 解析](#json-解析)
-    * [数据库](#数据库)
-  * [State 的生命周期](#state-的生命周期)
-  * [常用基础控件](#常用基础控件)
-    * [Text](#text)
-    * [Image](#image)
-    * [FadeInImage](#fadeinimage)
-    * [FloatingActionButton](#floatingactionbutton)
-    * [RaisedButton](#raisedbutton)
-    * [FlatButton](#flatbutton)
-    * [ListView](#listview)
-  * [布局](#布局)
-    * [单子 Widget 布局：Container、Padding 与 Center](#单子-widget-布局containerpadding-与-center)
-    * [多子 Widget 布局：Row、Column 与 Expanded](#多子-widget-布局rowcolumn-与-expanded)
-    * [层叠 Widget 布局：Stack 与 Positioned](#层叠-widget-布局stack-与-positioned)
-  * [资源引用](#资源引用)
-  * [第三方包依赖](#第三方包依赖)
-  * [用户交互事件](#用户交互事件)
-    * [指针事件](#指针事件)
-    * [手势识别](#手势识别)
-  * [组件间数据传递](#组件间数据传递)
-    * [InheritedWidget](#inheritedwidget)
-    * [Notification](#notification)
-    * [EventBus](#eventbus)
-  * [路由](#路由)
-    * [基本路由](#基本路由)
-    * [命名路由](#命名路由)
-    * [页面参数](#页面参数)
-  * [APP 的事件监听](#app-的事件监听)
-  * [本地存储](#本地存储)
-    * [文件](#文件)
-    * [SharedPreferences](#sharedpreferences)
-* [Why](#why)
-  * [为什么需要做状态管理，怎么做？](#为什么需要做状态管理怎么做)
-    * [Consumer](#consumer)
-    * [多状态的资源封装](#多状态的资源封装)
-* [How](#how)
-  * [如何进行开发环境搭建](#如何进行开发环境搭建)
-    * [安装 Flutter](#安装-flutter)
-    * [安装 Android Studio](#安装-android-studio)
-    * [安装 XCode](#安装-xcode)
-    * [通过 Flutter 运行模拟器](#通过-flutter-运行模拟器)
-  * [如何实现视差滚动](#如何实现视差滚动)
-  * [如何实现下拉刷新、触底刷新、回到顶部等功能](#如何实现下拉刷新触底刷新回到顶部等功能)
-  * [如何实现视图的自绘](#如何实现视图的自绘)
-  * [如何定制不同风格的 App 主题](#如何定制不同风格的-app-主题)
-  * [如何作出动画效果](#如何作出动画效果)
-    * [Animation、AnimationController 与 Listener](#animationanimationcontroller-与-listener)
-    * [AnimatedWidget 与 AnimatedBuilder](#animatedwidget-与-animatedbuilder)
-    * [hero 动画](#hero-动画)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
-
-## What
-
+## 基础
 ### Dart
-
 #### 什么是 Dart ?
 
 因为 JavaScript 的种种问题，Dart 最初是 Google 设计用来代替 JavaScript 的语言。但是 JavaScript 因为 Node.js 成为了前后端同吃的全栈语言，前端的开发模式也因此改变，Dart 取代 JavaScript 也成为了泡影。出现转机的地方是 Google 内部孵化了跨平台移动端开发框架 Flutter，Dart 成为了其开发语言，与其进行了捆绑。目前来看 Dart 语言的生命力主要依靠于 Flutter 的生命力。而因为 React Native 的种种问题，Flutter 有了后来居上的趋势，如果你是一名移动端开发者，Dart 语言和 Flutter 框架确实值得一学。
@@ -1317,8 +1240,7 @@ Future<void>_incrementCounter() async {
 
 在完成了计数器存取方法的封装后，我们就可以在代码中随时更新并持久化计数器数据了。可以看到，SharedPreferences 的使用方式非常简单方便。不过需要注意的是，以键值对的方式只能存储基本类型的数据，比如 int、double、bool 和 string。
 
-## Why
-
+## 扩展
 ### 为什么需要做状态管理，怎么做？
 
 如果我们的应用足够简单，数据流动的方向和顺序是清晰的，我们只需要将数据映射成视图就可以了。作为声明式的框架，Flutter 可以自动处理数据到渲染的全过程，通常并不需要状态管理。
@@ -1493,10 +1415,8 @@ Consumer2<CounterModel,double>(
 
 可以看到，Consumer2 与 Consumer 的使用方式基本一致，只不过是在 builder 方法中多了一个数据资源参数。事实上，如果你希望在子 Widget 中共享更多的数据，我们最多可以使用到 Consumer6，即共享 6 个数据资源。
 
-## How
-
+## 应用场景
 ### 如何进行开发环境搭建
-
 #### 安装 Flutter
 
 1. 去 Flutter 官网下载其最新可用的安装包，[转到下载页](https://flutter.io/sdk-archive/#macos)。

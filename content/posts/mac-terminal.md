@@ -1,32 +1,12 @@
 ---
 title: "MacOS 下的终端 + Shell 选择"
 date: 2020-03-04T22:55:25+08:00
-tags: ["折腾","工具"]
+tags: ["杂谈"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
-
-* [前言](#前言)
-* [安装](#安装)
-  * [Alacritty](#alacritty)
-    * [新建 Alacritty 应用](#新建-alacritty-应用)
-    * [字体设置](#字体设置)
-  * [Fish](#fish)
-    * [集成功能](#集成功能)
-  * [Oh My Fish](#oh-my-fish)
-    * [常用命令](#常用命令)
-    * [注意](#注意)
-  * [Powerline fonts / Nerd fonts](#powerline-fonts-nerd-fonts)
-* [参考](#参考)
-
-<!-- vim-markdown-toc -->
-
-# 前言
+## 前言
 
 MacOS 下个人的解决方案为 [Alacritty](https://github.com/alacritty/alacritty) + [fishshell](https://fishshell.com/) + [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)， 从 zsh 转到 fish 的原因就是因为 zsh 太慢了。Alacritty 是一个跨平台、GPU 增强的终端模拟器，目前还在实验阶段有不少问题，选择它的原因是因为它足够的简单以及出乎意料的快。
-
-
-# 安装
 
 ## Alacritty
 
@@ -87,7 +67,7 @@ brew search <name>
 brew cask install <name>
 ```
 
-# 参考
+## 参考
 
 > [宇宙第一 fish shell 入门](https://www.jianshu.com/p/7ffd9d1af788)  
 > [Powerline fonts](https://github.com/powerline/fonts)  

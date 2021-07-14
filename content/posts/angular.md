@@ -1,31 +1,17 @@
 ---
 title: "Angular 的使用"
 date: 2020-04-12T14:28:05+08:00
-tags: ["程序开发","前端","框架"]
+tags: ["框架"]
 ---
 
-<!-- vim-markdown-toc GitLab -->
 
-* [What](#what)
-  * [快速上手](#快速上手)
-    * [模版语法](#模版语法)
-    * [组件](#组件)
-    * [输入和输出](#输入和输出)
-    * [注册路由](#注册路由)
-    * [使用路由信息](#使用路由信息)
-    * [使用服务](#使用服务)
-    * [在 AppModule 中为应用启用 HttpClient](#在-appmodule-中为应用启用-httpclient)
-    * [表单](#表单)
-
-<!-- vim-markdown-toc -->
-
-## What
+## 简介
 
 Angular 是一个应用设计框架与开发平台，用于创建高效、复杂、精致的单页面应用。
 
-### 快速上手
+## 基础
 
-#### 模版语法
+### 模版语法
 
 Angular 模板语法的五个常用特性：
 
@@ -57,7 +43,7 @@ Angular 模板语法的五个常用特性：
 </div>
 ```
 
-#### 组件
+### 组件
 
 组件在用户界面（也就是 UI）中定义了一些责任区，让你能重用这些 UI 功能集。Angular 应用程序由一棵组件树组成，每个 Angular 组件都有一个明确的用途和责任。
 
@@ -67,7 +53,7 @@ Angular 模板语法的五个常用特性：
 - 一个 HTML 模板，它决定了 UI。在上一节中，商品列表的 HTML 模板用来显示每个商品的名称、描述和 “Share” 按钮。
 - 组件专属的样式定义了外观和感觉。商品列表中还没有定义任何样式，那属于组件 CSS 负责。
 
-#### 输入和输出
+### 输入和输出
 
 ```
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
@@ -148,7 +134,7 @@ export class ProductListComponent {
 </div>
 ```
 
-#### 注册路由
+### 注册路由
 
 ```
 @NgModule({
@@ -177,7 +163,7 @@ export class ProductListComponent {
 </div>
 ```
 
-#### 使用路由信息
+### 使用路由信息
 
 ```
 import { Component, OnInit } from "@angular/core";
@@ -205,7 +191,7 @@ export class ProductDetailsComponent implements OnInit {
 }
 ```
 
-#### 使用服务
+### 使用服务
 
 服务是 Angular 应用的重要组成部分。在 Angular 中，服务是一个类的实例，它可以借助 Angular 的依赖注入系统来让应用中的任何一个部件都能使用它。服务可以让你在应用的各个部件之间共享数据。
 
@@ -248,7 +234,7 @@ export class ProductDetailsComponent implements OnInit {
 }
 ```
 
-#### 在 AppModule 中为应用启用 HttpClient
+### 在 AppModule 中为应用启用 HttpClient
 
 在使用 Angular 的 HTTP 客户端之前，你必须先配置你的应用来使用 HttpClientModule。Angular 的 HttpClientModule 中注册了在整个应用中使用 HttpClient 服务的单个实例所需的服务提供商。
 
@@ -306,7 +292,7 @@ async 管道从数据流中返回最新值，并在所属组件的生命期内�
 </div>
 ```
 
-#### 表单
+### 表单
 
 ```
 import { Component, OnInit } from '@angular/core';
