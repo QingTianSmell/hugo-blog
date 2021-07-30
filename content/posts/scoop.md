@@ -68,11 +68,20 @@ scoop update [软件包]
 之前提到过, Scoop 是根据 Json 文件进行软件的下载安装的, Bucket 就是存放这些 Json 文件的地方。官方维护了一个名称叫 main 的 Bucket (收录条件十分苛刻, 举两个例子：必须是主流的开发者工具, 不可以有 GUI), 也不是说没被官方 Bucket 收录的软件就不可以用 Scoop 进行管理了。只是需要我们将别人维护的 Bucket 使用`scoop bucket add <Bucket Name>`命令添加一下，就可以 install 其中的软件了。总之就是如果使用`scoop search`搜索不到就上[Scoop Directory](https://rasa.github.io/scoop-directory/by-bucket)看下。当然你也可以维护你自己的 Bucket。
 
 ## 配置
+
+```shell
+# 设置代理
+scoop config proxy 127.0.0.1:7890
+```
+
 ### Scoop Aria2
 
 ```shell
 # 安装 aria2 自动开启多线程下载
 scoop install aria2
+
+# 关闭 aria2 下载
+scoop config aria2-enabled false
 
 # aria2 配置
 # aria2-enabled (默认值: true)
