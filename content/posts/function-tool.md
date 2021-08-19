@@ -2,6 +2,7 @@
 title: "如何学习使用新工具"
 date: 2021-05-14T10:49:21+08:00
 tags: ['方法']
+draft: false
 toc:
   enable: false
 ---
