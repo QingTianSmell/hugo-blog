@@ -2,7 +2,7 @@
 title: "如何记录一个问题"
 date: 2021-05-14T11:14:16+08:00
 tags: ['方法']
-draft: false
+draft: true
 toc:
   enable: false
 ---

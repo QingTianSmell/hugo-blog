@@ -1,7 +1,7 @@
 ---
 title: "Smell推书"
 date: 2021-08-01T12:46:55+08:00
-draft: false
+draft: true
 ---
 
 ## 技术选型
