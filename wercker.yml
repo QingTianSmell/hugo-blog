@@ -35,7 +35,7 @@ build:
           git submodule update --remote --recursive
     - arjen/hugo-build:
         theme: LoveIt
-        # flags: --buildDrafts=true
+        flags: --buildDrafts=false
     - npm-install
     - script:
         name: publish algolia json
