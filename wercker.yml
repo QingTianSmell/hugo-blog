@@ -50,6 +50,6 @@ deploy:
     - sf-zhou/gh-pages@0.2.6:
         token: $GIT_TOKEN
         domain: http://blog.orionpax.top
-        repo: OrionPax19970905/OrionPax19970905.github.io
-        branch: master
+        repo: QingTianSmell/QingTianSmell.github.io
+        branch: main
         basedir: public
